@@ -22,15 +22,15 @@ import { MedicalInformationComponent } from './components/medical-information/me
 import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    component: MainLayoutComponent,
-  },
+  // {
+  //   path: '',
+  //   redirectTo: '/home',
+  //   pathMatch: 'full',
+  // },
+  // {
+  //   path: 'home',
+  //   component: MainLayoutComponent,
+  // },
 ];
 
 @NgModule({

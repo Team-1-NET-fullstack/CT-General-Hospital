@@ -1,0 +1,22 @@
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.avatar {
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.name {
+  margin: 8px 0 0;
+  font-weight: 700;
+}
+
+.designation {
+  font-size: 13px;
+  color: #333333;
+}
