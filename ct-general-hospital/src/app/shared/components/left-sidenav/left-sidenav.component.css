@@ -1,0 +1,26 @@
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+.logo {
+  width: auto;
+  height: 80px;
+}
+
+.active-link {
+  background: #f0ecfe;
+  color: #ffad1f;
+}
+
+.active-link mat-icon {
+  background: white;
+  color: #6944f6;
+}

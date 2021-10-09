@@ -1,0 +1,11 @@
+
+.top-menu-cards {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .card-align {
+    flex: auto;
+    margin: 0 8px 0;
+  }
+  

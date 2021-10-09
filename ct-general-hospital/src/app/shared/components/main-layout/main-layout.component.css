@@ -1,0 +1,33 @@
+mat-sidenav-container {
+  height: calc(100vh);
+  background: #f0ecfe;
+}
+
+mat-sidenav {
+  margin: 16px;
+  width: 200px;
+  border: none;
+  background: white;
+  color: #333333;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.content {
+  height: calc(100vh - 35px);
+  margin: 16px;
+  margin-left: 32px;
+  margin-right: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-elevation-z4 {
+  padding: 8px;
+  border-radius: 10px;
+  margin: 8px 0 8px 0;
+  width: -webkit-fill-available;
+  background: #ffffff;
+  flex: auto;
+}
