@@ -1,0 +1,21 @@
+.mediacal-information-stepper {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+div {
+  float: right;
+}
+
+.next-button {
+  margin: 0 8px 0;
+  background-color: #6944f6;
+}
+
+.back-button {
+  margin: 0 8px 0;
+  background-color: #ffad1f;
+}

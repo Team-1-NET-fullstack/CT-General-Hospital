@@ -1,0 +1,46 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>ProcedureCode</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="ProcedureCode"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>ProcedureDescription</mat-label>
+    <textarea
+      matInput
+      placeholder=""
+      aria-label="ProcedureDescription"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    ></textarea>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <label id="example-radio-group-label">Is This Procedure Depricated?</label
+  ><br />
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1">Yes</mat-radio-button>
+    <mat-radio-button value="2">No</mat-radio-button>
+  </mat-radio-group>
+</form>
