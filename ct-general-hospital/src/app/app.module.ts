@@ -20,17 +20,14 @@ import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { MedicalInformationComponent } from './components/medical-information/medical-information.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
+import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/home',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'home',
-  //   component: MainLayoutComponent,
-  // },
+  {
+    path: 'patient-demographics',
+    component: PatientDemographicsComponent,
+  },
 ];
 
 @NgModule({
@@ -48,6 +45,8 @@ const routes: Routes = [
     CapitalizePipe,
     MedicalInformationComponent,
     AdminComponent,
+    PatientDemographicsComponent,
+    PatientAllergyComponent,
   ],
   imports: [
     BrowserModule,

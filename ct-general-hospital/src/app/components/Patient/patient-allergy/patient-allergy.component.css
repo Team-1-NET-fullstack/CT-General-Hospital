@@ -1,0 +1,29 @@
+.mat-form-field {
+  margin-left: 25px;
+  margin-left: 26px;
+}
+.mat-card {
+  text-align: center;
+  box-sizing: content-box;
+}
+.form {
+  align-items: left;
+  height: 100cm;
+  width: 100cm;
+}
+mat-grid-tile {
+  background: lightgrey;
+}
+
+.button-submit {
+  background-color: #6944f6;
+  margin-right: 10px;
+  margin-left: 5px;
+  text-align: right;
+}
+
+.button-reset {
+  background-color: #ffad1f;
+  margin-right: 10px;
+  text-align: right;
+}
