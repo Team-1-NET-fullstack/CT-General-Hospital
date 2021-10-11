@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+mat-form-field {
+  margin-right: 16px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 16px;
+}
+
+.example-full-width {
+  width: 100%;
+}
