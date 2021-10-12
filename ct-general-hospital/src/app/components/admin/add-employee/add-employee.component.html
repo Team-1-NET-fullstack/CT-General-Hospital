@@ -1,0 +1,78 @@
+<div class="container">
+  <form [formGroup]="formVar" (ngSubmit)="onSubmit()">
+
+  <script>
+    var seq=0;
+    function myFunction() {
+    seq=seq+1;
+        document.getElementById("demo").value = seq;
+    }
+    </script>
+  <br />
+  <mat-radio-group style="margin-left: 3vw">
+    <mat-label>Title</mat-label>
+    <mat-radio-button value="Mr">Mr</mat-radio-button>
+    <mat-radio-button value="Mrs">Mrs</mat-radio-button>
+    <mat-radio-button value="Ms">Ms</mat-radio-button>
+  </mat-radio-group>
+  &nbsp; &nbsp;
+  <mat-form-field appearance="legacy" id="fname">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="First Name" />
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <mat-form-field appearance="legacy" id="lname">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last Name" />
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <mat-form-field>
+    <mat-label>Date Of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker> </mat-datepicker>
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <br />
+  <br />
+  <br />
+  <mat-form-field style="margin-left: 3vw" appearance="legacy">
+    <mat-label>Address Line 1</mat-label>
+    <input matInput placeholder="Address Line 1" />
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <mat-form-field appearance="legacy">
+    <mat-label>Address Line 2(optional)</mat-label>
+    <input matInput placeholder="Address Line 2(Optional)" />
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <mat-form-field appearance="legacy">
+    <mat-label>Phone Number</mat-label>
+    <input matInput placeholder="Phone Number" />
+  </mat-form-field>
+  &nbsp; &nbsp;
+  <mat-form-field appearance="legacy">
+    <mat-label>Email ID</mat-label>
+    <input matInput placeholder="Email ID" />
+  </mat-form-field>
+  <br />
+  <mat-form-field style="margin-left: 3vw" appearance="legacy">
+    <mat-label id="demo">Employee ID</mat-label>
+    <input matInput id="demo" placeholder="Employee ID"  />
+  </mat-form-field>
+  &nbsp;
+  <button class="btn" onclick="myFunction()"><i class="fa fa-home"></i>Auto</button>
+
+  <br />
+  <button
+    style="margin-left: 50vw"
+    mat-flat-button
+    type="submit"
+    class="button-submit"
+  >
+    Submit
+  </button>
+  <button mat-flat-button type="reset" class="button-reset">Cancel</button>
+
+  </form>
+</div>

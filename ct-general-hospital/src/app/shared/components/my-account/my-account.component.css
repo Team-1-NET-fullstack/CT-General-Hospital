@@ -1,0 +1,20 @@
+h3
+{
+font-weight: 900;
+text-align:center;
+font-size: 1rem;
+}
+
+.button-submit {
+  background-color: #6944f6;
+  margin-right: 10px;
+  margin-left: 5px;
+  text-align: right;
+}
+
+.button-reset {
+  background-color: #ffad1f;
+  margin-right: 10px;
+  text-align: right;
+}
+
