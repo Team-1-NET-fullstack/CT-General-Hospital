@@ -128,5 +128,4 @@ export class PatientDetailsComponent implements OnInit {
    this.medicalInformationService.addPatientDetails(ob);
    alert("Record Added");
   }
-  
 }

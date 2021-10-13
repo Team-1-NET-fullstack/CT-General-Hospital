@@ -1,11 +1,13 @@
 <form class="diagnosis-form" [formGroup]="form" (ngSubmit)="saveDiagnosisDetails()">
   <mat-form-field class="diagnosis-full-width" >
+
     <mat-label>DiagnosisCode</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="DiagnosisCode"
       matInput
+
       formControlName="diagnosisCode"
       id="diagnosisCode"
     />
@@ -34,4 +36,5 @@
   </mat-radio-group>
   <br />
   <button mat-button [disabled]="form.invalid">Save</button>
+
 </form>

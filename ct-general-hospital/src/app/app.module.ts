@@ -33,7 +33,6 @@ const routes: Routes = [
     routingComponents,
     AuthDirective,
     CapitalizePipe,
-    
   ],
   imports: [
     BrowserModule,

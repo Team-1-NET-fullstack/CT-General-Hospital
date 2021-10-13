@@ -20,6 +20,7 @@ import { ProcedureDetailsComponent } from './components/patient/procedure-detail
 import { MedicationDetailsComponent } from './components/patient/medication-details/medication-details.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
+
 import { EmployeeCardComponent } from './components/admin/employee-card/employee-card.component';
 
 import { PatientCardComponent } from './components/admin/patient-card/patient-card.component';
@@ -40,10 +41,7 @@ const routes: Routes = [
     path:'patient-card',
     component:PatientCardComponent
   },
-  {
-    path:'',
-    component:DashboardComponent
-  },
+  
   {
     path:'dashboard',
     component:DashboardComponent
@@ -74,6 +72,7 @@ const routes: Routes = [
   {
     path: 'signin',
     component: SignInComponent,
+
   },
   {
     path: 'home',
@@ -112,6 +111,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 export const routingComponents = [
   SignInComponent,
+
   MainLayoutComponent,
   HeaderComponent,
   LeftSidenavComponent,
