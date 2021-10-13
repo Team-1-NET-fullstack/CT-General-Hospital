@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class LeftSidenavComponent implements OnInit {
 
   constructor() { }
+  openAccountDialog():void{
 
-  ngOnInit(): void {
   }
 
+  openPasswordDialog(){}
+  openFAQDialog(){}
+  openTCDialog(){}
+  ngOnInit(): void {
+  }
 }
