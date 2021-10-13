@@ -10,6 +10,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 
+
+
+import { Routes } from '@angular/router';
+
+const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '/home',
+  //   pathMatch: 'full',
+  // },
+  // {
+  //   path: 'home',
+  //   component: MainLayoutComponent,
+  // },
+];
+
 @NgModule({
   declarations: [
     AppComponent,

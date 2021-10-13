@@ -19,7 +19,51 @@ import { DiagnosisDetailsComponent } from './components/patient/diagnosis-detail
 import { ProcedureDetailsComponent } from './components/patient/procedure-details/procedure-details.component';
 import { MedicationDetailsComponent } from './components/patient/medication-details/medication-details.component';
 
+import { EmployeeCardComponent } from './components/admin/employee-card/employee-card.component';
+
+import { PatientCardComponent } from './components/admin/patient-card/patient-card.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { FAQsComponent } from './shared/components/faqs/faqs.component';
+import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
+import { ChangePasswordComponent } from './shared/components/change-password/change-password.component';
+
+import { MyAccountComponent } from './shared/components/my-account/my-account.component';
+import { TermsConditionsComponent } from './shared/components/terms-conditions/terms-conditions.component';
+
 const routes: Routes = [
+  {
+    path:'employee-card',
+    component:EmployeeCardComponent
+  },
+  {
+    path:'patient-card',
+    component:PatientCardComponent
+  },
+  {
+    path:'',
+    component:DashboardComponent
+  },
+  {
+    path:'dashboard',
+    component:DashboardComponent
+  },
+{
+  path:'my-account',
+  component:MyAccountComponent
+},
+{
+  path:'change-password',
+  component:ChangePasswordComponent
+},
+{
+  path:'faqs',
+  component:FAQsComponent
+},
+{
+  path:'terms-conditions',
+  component:TermsConditionsComponent
+}
+,
   {
     path: '',
     redirectTo: '/home',
@@ -78,4 +122,12 @@ export const routingComponents = [
   DiagnosisDetailsComponent,
   ProcedureDetailsComponent,
   MedicationDetailsComponent,
+  EmployeeCardComponent,
+  PatientCardComponent,
+  DashboardComponent,
+  FAQsComponent,
+  AddEmployeeComponent,
+  ChangePasswordComponent,
+  MyAccountComponent,
+  TermsConditionsComponent,
 ];
