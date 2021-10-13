@@ -1,0 +1,45 @@
+<form class="vital-form" [formGroup]="form" (ngSubmit)="saveVitals()">
+  <mat-form-field class="vital-full-width">
+    <mat-label>Height</mat-label>
+    <input matInput placeholder="in cms" formControlName="height" id="height" />
+    <mat-error *ngIf="hasError('height', 'required')">Height is required</mat-error>
+    <mat-error *ngIf="hasError('height', 'maxlength')">You have more than 3 characters</mat-error>
+  
+  </mat-form-field>
+  
+  <mat-form-field class="vital-full-width">
+    <mat-label>Weight</mat-label>
+    <input matInput placeholder="in Kgs" formControlName="weight" id="weight" />
+    <mat-error *ngIf="hasError('weight', 'required')">weight is required</mat-error>
+    <mat-error *ngIf="hasError('weight', 'maxlength')">You have more than 3 characters</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field class="vital-full-width">
+    <mat-label>Body Temparature</mat-label>
+    <input
+      matInput
+      placeholder="in Fahrenheit"
+      formControlName="bodyTemparature" id="bodyTemparature"
+    />
+    <mat-error *ngIf="hasError('bodyTemparature', 'required')">BodyTemparature is required</mat-error>
+    <mat-error *ngIf="hasError('bodyTemparature', 'maxlength')">You have more than 3 characters</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field class="vital-full-width">
+    <mat-label>Respiration Rate</mat-label>
+    <input matInput placeholder="in BPM" formControlName="respirationRate" id="respirationRate" />
+    <mat-error *ngIf="hasError('respirationRate', 'required')">RespirationRate is required</mat-error>
+    <mat-error *ngIf="hasError('respirationRate', 'maxlength')">You have more than 3 characters</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field class="vital-full-width">
+    <mat-label>Blood Pressure</mat-label>
+    <input matInput placeholder="in mm Hg" formControlName="bloodPressure" id="bloodPressure" />
+    <mat-error *ngIf="hasError('bloodPressure', 'required')">BloodPressure is required</mat-error>
+    <mat-error *ngIf="hasError('bloodPressure', 'maxlength')">You have more than 3 characters</mat-error>
+  
+  </mat-form-field>
+  <br />
+  
+  <button mat-button [disabled]="form.invalid">Save</button>
+</form>
