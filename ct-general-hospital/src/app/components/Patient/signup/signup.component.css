@@ -1,0 +1,30 @@
+mat-form-field {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  form{
+    align-content: center;
+  }
+  .mat-card {
+    text-align: center;
+  
+  }
+  .container {
+    align-items: center;
+  }
+  .button-submit {
+    background-color: #6944f6;
+    margin-right: 10px;
+    margin-left: 8px;
+    margin-bottom: 14px;
+    text-align: center;
+    align-content: center;
+  }
+
+  .button-reset {
+    background-color: #ffad1f;
+    margin-right: 10px;
+    text-align: center;
+  }
+  

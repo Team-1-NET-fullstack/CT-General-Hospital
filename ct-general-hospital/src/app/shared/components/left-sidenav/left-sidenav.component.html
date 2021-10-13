@@ -1,14 +1,10 @@
 <div>
-
   <img class="logo" src="../../../assets/images/logo.png" />
-
 
   <button
     mat-button
     class="menu-button"
-
     routerLink="/dashboard"
-
     routerLinkActive="active-link"
   >
     <mat-icon>dashboard</mat-icon>
@@ -32,23 +28,19 @@
     <mat-icon>edit</mat-icon>
     <span>Edit Patients</span>
   </button>
+  <button mat-button class="menu-button" routerLink="/patient-demographics">
+    <mat-icon>personal_injury</mat-icon>
+    <span>Patients</span>
+  </button>
 
-
-  <button mat-button class="menu-button"
+  <button
+    mat-button
+    class="menu-button"
     routerLink="/appointments"
     routerLinkActive="active-link"
   >
     <mat-icon>access_time</mat-icon>
     <span>Appointments</span>
-  </button>
-  <button
-    mat-button
-    class="menu-button"
-    routerLink="/patients"
-    routerLinkActive="active-link"
-  >
-    <mat-icon>personal_injury</mat-icon>
-    <span>Patients</span>
   </button>
   <button
     mat-button
@@ -84,42 +76,42 @@
           <mat-icon>settings</mat-icon>
           Settings
         </mat-panel-title>
-      </mat-expansion-panel-header >
-<div style="text-align: left;">
-          <button
-            style="text-align: left"
-            mat-button
-            routerLinkActive="active-link"
-            routerLink="/my-account"
-          >
-            My Account
-          </button>
-          <button
-            style="text-align: left"
-            mat-button
-            routerLinkActive="active-link"
-            routerLink="/change-password"
-          >
-            Change Password
-          </button>
+      </mat-expansion-panel-header>
+      <div style="text-align: left">
+        <button
+          style="text-align: left"
+          mat-button
+          routerLinkActive="active-link"
+          routerLink="/my-account"
+        >
+          My Account
+        </button>
+        <button
+          style="text-align: left"
+          mat-button
+          routerLinkActive="active-link"
+          routerLink="/change-password"
+        >
+          Change Password
+        </button>
 
-          <button
-            style="text-align: left"
-            mat-button
-            routerLinkActive="active-link"
-            routerLink="/faqs"
-          >
-            FAQs
-          </button>
-          <button
-            style="text-align: left"
-            mat-button
-            routerLinkActive="active-link"
-            routerLink="/terms-conditions"
-          >
-            TnCs
-          </button>
-        </div>
+        <button
+          style="text-align: left"
+          mat-button
+          routerLinkActive="active-link"
+          routerLink="/faqs"
+        >
+          FAQs
+        </button>
+        <button
+          style="text-align: left"
+          mat-button
+          routerLinkActive="active-link"
+          routerLink="/terms-conditions"
+        >
+          TnCs
+        </button>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

@@ -1,0 +1,56 @@
+<div fxLayouAlign="center center" fxFlexfill>
+  <mat-card fxFlex="25">
+    Sign Up
+    <div class="container mat-elevation-z12">
+      <form>
+        <mat-form-field appearance="legacy">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First Name"
+            class="form-control"
+            required
+            maxlength="4"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="legacy">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="legacy">
+          <mat-label>Contact Number</mat-label>
+          <input matInput placeholder="Contact Number" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="legacy">
+          <mat-label>Password </mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="legacy">
+          <mat-label>Confirm Password </mat-label>
+          <input
+            matInput="password"
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Confirm Password"
+          />
+        </mat-form-field>
+        <br />
+        <button mat-flat-button type="submit" class="button-submit">
+          Submit
+        </button>
+        <button mat-flat-button type="reset" class="button-reset">
+          Cancel
+        </button>
+      </form>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,26 @@
+.mat-form-field {
+  margin-left: 16px;
+  margin-top: 16px;
+}
+mat-radio-button {
+  margin: 0.5px;
+  margin-left: 8px;
+}
+mat-label {
+  margin-left: 20px;
+  margin-right: 16px;
+}
+
+div {
+  float: right;
+}
+
+.button-submit {
+  background-color: #6944f6;
+  margin: 0 8px 0;
+}
+
+.button-reset {
+  background-color: #ffad1f;
+  margin-right: 0 8px 0;
+}
