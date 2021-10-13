@@ -22,8 +22,13 @@ import { MedicalInformationComponent } from './components/medical-information/me
 import { AdminComponent } from './components/admin/admin.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
+import { SignupComponent } from './components/Patient/signup/signup.component';
 
 const routes: Routes = [
+  {
+    path: 'patient-signup',
+    component: SignupComponent,
+  },
   {
     path: 'patient-demographics',
     component: PatientDemographicsComponent,
@@ -47,6 +52,7 @@ const routes: Routes = [
     AdminComponent,
     PatientDemographicsComponent,
     PatientAllergyComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

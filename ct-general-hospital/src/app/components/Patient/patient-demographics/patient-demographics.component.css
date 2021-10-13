@@ -1,26 +1,38 @@
 mat-form-field {
-  margin-right: 10px;
-  margin-left: 10px;
-  
+  margin-left: 15px;
+  margin-right: 5px;
+  margin-top: 2px;
+  width: 170px;
 }
+
 .mat-card {
   text-align: left;
   box-sizing: content-box;
 }
-.container {
-  align-items: left;
+
+.emergencycontact {
+  font-size: 14px;
+  margin-left: 1px;
+}
+mat-radio-button {
+  margin: 0 8px 0;
+}
+
+
+div {
+  float: right;
 }
 
 .button-submit {
   background-color: #6944f6;
-  margin-right: 10px;
-  margin-left: 5px;
-  text-align: right;
+  margin: 0 8px 0;
+}
+
+mat-checkbox {
+  margin: 0 1px 0;
 }
 
 .button-reset {
   background-color: #ffad1f;
-  margin-right: 10px;
-  text-align: right;
+  margin: 0 1px 0;
 }
-

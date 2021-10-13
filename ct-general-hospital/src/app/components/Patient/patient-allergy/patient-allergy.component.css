@@ -1,29 +1,26 @@
 .mat-form-field {
-  margin-left: 25px;
-  margin-left: 26px;
+  margin-left: 16px;
+  margin-top: 16px;
 }
-.mat-card {
-  text-align: center;
-  box-sizing: content-box;
+mat-radio-button {
+  margin: 0.5px;
+  margin-left: 8px;
 }
-.form {
-  align-items: left;
-  height: 100cm;
-  width: 100cm;
+mat-label {
+  margin-left: 20px;
+  margin-right: 16px;
 }
-mat-grid-tile {
-  background: lightgrey;
+
+div {
+  float: right;
 }
 
 .button-submit {
   background-color: #6944f6;
-  margin-right: 10px;
-  margin-left: 5px;
-  text-align: right;
+  margin: 0 8px 0;
 }
 
 .button-reset {
   background-color: #ffad1f;
-  margin-right: 10px;
-  text-align: right;
+  margin-right: 0 8px 0;
 }
