@@ -1,0 +1,24 @@
+.procedure-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 16px;
+}
+
+.procedure-full-width {
+  width: 100%;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+button {
+  margin: 8px;
+  color: #ffffff;
+  background-color: #007bff;
+}
+
+.mat-button.mat-button-disabled.mat-button-disabled {
+  color: #333333;
+  background-color: #dddddd;
+}

@@ -21,6 +21,6 @@ mat-icon {
 }
 
 .active-link mat-icon {
-  background: white;
+  background: #ffffff;
   color: #6944f6;
 }

@@ -1,0 +1,69 @@
+<form class="medication-form" [formGroup]="form" (ngSubmit)="saveMedicationDetails()">
+  <mat-form-field class="medication-full-width" >
+    <mat-label>Drug Id</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="DrugId"
+      matInput
+      formControlName="drugId"
+      id="drugId"
+    />
+    <mat-error *ngIf="hasError('drugId', 'required')">drugId is required</mat-error>
+   
+  </mat-form-field>
+  <mat-form-field class="medication-full-width" >
+    <mat-label>Drug Generic Name</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="Drug Generic Name"
+      matInput
+      formControlName="drugGenericName"
+      id="drugGenericName"
+    />
+    <mat-error *ngIf="hasError('drugGenericName', 'required')">drugGenericName is required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="medication-full-width" >
+    <mat-label>Drug Form</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="Drug Form"
+      matInput
+      formControlName="drugForm"
+      id="drugForm"
+    />
+    <mat-error *ngIf="hasError('drugForm', 'required')">drugForm is required</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field class="medication-full-width" >
+    <mat-label>Drug Name</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="DrugName"
+      matInput
+      formControlName="drugName"
+      id="drugName"
+    />
+    <mat-error *ngIf="hasError('drugName', 'required')">drugName is required</mat-error>
+  
+  </mat-form-field>
+  <mat-form-field class="medication-full-width">
+    <mat-label>Drug Brand Name</mat-label>
+    <input
+      type="text"
+      placeholder=""
+      aria-label="DrugBrandName"
+      matInput
+      formControlName="drugBrandName"
+      id="drugBrandName"
+    />
+    <mat-error *ngIf="hasError('drugBrandName', 'required')">drugBrandName is required</mat-error>
+  
+  </mat-form-field>
+  
+  <button mat-button [disabled]="form.invalid">Save</button>
+
+</form>

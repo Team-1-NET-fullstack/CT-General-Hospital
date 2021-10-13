@@ -8,6 +8,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -23,6 +27,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],
@@ -35,6 +43,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatStepperModule,
+    MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],

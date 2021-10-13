@@ -1,0 +1,39 @@
+<mat-stepper
+  class="mediacal-information-stepper"
+  [orientation]="(stepperOrientation | async)!"
+>
+  <mat-step [stepControl]="firstFormGroup" label="Fill out Vital Signs">
+    <form [formGroup]="firstFormGroup">
+      <app-vital-signs></app-vital-signs>
+      <div>
+        <button mat-button matStepperNext class="next-button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out Diagnosis Details">
+    <form [formGroup]="secondFormGroup">
+      <app-diagnosis-details></app-diagnosis-details>
+      <div>
+        <button mat-button matStepperPrevious class="back-button">Back</button>
+        <button mat-button matStepperNext class="next-button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Fill out Procedure Details">
+    <form [formGroup]="thirdFormGroup">
+      <app-procedure-details></app-procedure-details>
+      <div>
+        <button mat-button matStepperPrevious class="back-button">Back</button>
+        <button mat-button matStepperNext class="next-button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Medication Details</ng-template>
+    <app-medication-details></app-medication-details>
+    <div>
+      <button mat-button matStepperPrevious class="back-button">Back</button>
+      <button mat-button class="next-button">Save</button>
+    </div>
+  </mat-step>
+</mat-stepper>
