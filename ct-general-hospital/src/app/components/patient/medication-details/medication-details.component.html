@@ -1,97 +1,69 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
+<form class="medication-form" [formGroup]="form" (ngSubmit)="saveMedicationDetails()">
+  <mat-form-field class="medication-full-width" >
     <mat-label>Drug Id</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="DrugId"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="drugId"
+      id="drugId"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('drugId', 'required')">drugId is required</mat-error>
+   
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="medication-full-width" >
     <mat-label>Drug Generic Name</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="Drug Generic Name"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="drugGenericName"
+      id="drugGenericName"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('drugGenericName', 'required')">drugGenericName is required</mat-error>
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="medication-full-width" >
     <mat-label>Drug Form</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="Drug Form"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="drugForm"
+      id="drugForm"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('drugForm', 'required')">drugForm is required</mat-error>
+  
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="medication-full-width" >
     <mat-label>Drug Name</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="DrugName"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="drugName"
+      id="drugName"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('drugName', 'required')">drugName is required</mat-error>
+  
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="medication-full-width">
     <mat-label>Drug Brand Name</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="DrugBrandName"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="drugBrandName"
+      id="drugBrandName"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('drugBrandName', 'required')">drugBrandName is required</mat-error>
+  
   </mat-form-field>
+  
+  <button mat-button [disabled]="form.invalid">Save</button>
+
 </form>

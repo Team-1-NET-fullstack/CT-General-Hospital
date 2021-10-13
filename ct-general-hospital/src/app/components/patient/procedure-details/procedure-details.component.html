@@ -1,46 +1,42 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>ProcedureCode</mat-label>
+<form
+  class="procedure-form"
+  [formGroup]="form"
+  (ngSubmit)="saveProcedureDetails()"
+>
+  <mat-form-field class="procedure-full-width">
+    <mat-label>ProcedureId</mat-label>
     <input
       type="text"
       placeholder=""
-      aria-label="ProcedureCode"
+      aria-label="ProcedureId"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="procedureId" id="procedureId"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('procedureId', 'required')">ProcedureId is required</mat-error>
+    <mat-error *ngIf="hasError('procedureId', 'maxlength')">You have more than 3 characters</mat-error>
+  
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="procedure-full-width">
     <mat-label>ProcedureDescription</mat-label>
     <textarea
       matInput
       placeholder=""
       aria-label="ProcedureDescription"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+      formControlName="procedureDescription" id="procedureDescription"
     ></textarea>
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('procedureDescription', 'required')">ProcedureDescription is required</mat-error>
+    <mat-error *ngIf="hasError('procedureDescription', 'maxlength')">You have more than 60 characters</mat-error>
+  
   </mat-form-field>
-  <label id="example-radio-group-label">Is This Procedure Depricated?</label
+  <label id="procedure-radio-group-label">Is This Procedure Depricated?</label
   ><br />
-  <mat-radio-group aria-label="Select an option">
-    <mat-radio-button value="1">Yes</mat-radio-button>
-    <mat-radio-button value="2">No</mat-radio-button>
+  <mat-radio-group aria-label="Select an option" formControlName="isDepricated" id="isDepricated">
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+    <mat-error *ngIf="hasError('isDepricated', 'required')">Please select one option</mat-error>
+    
   </mat-radio-group>
+  <br />
+  <button mat-button [disabled]="form.invalid">Save</button>
 </form>

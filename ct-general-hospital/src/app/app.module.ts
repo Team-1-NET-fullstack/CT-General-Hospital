@@ -9,6 +9,7 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 
@@ -41,6 +42,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularMaterialModule,
     HttpClientModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

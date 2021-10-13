@@ -1,1 +1,124 @@
-<p>patient-details works!</p>
+<form class="patient-form" [formGroup]="form"
+(ngSubmit)="savePatientDetails()">
+  <table class="patient-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-radio-group aria-label="Select an option" formControlName="title" id="title">
+          <td><mat-radio-button value="Mr">Mr</mat-radio-button></td>
+          <td><mat-radio-button value="Mrs">Mrs</mat-radio-button></td>
+          <td><mat-radio-button value="Ms">Ms</mat-radio-button></td>
+        </mat-radio-group>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width" >
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName" id="firstName" />
+          <mat-error *ngIf="hasError('firstName', 'required')">firstName is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width" >
+          <mat-label>Last Name </mat-label>
+          <input matInput formControlName="lastName" id="lastName" />
+          <mat-error *ngIf="hasError('lastName', 'required')">lastName is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width" >
+            <mat-label>DOB</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" id="dateOfBirth" />
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="patient-full-width" cellspacing="0">
+    <tr>
+        <td>
+            <mat-radio-group aria-label="Select an option" formControlName="gender" id="gender">
+              <td><mat-radio-button value="M">Male</mat-radio-button></td>
+              <td><mat-radio-button value="F">Female</mat-radio-button></td>
+              <td><mat-radio-button value="O">Other</mat-radio-button></td>
+            </mat-radio-group>
+          </td>
+      <td>
+        <mat-form-field class="patient-full-width"  >
+          <mat-label>Race</mat-label>
+          <input matInput placeholder="" formControlName="race" id="race"/>
+          <mat-error *ngIf="hasError('race', 'required')">Race is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width" >
+          <mat-label>Ethinicity</mat-label>
+          <input matInput placeholder="" formControlName="ethinicity" id="ethinicity"/>
+          <mat-error *ngIf="hasError('ethinicity', 'required')">ethinicity is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width" >
+          <mat-label>Languages Known</mat-label>
+          <input matInput formControlName="languagesKnown" id="languagesKnown" >
+            
+          <mat-error *ngIf="hasError('languagesKnown', 'required')">languagesKnown is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="patient-full-width" cellspacing="0">
+    <tr>
+        
+      <td>
+        <mat-form-field class="patient-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" formControlName="emailId" id="emailId" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="patient-full-width">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+91 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234" formControlName="telePhoneNo" id="telePhoneNo" />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-error *ngIf="hasError('telePhoneNo', 'required')">telePhoneNo is required</mat-error>
+    
+          </mat-form-field>
+      </td>
+      
+      <td>
+        <mat-form-field class="patient-full-width" >
+          <mat-label>Address</mat-label>
+          <textarea matInput placeholder="Ex. 100 Main St" formControlName="address" id="address" >
+         
+          </textarea>
+          <mat-error *ngIf="hasError('address', 'required')">address is required</mat-error>
+    
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-radio-group aria-label="Select an option" formControlName="allergies" id="allergies">
+          <td><mat-radio-button value="true">Allergies</mat-radio-button></td>
+          <td><mat-radio-button value="false">NoAllergies</mat-radio-button></td>
+          
+        </mat-radio-group>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <button mat-button >Save</button>
+</form>

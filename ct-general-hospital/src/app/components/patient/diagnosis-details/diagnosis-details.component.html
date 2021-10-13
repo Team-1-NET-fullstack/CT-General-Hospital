@@ -1,46 +1,40 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
+<form class="diagnosis-form" [formGroup]="form" (ngSubmit)="saveDiagnosisDetails()">
+  <mat-form-field class="diagnosis-full-width" >
+
     <mat-label>DiagnosisCode</mat-label>
     <input
       type="text"
       placeholder=""
       aria-label="DiagnosisCode"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+
+      formControlName="diagnosisCode"
+      id="diagnosisCode"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('diagnosisCode', 'required')">DiagnosisCode is required</mat-error>
+    
   </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="diagnosis-full-width" >
     <mat-label>DiagnosisDescription</mat-label>
     <textarea
       matInput
       placeholder=""
       aria-label="DiagnosisDescription"
       matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
+       formControlName="diagnosisDescription"
+       id="diagnosisDescription"
     ></textarea>
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-error *ngIf="hasError('diagnosisDescription', 'required')">DiagnosisDescription is required</mat-error>
+    <mat-error *ngIf="hasError('diagnosisDescription', 'maxlength')">You have more than 60 characters</mat-error>
+  
   </mat-form-field>
-  <label id="example-radio-group-label">Is This Diagnosis Depricated?</label
+  <label id="diagnosis-radio-group-label">Is This Diagnosis Depricated?</label
   ><br />
-  <mat-radio-group aria-label="Select an option">
-    <mat-radio-button value="1">Yes</mat-radio-button>
-    <mat-radio-button value="2">No</mat-radio-button>
+  <mat-radio-group aria-label="Select an option" formControlName="isDepricated">
+    <mat-radio-button value= true >Yes</mat-radio-button>
+    <mat-radio-button value= false >No</mat-radio-button>
   </mat-radio-group>
+  <br />
+  <button mat-button [disabled]="form.invalid">Save</button>
+
 </form>

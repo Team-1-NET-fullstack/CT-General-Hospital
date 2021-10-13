@@ -18,6 +18,8 @@ import { VitalSignsComponent } from './components/patient/vital-signs/vital-sign
 import { DiagnosisDetailsComponent } from './components/patient/diagnosis-details/diagnosis-details.component';
 import { ProcedureDetailsComponent } from './components/patient/procedure-details/procedure-details.component';
 import { MedicationDetailsComponent } from './components/patient/medication-details/medication-details.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+
 
 import { EmployeeCardComponent } from './components/admin/employee-card/employee-card.component';
 
@@ -39,10 +41,7 @@ const routes: Routes = [
     path:'patient-card',
     component:PatientCardComponent
   },
-  {
-    path:'',
-    component:DashboardComponent
-  },
+  
   {
     path:'dashboard',
     component:DashboardComponent
@@ -66,8 +65,14 @@ const routes: Routes = [
 ,
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/SignIn',
     pathMatch: 'full',
+    
+  },
+  {
+    path: 'signin',
+    component: SignInComponent,
+
   },
   {
     path: 'home',
@@ -105,6 +110,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 export const routingComponents = [
+  SignInComponent,
+
   MainLayoutComponent,
   HeaderComponent,
   LeftSidenavComponent,
