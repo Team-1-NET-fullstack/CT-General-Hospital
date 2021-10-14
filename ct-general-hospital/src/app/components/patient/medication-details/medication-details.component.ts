@@ -16,38 +16,24 @@ export class MedicationDetailsComponent implements OnInit {
   constructor(private medicalInformationService: MedicalInformationService) {}
 
   ngOnInit(): void {
-    let drugId= null;
-    let drugName= null;
+    let drugId = null;
+    let drugName = null;
     let drugGenericName = null;
     let drugBrandName = null;
-    let drugForm= null;
+    let drugForm = null;
 
     this.form = new FormGroup({
-      drugId: new FormControl(drugId, [
-        Validators.required,
-       
-      ]),
-      drugBrandName: new FormControl(drugBrandName, [
-        Validators.required,
-        
-      ]),
-      drugName: new FormControl(drugName, [
-        Validators.required,
-       
-      ]),
-      drugGenericName: new FormControl(drugGenericName, [
-        Validators.required,
-        
-      ]),
-      drugForm: new FormControl(drugForm, [
-        Validators.required,
-       
-      ]),
+      drugId: new FormControl(drugId, [Validators.required]),
+      drugBrandName: new FormControl(drugBrandName, [Validators.required]),
+      drugName: new FormControl(drugName, [Validators.required]),
+      drugGenericName: new FormControl(drugGenericName, [Validators.required]),
+      drugForm: new FormControl(drugForm, [Validators.required]),
     });
   }
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
-  }
+  };
+
   saveMedicationDetails() {
     // Gathering data
     const patientVisitId = 1234;
@@ -56,8 +42,8 @@ export class MedicationDetailsComponent implements OnInit {
     const drugBrandName = this.form.value.drugBrandName;
     const drugGenericName = this.form.value.drugGenericName;
     const drugForm = this.form.value.drugForm;
-    const updatedBy='robert@ctgeneral.com';
-    const insertedDate=new Date();
+    const updatedBy = 'robert@ctgeneral.com';
+    const insertedDate = new Date();
     const id = this.form.value.id;
 
     // Create Ob
@@ -70,11 +56,11 @@ export class MedicationDetailsComponent implements OnInit {
       drugForm,
       insertedDate,
       updatedBy,
-       id
+      id
     );
 
     // Send to service
-   this.medicalInformationService.addMedicationDetails(ob);
-   alert("Record Added");
+    this.medicalInformationService.addMedicationDetails(ob);
+    alert('Record Added');
   }
 }

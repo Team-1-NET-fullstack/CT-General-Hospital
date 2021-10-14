@@ -12,14 +12,14 @@ mat-form-field{
 }
 h3 {
   font-weight: 900;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
 }
 table {
   border-spacing: 1vw;
   word-wrap: normal;
   padding: 1vw;
-  align-content: center;
+  align-content: left;
 }
 mat-paginator {
   max-width: 50vw;

@@ -9,23 +9,6 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
-import { MedicalInformationComponent } from './components/medical-information/medical-information.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
-import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
-import { SignupComponent } from './components/Patient/signup/signup.component';
-import { Routes } from '@angular/router';
-
-const routes: Routes = [
-  {
-    path: 'patient-signup',
-    component: SignupComponent,
-  },
-  {
-    path: 'patient-demographics',
-    component: PatientDemographicsComponent,
-  },
-];
 
 @NgModule({
   declarations: [
@@ -33,11 +16,6 @@ const routes: Routes = [
     routingComponents,
     AuthDirective,
     CapitalizePipe,
-    MedicalInformationComponent,
-    AdminComponent,
-    PatientDemographicsComponent,
-    PatientAllergyComponent,
-    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +25,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularMaterialModule,
     HttpClientModule,
-    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

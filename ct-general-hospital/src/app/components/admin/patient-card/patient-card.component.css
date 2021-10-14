@@ -8,14 +8,15 @@
 }
 h3 {
   font-weight: 900;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
+  padding-left: 16px;
 }
 table {
   border-spacing: 1vw;
   word-wrap: normal;
   padding: 1vw;
-  align-content: center;
+  align-content: left;
 }
 
 mat-card-title {

@@ -1,0 +1,77 @@
+{
+  "Users": [
+    {
+      "Email": "praveen@gmail.com",
+      "Password": "Praveen@810",
+      "id": 1
+    }
+  ],
+  "PatientDetails": [
+    {
+      "patientVisitId": 1234,
+      "title": "Mr",
+      "firstName": "Robert",
+      "lastName": "gupta",
+      "dateOfBirth": "1991-10-07T18:30:00.000Z",
+      "gender": "M",
+      "race": "american",
+      "ethinicity": "america",
+      "languagesKnown": "Eglish,Telugu",
+      "emailId": "robert@ct.com",
+      "telePhoneNo": "8106720145",
+      "address": "text",
+      "allergies": "true",
+      "insertedDate": "2021-10-13T07:49:32.726Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 1
+    }
+  ],
+  "VitalSigns": [
+    {
+      "patientVisitId": 1234,
+      "height": "123",
+      "weight": "123",
+      "bodyTemparature": "123",
+      "respirationRate": "123",
+      "bloodPressure": "123/123",
+      "insertedDate": "2021-10-13T12:17:16.082Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 1
+    }
+  ],
+  "DiagnosisDetails": [
+    {
+      "patientVisitId": 1234,
+      "diagnosisCode": "13457",
+      "diagnosisDescription": "Headache",
+      "isDepricated": "true",
+      "insertedDate": "2021-10-13T07:52:10.111Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 1
+    }
+  ],
+  "ProcedureDetails": [
+    {
+      "patientVisitId": 1234,
+      "procedureId": "1233445",
+      "procedureDescription": "MRI Scan",
+      "isDepricated": "true",
+      "insertedDate": "2021-10-12T21:31:13.461Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 1
+    }
+  ],
+  "MedicationDetails": [
+    {
+      "patientVisitId": 1234,
+      "drugId": "Dr1234567",
+      "drugName": "B-complet",
+      "drugBrandName": "B-complex",
+      "drugGenericName": "Cipla",
+      "drugForm": "Tablet",
+      "insertedDate": "2021-10-13T07:57:04.700Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 1
+    }
+  ]
+}
