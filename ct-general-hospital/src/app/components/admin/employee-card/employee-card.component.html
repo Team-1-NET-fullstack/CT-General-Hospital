@@ -1,56 +1,63 @@
-<h3 style="text-align: center;">Employee Details</h3>
+<h3 style="text-align: left;padding-left: 16px;">Employee Details</h3>
 <mat-tab-group>
-<mat-tab label="Add Employee">
-  <app-add-employee></app-add-employee>
-</mat-tab>
+  <mat-tab label="Add Employee">
+    <app-add-employee></app-add-employee>
+  </mat-tab>
   <mat-tab label="Edit Employee">
-      <mat-card-content style="align-content: center; margin-left: 2vw;" >
+    <mat-card-content style="align-content: center; margin-left: 2vw">
+      <table
+        class="table table-striped"
+        style="
+          border-spacing: 1vw;
+          word-wrap: normal;
+          padding: 1vw;
+          align-content: center;
+        "
+      >
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Title</th>
+            <th>Employee Name</th>
+            <th>Date Of Birth</th>
+            <th>Email ID</th>
+            <th>Role</th>
+            <th>Date Of Joining</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employees">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.dob | date: "shortDate" }}</td>
+            <td>{{ item.emailid }}</td>
+            <td>{{ item.role }}</td>
+            <td>{{ item.joining | date: "shortDate" }}</td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Select an option</mat-label>
+                <mat-select [(value)]="selected">
+                  <mat-option>None</mat-option>
+                  <mat-option value="option1">Blocked</mat-option>
+                  <mat-option value="option2">Inactive</mat-option>
+                  <mat-option value="option3">Active</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-          <table class="table table-striped" style="border-spacing: 1vw; word-wrap: normal;padding: 1vw; align-content: center;">
-              <thead>
-                <tr>
-                  <th>Employee ID</th>
-                  <th>Title</th>
-                  <th>Employee Name</th>
-                  <th>Date Of Birth</th>
-                  <th>Email ID</th>
-                  <th>Role</th>
-                  <th>Date Of Joining</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                <tr *ngFor="let item of employees">
-                 <td> {{item.id}}</td>
-                 <td>{{item.title}}</td>
-                 <td>{{item.name}}</td>
-                 <td>{{item.dob}}</td>
-                 <td>{{item.emailid}}</td>
-                 <td>{{item.role}}</td>
-                 <td>{{item.joining}}</td>
-                 <td> <mat-form-field appearance="fill">
-                  <mat-label >Select an option</mat-label>
-                  <mat-select [(value)]="selected">
-                    <mat-option>None</mat-option>
-                    <mat-option value="option1">Blocked</mat-option>
-                    <mat-option value="option2">Inactive</mat-option>
-                    <mat-option value="option3">Active</mat-option>
-                  </mat-select>
-                </mat-form-field></td>
-                
-              </tbody>
-            </table>
-
-            <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
-        <br>
-      </mat-card-content>
-      </mat-tab>
-
-
-
-
+      <mat-paginator
+        [length]="4"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+      <br />
+    </mat-card-content>
+  </mat-tab>
+</mat-tab-group>

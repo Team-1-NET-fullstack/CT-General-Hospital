@@ -11,72 +11,64 @@ import { BottomComponent } from './shared/components/center-content/bottom/botto
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { PatientVisitComponent } from './components/patient/patient-visit/patient-visit.component';
-import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
-import { MedicalInformationComponent } from './components/patient/medical-information/medical-information.component';
-import { VitalSignsComponent } from './components/patient/vital-signs/vital-signs.component';
-import { DiagnosisDetailsComponent } from './components/patient/diagnosis-details/diagnosis-details.component';
-import { ProcedureDetailsComponent } from './components/patient/procedure-details/procedure-details.component';
-import { MedicationDetailsComponent } from './components/patient/medication-details/medication-details.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-
-
 import { EmployeeCardComponent } from './components/admin/employee-card/employee-card.component';
-
 import { PatientCardComponent } from './components/admin/patient-card/patient-card.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { FAQsComponent } from './shared/components/faqs/faqs.component';
 import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
 import { ChangePasswordComponent } from './shared/components/change-password/change-password.component';
-
 import { MyAccountComponent } from './shared/components/my-account/my-account.component';
 import { TermsConditionsComponent } from './shared/components/terms-conditions/terms-conditions.component';
+import { PatientVisitComponent } from './components/Patient/patient-visit/patient-visit.component';
+import { VitalSignsComponent } from './components/Patient/vital-signs/vital-signs.component';
+import { DiagnosisDetailsComponent } from './components/Patient/diagnosis-details/diagnosis-details.component';
+import { ProcedureDetailsComponent } from './components/Patient/procedure-details/procedure-details.component';
+import { MedicationDetailsComponent } from './components/Patient/medication-details/medication-details.component';
+import { PatientDetailsComponent } from './components/Patient/patient-details/patient-details.component';
+import { MedicalInformationComponent } from './components/Patient/medical-information/medical-information.component';
+import { SignupComponent } from './components/Patient/signup/signup.component';
+import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
+import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
 
 const routes: Routes = [
   {
-    path:'employee-card',
-    component:EmployeeCardComponent
+    path: 'employee-card',
+    component: EmployeeCardComponent,
   },
   {
-    path:'patient-card',
-    component:PatientCardComponent
+    path: 'patient-card',
+    component: PatientCardComponent,
   },
-  
+
   {
-    path:'dashboard',
-    component:DashboardComponent
+    path: 'dashboard',
+    component: DashboardComponent,
   },
-{
-  path:'my-account',
-  component:MyAccountComponent
-},
-{
-  path:'change-password',
-  component:ChangePasswordComponent
-},
-{
-  path:'faqs',
-  component:FAQsComponent
-},
-{
-  path:'terms-conditions',
-  component:TermsConditionsComponent
-}
-,
+  {
+    path: 'my-account',
+    component: MyAccountComponent,
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+  },
+  {
+    path: 'faqs',
+    component: FAQsComponent,
+  },
+  {
+    path: 'terms-conditions',
+    component: TermsConditionsComponent,
+  },
   {
     path: '',
-    redirectTo: '/SignIn',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
-    
   },
   {
     path: 'signin',
     component: SignInComponent,
-
-  },
-  {
-    path: 'home',
-    component: MainLayoutComponent,
   },
   {
     path: 'patient-visit',
@@ -97,6 +89,14 @@ const routes: Routes = [
   {
     path: 'medication-details',
     component: MedicationDetailsComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+  {
+    path: 'patient-demographics',
+    component: PatientDemographicsComponent,
   },
   {
     path: '**',
@@ -137,4 +137,7 @@ export const routingComponents = [
   ChangePasswordComponent,
   MyAccountComponent,
   TermsConditionsComponent,
+  PatientDemographicsComponent,
+  SignupComponent,
+  PatientAllergyComponent,
 ];
