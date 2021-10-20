@@ -4,52 +4,57 @@
   <button
     mat-button
     class="menu-button"
-    routerLink="/dashboard"
+    routerLink="/patient/dashboard"
     routerLinkActive="active-link"
   >
     <mat-icon>dashboard</mat-icon>
     <span>Dashboard</span>
   </button>
   <button
+    *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/employee-card"
+    routerLink="/patient/employee-card"
     routerLinkActive="active-link"
   >
     <mat-icon>group_add</mat-icon>
     <span>Employee Detail</span>
   </button>
   <button
+    *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/patient-card"
+    routerLink="/patient/patient-card"
     routerLinkActive="active-link"
   >
     <mat-icon>edit</mat-icon>
     <span>Edit Patients</span>
   </button>
   <button
+    *ngIf="user?.roleId == 4"
     mat-button
     class="menu-button"
-    routerLink="/patient-demographics"
+    routerLink="/patient/patient-demographics"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patients</span>
   </button>
   <button
+    *ngIf="user?.roleId == 3"
     mat-button
     class="menu-button"
-    routerLink="/patient-visit"
+    routerLink="/patient/patient-visit"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patient Visit</span>
   </button>
   <button
+    *ngIf="user?.roleId == 4"
     mat-button
     class="menu-button"
-    routerLink="/appointments"
+    routerLink="/patient/appointment"
     routerLinkActive="active-link"
   >
     <mat-icon>access_time</mat-icon>
@@ -59,14 +64,14 @@
   <!-- <button
     mat-button
     class="menu-button"
-    routerLink="/settings"
+    routerLink="/patient/settings"
     routerLinkActive="active-link"
   >
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
   </button> -->
 
-  <mat-accordion>
+  <mat-accordion *ngIf="user?.roleId == 1">
     <mat-expansion-panel style="padding: 0%">
       <mat-expansion-panel-header>
         <mat-panel-title style="font-size: 14pt; text-align: left">
@@ -79,7 +84,7 @@
           style="text-align: left"
           mat-button
           routerLinkActive="active-link"
-          routerLink="/my-account"
+          routerLink="/patient/my-account"
         >
           My Account
         </button>
@@ -87,7 +92,7 @@
           style="text-align: left"
           mat-button
           routerLinkActive="active-link"
-          routerLink="/change-password"
+          routerLink="/patient/change-password"
         >
           Change Password
         </button>
@@ -96,7 +101,7 @@
           style="text-align: left"
           mat-button
           routerLinkActive="active-link"
-          routerLink="/faqs"
+          routerLink="/patient/faqs"
         >
           FAQs
         </button>
@@ -104,7 +109,7 @@
           style="text-align: left"
           mat-button
           routerLinkActive="active-link"
-          routerLink="/terms-conditions"
+          routerLink="/patient/terms-conditions"
         >
           TnCs
         </button>
@@ -112,7 +117,12 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <button mat-button class="menu-button" routerLinkActive="active-link">
+  <button
+    mat-button
+    class="menu-button"
+    routerLinkActive="active-link"
+    (click)="onLogout()"
+  >
     <mat-icon>exit_to_app</mat-icon>
     <span>Logout</span>
   </button>
