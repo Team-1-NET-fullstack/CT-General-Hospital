@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { LeftSidenavComponent } from './shared/components/left-sidenav/left-sidenav.component';

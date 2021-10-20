@@ -23,7 +23,7 @@
             <th>Email ID</th>
             <th>Role</th>
             <th>Date Of Joining</th>
-            <th>Status</th>
+            <th>Edit Status</th>
           </tr>
         </thead>
         <tbody>
@@ -36,15 +36,9 @@
             <td>{{ item.role }}</td>
             <td>{{ item.joining | date: "shortDate" }}</td>
             <td>
-              <mat-form-field appearance="fill">
-                <mat-label>Select an option</mat-label>
-                <mat-select [(value)]="selected">
-                  <mat-option>None</mat-option>
-                  <mat-option value="option1">Blocked</mat-option>
-                  <mat-option value="option2">Inactive</mat-option>
-                  <mat-option value="option3">Active</mat-option>
-                </mat-select>
-              </mat-form-field>
+              <button mat-icon-button color="white" (click)="EditButton()">
+                <mat-icon>edit</mat-icon>
+              </button>
             </td>
           </tr>
         </tbody>
