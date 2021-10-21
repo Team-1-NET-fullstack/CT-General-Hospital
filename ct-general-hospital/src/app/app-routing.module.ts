@@ -30,6 +30,7 @@ import { MedicalInformationComponent } from './components/Patient/medical-inform
 import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
+import { PatientProfileComponent } from './components/Patient/patient-profile/patient-profile.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   },
   {
     path: 'patient-demographics',
+    component: PatientProfileComponent,
+  },
+  {
+    path: 'patient-details',
     component: PatientDemographicsComponent,
   },
   {

@@ -1,43 +1,57 @@
-<mat-form-field>
-  <mat-label>Allergy Id</mat-label>
-  <select matNativeControl>
-    <option value="one">1</option>
-    <option value="two">2</option>
-    <option value="three">3</option>
-  </select>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Allergy Type</mat-label>
-  <select matNativeControl>
-    <option value="dust">Dust</option>
-    <option value="dog">Dog</option>
-    <option value="sun">Sun</option>
-  </select>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Allergy Name</mat-label>
-  <select matNativeControl>
-    <option value="one">Name 1</option>
-    <option value="two">Name 2</option>
-    <option value="three">Name 3</option>
-  </select>
-</mat-form-field>
-<br />
-<mat-form-field>
-  <mat-label>Allergy Description</mat-label>
-  <textarea matInput placeholder="xyz.. "></textarea>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Allergy Clinical Information</mat-label>
-  <textarea matInput placeholder="pqr.. "></textarea>
-</mat-form-field>
-<mat-radio-group>
-  <mat-label>Is Allergy Fatal?</mat-label>
-  <mat-radio-button value="Yes">Yes</mat-radio-button>
-  <mat-radio-button value="No">No</mat-radio-button>
-</mat-radio-group>
-<br />
-<div>
-  <button mat-flat-button type="submit" class="button-submit">Submit</button>
-  <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-</div>
+<form class="demographics-form" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Allergy Id</mat-label>
+    <select matNativeControl>
+      <option value="one">1</option>
+      <option value="two">2</option>
+      <option value="three">3</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Allergy Type</mat-label>
+    <select matNativeControl>
+      <option value="dust">Dust</option>
+      <option value="dog">Dog</option>
+      <option value="sun">Sun</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Allergy Name</mat-label>
+    <select matNativeControl>
+      <option value="one">Name 1</option>
+      <option value="two">Name 2</option>
+      <option value="three">Name 3</option>
+    </select>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Allergy Description</mat-label>
+    <mat-error>Enter allergy description </mat-error>
+    <textarea
+      matInput
+      placeholder="xyz.. "
+      [formControl]="allergydescription"
+      required
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Allergy Clinical Information</mat-label>
+    <mat-error>Enter Clinical Information </mat-error>
+    <textarea
+      matInput
+      placeholder="pqr.. "
+      [formControl]="clinicalinfo"
+      required
+    ></textarea>
+  </mat-form-field>
+  <mat-radio-group>
+    <mat-label>Is Allergy Fatal?</mat-label>
+    <mat-radio-button value="Yes">Yes</mat-radio-button>
+    <mat-radio-button value="No">No</mat-radio-button>
+  </mat-radio-group>
+  <br />
+  <div>
+    <button mat-flat-button type="submit" class="button-submit">Submit</button>
+    <button mat-flat-button type="reset" class="button-reset">Cancel</button>
+  </div>
+</form>
