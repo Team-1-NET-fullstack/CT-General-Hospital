@@ -2,8 +2,6 @@
 
 <mat-tab-group>
   <mat-tab label="Edit Account Details">
-    <div class="container">
-      <br />
       <mat-radio-group>
         <mat-radio-button value="Mr">Mr</mat-radio-button>
         <mat-radio-button value="Mrs">Mrs</mat-radio-button>
@@ -27,7 +25,7 @@
         <mat-datepicker #picker> </mat-datepicker>
       </mat-form-field>
       <br />
-      <br />
+     
       <mat-form-field  appearance="legacy">
         <mat-label>Address Line 1</mat-label>
         <input matInput placeholder="Address Line 1" />
@@ -46,15 +44,17 @@
         <mat-label>Email ID</mat-label>
         <input matInput placeholder="Email ID" />
       </mat-form-field>
-      <mat-dialog-actions align="end">
+      <mat-dialog-actions>
         <button mat-button mat-dialog-close>Cancel</button>
         <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
           Submit
         </button>
       </mat-dialog-actions>
-    </div>
+    
   </mat-tab>
-  <mat-tab label="Change Password ">
+
+
+  <mat-tab label="Change Password " >
     <app-change-password></app-change-password>
   </mat-tab>
 </mat-tab-group>
