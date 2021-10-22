@@ -29,8 +29,8 @@ import { MedicalInformationComponent } from './components/Patient/medical-inform
 import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
   { path: 'signin', component: SignInComponent },
@@ -147,5 +147,6 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
+  EditEmployeeComponent,
   AppointmentsComponent,
 ];
