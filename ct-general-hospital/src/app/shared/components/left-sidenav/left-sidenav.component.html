@@ -61,61 +61,16 @@
     <span>Appointments</span>
   </button>
 
-  <!-- <button
+  <button
     mat-button
     class="menu-button"
-    routerLink="/patient/settings"
     routerLinkActive="active-link"
+    (click)="openDialog()"
   >
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
-  </button> -->
 
-  <mat-accordion *ngIf="user?.roleId == 1">
-    <mat-expansion-panel style="padding: 0%">
-      <mat-expansion-panel-header>
-        <mat-panel-title style="font-size: 14pt; text-align: left">
-          <mat-icon>settings</mat-icon>
-          Settings
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div style="text-align: left">
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/my-account"
-        >
-          My Account
-        </button>
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/change-password"
-        >
-          Change Password
-        </button>
-
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/faqs"
-        >
-          FAQs
-        </button>
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/terms-conditions"
-        >
-          TnCs
-        </button>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+  </button>
 
   <button
     mat-button

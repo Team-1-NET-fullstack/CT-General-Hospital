@@ -11,6 +11,16 @@ import { MedicationDetails } from 'src/app/shared/models/medication-details.mode
   styleUrls: ['./medication-details.component.css'],
 })
 export class MedicationDetailsComponent implements OnInit {
+  drugId = new FormControl();
+  drugIdList: string[] = ['D001','D002','D003','D004'];
+  drugGenericName = new FormControl();
+  drugGenericNameList: string[] = ['Diazepam',' Valium','Vazepam'];
+ 
+  drugName = new FormControl();
+  drugNameList: string[] = ['Ansaid','Pantop','Paracetomol','Azythromicin'];
+  drugBrandName = new FormControl();
+  drugBrandNameList: string[] = ['Cipla','Ansaid','Hetero'];
+ 
   form: FormGroup = new FormGroup({});
 
   constructor(private medicalInformationService: MedicalInformationService) {}
