@@ -30,72 +30,80 @@ import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
 const routes: Routes = [
-  {
-    path: 'employee-card',
-    component: EmployeeCardComponent,
-  },
-  {
-    path: 'patient-card',
-    component: PatientCardComponent,
-  },
+  { path: '', pathMatch: 'full', redirectTo: 'signin' },
+  { path: 'signin', component: SignInComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'registration', component: SignupComponent },
+  { path: 'changePassword', component: ChangePasswordComponent },
+
+  //patient
 
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-  },
-  {
-    path: 'my-account',
-    component: MyAccountComponent,
-  },
-  {
-    path: 'change-password',
-    component: ChangePasswordComponent,
-  },
-  {
-    path: 'faqs',
-    component: FAQsComponent,
-  },
-  {
-    path: 'terms-conditions',
-    component: TermsConditionsComponent,
-  },
-  {
-    path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'signin',
-    component: SignInComponent,
-  },
-  {
-    path: 'patient-visit',
-    component: PatientVisitComponent,
-  },
-  {
-    path: 'vital-signs',
-    component: VitalSignsComponent,
-  },
-  {
-    path: 'diagnosis-details',
-    component: DiagnosisDetailsComponent,
-  },
-  {
-    path: 'procedure-details',
-    component: ProcedureDetailsComponent,
-  },
-  {
-    path: 'medication-details',
-    component: MedicationDetailsComponent,
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
-  {
-    path: 'patient-demographics',
-    component: PatientDemographicsComponent,
+    path: 'patient',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'patient-visit', component: PatientVisitComponent },
+      {
+        path: 'appointment',
+        component: AppointmentsComponent,
+      },
+      {
+        path: 'employee-card',
+        component: EmployeeCardComponent,
+      },
+      {
+        path: 'patient-card',
+        component: PatientCardComponent,
+      },
+
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'my-account',
+        component: MyAccountComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+      },
+      {
+        path: 'faqs',
+        component: FAQsComponent,
+      },
+      {
+        path: 'terms-conditions',
+        component: TermsConditionsComponent,
+      },
+      {
+        path: 'patient-visit',
+        component: PatientVisitComponent,
+      },
+      {
+        path: 'vital-signs',
+        component: VitalSignsComponent,
+      },
+      {
+        path: 'diagnosis-details',
+        component: DiagnosisDetailsComponent,
+      },
+      {
+        path: 'procedure-details',
+        component: ProcedureDetailsComponent,
+      },
+      {
+        path: 'medication-details',
+        component: MedicationDetailsComponent,
+      },
+      {
+        path: 'patient-demographics',
+        component: PatientDemographicsComponent,
+      },
+    ],
   },
   {
     path: '**',
@@ -139,5 +147,6 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
-  EditEmployeeComponent
+  EditEmployeeComponent,
+  AppointmentsComponent,
 ];

@@ -9,6 +9,15 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import {
+  DayService,
+  WeekService,
+  WorkWeekService,
+  MonthService,
+  AgendaService,
+  MonthAgendaService,
+} from '@syncfusion/ej2-angular-schedule';
 
 
 
@@ -28,8 +37,16 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     ReactiveFormsModule,
     AngularMaterialModule,
     HttpClientModule,
+    ScheduleModule,
   ],
-  providers: [],
+  providers: [
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    AgendaService,
+    MonthAgendaService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

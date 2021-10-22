@@ -11,6 +11,11 @@ import { ProcedureDetails } from 'src/app/shared/models/procedure-details.model'
   styleUrls: ['./procedure-details.component.css'],
 })
 export class ProcedureDetailsComponent implements OnInit {
+  procedureCode = new FormControl();
+  procedureCodeList: string[] = ['P00','P002','P003','P003','p004'];
+  procedureDescription = new FormControl();
+  procedureDescriptionList: string[] = ['Bypass Cerebral Ventricle to Subgaleal Space with Autologous Tissue Substitute', 'Open Approach'];
+ 
   form: FormGroup = new FormGroup({});
 
   constructor(private medicalInformationService: MedicalInformationService) {}
@@ -22,23 +27,15 @@ export class ProcedureDetailsComponent implements OnInit {
     
 
     this.form = new FormGroup({
-      procedureId: new FormControl(procedureId, [
-        Validators.required,
-      ]),
-      procedureDescription: new FormControl(procedureDescription, [
-        Validators.required,
-        Validators.maxLength(60),
-      ]),
-      isDepricated: new FormControl(isDepricated, [
-        Validators.required,
-        
-      ]),
+      procedureId: new FormControl(procedureId
+      ),
+      procedureDescription: new FormControl(procedureDescription
+      ),
+      isDepricated: new FormControl(isDepricated),
      
     });
   }
-  public hasError = (controlName: string, errorName: string) =>{
-    return this.form.controls[controlName].hasError(errorName);
-  }
+  
   saveProcedureDetails() {
     // Gathering data
     const patientVisitId = 1234;

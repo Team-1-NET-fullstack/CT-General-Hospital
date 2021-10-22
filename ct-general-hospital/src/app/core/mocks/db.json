@@ -125,6 +125,17 @@
       "insertedDate": "2021-10-13T12:17:16.082Z",
       "updatedBy": "robert@ctgeneral.com",
       "id": 1
+    },
+    {
+      "patientVisitId": 1234,
+      "height": "123",
+      "weight": "123",
+      "bodyTemparature": "123",
+      "respirationRate": "123",
+      "bloodPressure": "123/321",
+      "insertedDate": "2021-10-14T16:13:13.666Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 2
     }
   ],
   "DiagnosisDetails": [

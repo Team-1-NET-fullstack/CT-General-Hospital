@@ -2,8 +2,19 @@
   class="avatar mat-elevation-z4"
   src="../../../assets/images/admin_image.jpg"
 />
-<h4 class="name">Bhavya Gupta</h4>
-<p class="designation">Admin, CT General Hospital</p>
+<h4 class="name">
+  <span *ngIf="user?.roleId == 1">Bhavya Gupta</span>
+  <span *ngIf="user?.roleId == 2">Dr. Robert Mallison</span>
+  <span *ngIf="user?.roleId == 3">Shravani</span>
+  <span *ngIf="user?.roleId == 4">Guest</span>
+</h4>
+<p class="designation">
+  <span *ngIf="user?.roleId == 1">Admin</span>
+  <span *ngIf="user?.roleId == 2">Doctor</span>
+  <span *ngIf="user?.roleId == 3">Nurse</span>
+  <span *ngIf="user?.roleId == 4">Patient</span>
+  , CT General Hospital
+</p>
 <mat-divider></mat-divider>
 
 
