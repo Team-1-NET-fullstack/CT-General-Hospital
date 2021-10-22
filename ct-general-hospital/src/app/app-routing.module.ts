@@ -145,4 +145,5 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
+  PatientProfileComponent,
 ];

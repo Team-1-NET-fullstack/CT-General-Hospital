@@ -33,4 +33,7 @@ export class PatientDemographicsService {
         console.log('data inserted success fully');
       });
   }
+
+
+  
 }

@@ -1,7 +1,7 @@
 {
   "DemographicsDetails": [
     {
-      "PatientId": "11",
+      "patientId": "11",
       "title": "Mr",
       "firstName": "assss",
       "lastName": "jjjjjjj",
@@ -26,6 +26,7 @@
       "id": 17
     },
     {
+      "patientId": "11",
       "title": "Mr",
       "firstName": "mahesh",
       "lastName": "torade",
@@ -45,6 +46,7 @@
       "id": 18
     },
     {
+      "patientId": "11",
       "title": "Mr",
       "firstName": "as",
       "lastName": "gh",
@@ -64,6 +66,7 @@
       "id": 19
     },
     {
+      "patientId": "11",
       "title": "Mr",
       "firstName": "as",
       "lastName": "hj",
@@ -86,6 +89,7 @@
       "id": 20
     },
     {
+      "patientId": "11",
       "title": "Mr",
       "firstName": "as",
       "lastName": "jh",
@@ -109,6 +113,7 @@
       "id": 21
     },
     {
+      "patientId": "11",
       "title": "Mrs",
       "firstName": "aparna",
       "lastName": "torade",
@@ -132,6 +137,7 @@
       "id": 22
     },
     {
+      "patientId": "11",
       "title": "Mr",
       "firstName": "aparna",
       "lastName": "torade",

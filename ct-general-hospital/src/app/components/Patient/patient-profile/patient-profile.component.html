@@ -1,1 +1,27 @@
-<h1>hello</h1>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Race</th>
+    <th>Language</th>
+    <th>EmailId</th>
+    <th>Address</th>
+   
+  </tr>
+
+   <tr  *ngFor="let item of demographics"> 
+    <td>{{item.patientId}}</td>
+    <td>{{item.title}}</td>
+    <td>{{item.firstName+' '+item.lastName}}</td>
+    <td>{{item.DOB| date: "shortDate" }}</td>
+    <td>{{item.gender}}</td>
+    <td>{{item.race}}</td>
+    <td>{{item.language}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.address}}</td>
+</tr> 
+ 
+</table>
