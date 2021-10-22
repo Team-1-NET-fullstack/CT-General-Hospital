@@ -1,28 +1,103 @@
 <form class="medication-form" [formGroup]="form" (ngSubmit)="saveMedicationDetails()">
-  <mat-form-field class="medication-full-width" >
+  <mat-form-field class="medication-full-width">
     <mat-label>Drug Id</mat-label>
-    <input
-      type="text"
-      placeholder=""
-      aria-label="DrugId"
-      matInput
+    <mat-select
+      [formControl]="drugId"
+      multiple
       formControlName="drugId"
       id="drugId"
-    />
-    <mat-error *ngIf="hasError('drugId', 'required')">drugId is required</mat-error>
-   
+    >
+      <mat-select-trigger>
+        {{ drugId.value ? drugId.value[0] : "" }}
+        <span
+          *ngIf="drugId.value?.length > 1"
+          class="drugId-additional-selection"
+        >
+          (+{{ drugId.value.length - 1 }}
+          {{ drugId.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let drugId of drugIdList"
+        [value]="drugId"
+        >{{ drugId }}</mat-option
+      >
+    </mat-select>
   </mat-form-field>
-  <mat-form-field class="medication-full-width" >
+  <mat-form-field class="medication-full-width">
     <mat-label>Drug Generic Name</mat-label>
-    <input
-      type="text"
-      placeholder=""
-      aria-label="Drug Generic Name"
-      matInput
+    <mat-select
+      [formControl]="drugGenericName"
+      multiple
       formControlName="drugGenericName"
       id="drugGenericName"
-    />
-    <mat-error *ngIf="hasError('drugGenericName', 'required')">drugGenericName is required</mat-error>
+    >
+      <mat-select-trigger>
+        {{ drugGenericName.value ? drugGenericName.value[0] : "" }}
+        <span
+          *ngIf="drugGenericName.value?.length > 1"
+          class="drugGenericName-additional-selection"
+        >
+          (+{{ drugGenericName.value.length - 1 }}
+          {{ drugGenericName.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let drugGenericName of drugGenericNameList"
+        [value]="drugGenericName"
+        >{{ drugGenericName }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="medication-full-width">
+    <mat-label>Drug Name</mat-label>
+    <mat-select
+      [formControl]="drugName"
+      multiple
+      formControlName="drugName"
+      id="drugName"
+    >
+      <mat-select-trigger>
+        {{ drugName.value ? drugGenericName.value[0] : "" }}
+        <span
+          *ngIf="drugName.value?.length > 1"
+          class="drugName-additional-selection"
+        >
+          (+{{ drugName.value.length - 1 }}
+          {{ drugName.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let drugName of drugNameList"
+        [value]="drugName"
+        >{{ drugName }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="medication-full-width">
+    <mat-label>Drug Brand Name</mat-label>
+    <mat-select
+      [formControl]="drugBrandName"
+      multiple
+      formControlName="drugBrandName"
+      id="drugBrandName"
+    >
+      <mat-select-trigger>
+        {{ drugBrandName.value ? drugBrandName.value[0] : "" }}
+        <span
+          *ngIf="drugBrandName.value?.length > 1"
+          class="drugName-additional-selection"
+        >
+          (+{{ drugBrandName.value.length - 1 }}
+          {{ drugBrandName.value?.length === 2 ? "other" : "others" }})
+        </span>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let drugBrandName of drugBrandNameList"
+        [value]="drugBrandName"
+        >{{ drugBrandName }}</mat-option
+      >
+    </mat-select>
   </mat-form-field>
   <mat-form-field class="medication-full-width" >
     <mat-label>Drug Form</mat-label>
@@ -34,36 +109,20 @@
       formControlName="drugForm"
       id="drugForm"
     />
-    <mat-error *ngIf="hasError('drugForm', 'required')">drugForm is required</mat-error>
+    <mat-error *ngIf="hasError('drugForm', 'required')">DrugForm is required</mat-error>
   
   </mat-form-field>
+ 
   <mat-form-field class="medication-full-width" >
-    <mat-label>Drug Name</mat-label>
-    <input
-      type="text"
+    <mat-label>Dosage</mat-label>
+    <textarea
       placeholder=""
-      aria-label="DrugName"
+      aria-label="dosge"
       matInput
-      formControlName="drugName"
-      id="drugName"
-    />
-    <mat-error *ngIf="hasError('drugName', 'required')">drugName is required</mat-error>
+      formControlName="doage"
+      id="dosage"
+    ></textarea>
+    
   
   </mat-form-field>
-  <mat-form-field class="medication-full-width">
-    <mat-label>Drug Brand Name</mat-label>
-    <input
-      type="text"
-      placeholder=""
-      aria-label="DrugBrandName"
-      matInput
-      formControlName="drugBrandName"
-      id="drugBrandName"
-    />
-    <mat-error *ngIf="hasError('drugBrandName', 'required')">drugBrandName is required</mat-error>
-  
-  </mat-form-field>
-  
-  <button mat-button [disabled]="form.invalid">Save</button>
-
 </form>

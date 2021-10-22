@@ -13,7 +13,7 @@
         <mat-form-field class="patient-full-width" >
           <mat-label>First name</mat-label>
           <input matInput formControlName="firstName" id="firstName" />
-          <mat-error *ngIf="hasError('firstName', 'required')">firstName is required</mat-error>
+          <mat-error *ngIf="hasError('firstName', 'required')">FirstName is required</mat-error>
     
         </mat-form-field>
       </td>
@@ -21,7 +21,7 @@
         <mat-form-field class="patient-full-width" >
           <mat-label>Last Name </mat-label>
           <input matInput formControlName="lastName" id="lastName" />
-          <mat-error *ngIf="hasError('lastName', 'required')">lastName is required</mat-error>
+          <mat-error *ngIf="hasError('lastName', 'required')">LastName is required</mat-error>
     
         </mat-form-field>
       </td>
@@ -59,7 +59,7 @@
         <mat-form-field class="patient-full-width" >
           <mat-label>Ethinicity</mat-label>
           <input matInput placeholder="" formControlName="ethinicity" id="ethinicity"/>
-          <mat-error *ngIf="hasError('ethinicity', 'required')">ethinicity is required</mat-error>
+          <mat-error *ngIf="hasError('ethinicity', 'required')">Ethinicity is required</mat-error>
     
         </mat-form-field>
       </td>
@@ -68,7 +68,7 @@
           <mat-label>Languages Known</mat-label>
           <input matInput formControlName="languagesKnown" id="languagesKnown" >
             
-          <mat-error *ngIf="hasError('languagesKnown', 'required')">languagesKnown is required</mat-error>
+          <mat-error *ngIf="hasError('languagesKnown', 'required')">LanguagesKnown is required</mat-error>
     
         </mat-form-field>
       </td>
@@ -78,7 +78,7 @@
     <tr>
         
       <td>
-        <mat-form-field class="patient-full-width">
+        <mat-form-field class="patient-full-width move-down">
             <mat-label>Email</mat-label>
             <input type="email" matInput [formControl]="emailFormControl" formControlName="emailId" id="emailId" placeholder="Ex. pat@example.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -90,12 +90,12 @@
           </mat-form-field>
       </td>
       <td>
-        <mat-form-field class="patient-full-width">
+        <mat-form-field class="patient-full-width move-down">
             <mat-label>Telephone</mat-label>
             <span matPrefix>+91 &nbsp;</span>
             <input type="tel" matInput placeholder="555-555-1234" formControlName="telePhoneNo" id="telePhoneNo" />
             <mat-icon matSuffix>mode_edit</mat-icon>
-            <mat-error *ngIf="hasError('telePhoneNo', 'required')">telePhoneNo is required</mat-error>
+            <mat-error *ngIf="hasError('telePhoneNo', 'required')">TelePhoneNo is required</mat-error>
     
           </mat-form-field>
       </td>
@@ -106,17 +106,17 @@
           <textarea matInput placeholder="Ex. 100 Main St" formControlName="address" id="address" >
          
           </textarea>
-          <mat-error *ngIf="hasError('address', 'required')">address is required</mat-error>
+          <mat-error *ngIf="hasError('address', 'required')">Address is required</mat-error>
     
         </mat-form-field>
       </td>
-      <td>
-        <mat-radio-group aria-label="Select an option" formControlName="allergies" id="allergies">
+      <!-- <td>
+        <mat-radio-group aria-label="Select an option" formControlName="allergies" id="allergies" class="move-down-24px" >
           <td><mat-radio-button value="true">Allergies</mat-radio-button></td>
           <td><mat-radio-button value="false">NoAllergies</mat-radio-button></td>
           
         </mat-radio-group>
-      </td>
+      </td> -->
     </tr>
   </table>
   <br />
