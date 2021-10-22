@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MedicalInformationService } from 'src/app/core/services/medical-information.service';
 import { VitalSigns } from 'src/app/shared/models/vital-signs.model';
-import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-vital-signs',
@@ -11,7 +10,6 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class VitalSignsComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  
 
   constructor(private medicalInformationService: MedicalInformationService) {}
 
@@ -45,9 +43,11 @@ export class VitalSignsComponent implements OnInit {
       ]),
     });
   }
-  public hasError = (controlName: string, errorName: string) =>{
+
+  public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
-  }
+  };
+
   saveVitals() {
     // Gathering data
     const patientVisitId = 1234;
@@ -56,8 +56,8 @@ export class VitalSignsComponent implements OnInit {
     const bodyTemparature = this.form.value.bodyTemparature;
     const respirationRate = this.form.value.respirationRate;
     const bloodPressure = this.form.value.bloodPressure;
-    const updatedBy='robert@ctgeneral.com';
-    const insertedDate=new Date();
+    const updatedBy = 'robert@ctgeneral.com';
+    const insertedDate = new Date();
     const id = this.form.value.id;
 
     // Create Ob
@@ -70,12 +70,11 @@ export class VitalSignsComponent implements OnInit {
       bloodPressure,
       insertedDate,
       updatedBy,
-       id
+      id
     );
 
     // Send to service
-   this.medicalInformationService.addVitals(ob);
-    alert("Record Added");
-    
+    this.medicalInformationService.addVitals(ob);
+    alert('Record Added');
   }
 }
