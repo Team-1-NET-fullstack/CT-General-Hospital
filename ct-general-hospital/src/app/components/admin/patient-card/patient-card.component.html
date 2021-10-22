@@ -1,9 +1,9 @@
 <h3>Edit Patient Details</h3>
 
 <mat-card-content
-  style="align-content: center; margin-left: 2vw; text-align: center"
+  style="align-content: center; margin-left: 2vw; text-align: left"
 >
-  <table class="table table-striped">
+  <table class="table table-striped;text-align: left">
     <thead>
       <tr>
         <th>Patient ID</th>
@@ -12,27 +12,21 @@
         <th>Date Of Birth</th>
         <th>Email ID</th>
         <th>Date Of Registeration</th>
-        <th>Status</th>
+        <th>Edit Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of patients">
+      <tr *ngFor="let item of patient">
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.dob | date: "shortDate" }}</td>
-        <td>{{ item.emailid }}</td>
+        <td>{{ item.emailId }}</td>
         <td>{{ item.registeration | date: "shortDate" }}</td>
         <td>
-          <mat-form-field appearance="fill">
-            <mat-label>Select an option</mat-label>
-            <mat-select [(value)]="selected">
-              <mat-option>None</mat-option>
-              <mat-option value="option1">Blocked</mat-option>
-              <mat-option value="option2">Inactive</mat-option>
-              <mat-option value="option3">Active</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <button mat-icon-button color="white">
+            <mat-icon>edit</mat-icon>
+          </button>
         </td>
       </tr>
     </tbody>

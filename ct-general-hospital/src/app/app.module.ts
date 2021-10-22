@@ -9,6 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { CommonModule } from '@angular/common';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import {
+  DayService,
+  WeekService,
+  WorkWeekService,
+  MonthService,
+  AgendaService,
+  MonthAgendaService,
+} from '@syncfusion/ej2-angular-schedule';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +37,16 @@ import { CommonModule } from '@angular/common';
     AngularMaterialModule,
     HttpClientModule,
     CommonModule,
-    
+    ScheduleModule,
   ],
-  providers: [],
+  providers: [
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    AgendaService,
+    MonthAgendaService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

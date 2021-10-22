@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -46,6 +47,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTabsModule,
     MatCheckboxModule,
     BrowserModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -70,6 +72,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTabsModule,
     MatCheckboxModule,
     BrowserModule
+    MatDialogModule,
   ],
 })
 export class AngularMaterialModule {}

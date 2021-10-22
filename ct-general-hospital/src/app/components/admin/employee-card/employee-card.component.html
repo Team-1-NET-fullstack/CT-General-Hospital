@@ -1,5 +1,5 @@
 <h3 style="text-align: left;padding-left: 16px;">Employee Details</h3>
-<mat-tab-group>
+<mat-tab-group style="text-align: left">
   <mat-tab label="Add Employee">
     <app-add-employee></app-add-employee>
   </mat-tab>
@@ -11,7 +11,7 @@
           border-spacing: 1vw;
           word-wrap: normal;
           padding: 1vw;
-          align-content: center;
+          text-align: left;
         "
       >
         <thead>
@@ -23,28 +23,22 @@
             <th>Email ID</th>
             <th>Role</th>
             <th>Date Of Joining</th>
-            <th>Status</th>
+            <th>Edit Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of employees">
+          <tr *ngFor="let item of employee">
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.dob | date: "shortDate" }}</td>
-            <td>{{ item.emailid }}</td>
+            <td>{{ item.emailId }}</td>
             <td>{{ item.role }}</td>
             <td>{{ item.joining | date: "shortDate" }}</td>
             <td>
-              <mat-form-field appearance="fill">
-                <mat-label>Select an option</mat-label>
-                <mat-select [(value)]="selected">
-                  <mat-option>None</mat-option>
-                  <mat-option value="option1">Blocked</mat-option>
-                  <mat-option value="option2">Inactive</mat-option>
-                  <mat-option value="option3">Active</mat-option>
-                </mat-select>
-              </mat-form-field>
+              <button mat-icon-button color="white" (click)="openDialog()">
+                <mat-icon>edit</mat-icon>
+              </button>
             </td>
           </tr>
         </tbody>

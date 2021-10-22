@@ -1,30 +1,70 @@
+mat-toolbar {
+  height: 100px;
+}
+
+.logo {
+  width: auto;
+  height: 80px;
+  margin: 16px;
+}
+
+.signin-div {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: rgb(211, 32, 211);
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
 mat-form-field {
-    margin-right: 0px;
-    margin-left: 0px;
-  }
+  margin-right: 0px;
+  margin-left: 0px;
+}
 
-  form{
-    align-content: center;
-  }
-  .mat-card {
-    text-align: center;
-  
-  }
-  .container {
-    align-items: center;
-  }
-  .button-submit {
-    background-color: #6944f6;
-    margin-right: 10px;
-    margin-left: 8px;
-    margin-bottom: 14px;
-    text-align: center;
-    align-content: center;
-  }
+form {
+  align-content: center;
+}
 
-  .button-reset {
-    background-color: #ffad1f;
-    margin-right: 10px;
-    text-align: center;
-  }
-  
+.mat-card {
+  text-align: center;
+}
+
+.container {
+  align-items: center;
+}
+
+.button-submit {
+  background-color: #6944f6;
+  margin-right: 10px;
+  margin-left: 8px;
+  margin-bottom: 14px;
+  text-align: center;
+  align-content: center;
+}
+
+.button-reset {
+  background-color: #ffad1f;
+  margin-right: 10px;
+  text-align: center;
+}

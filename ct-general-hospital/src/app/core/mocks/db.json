@@ -1,4 +1,92 @@
 {
+  "Patient":[{
+  "id": 1,
+  "title": "Ms.",
+  "name": "Bhavya",
+  "dob":"01-01-1990",
+  "emailid": "bhavya@gmail.com",
+  "registeration": "01-12-2021",
+  "status": "Active"
+},
+{
+  "id": 1,
+  "title": "Ms.",
+  "name": "Rachel",
+  "dob": "01-01-1990",
+  "emailid": "rachel@hotmail.com",
+  "registeration": "01-12-2021",
+  "status": "Active"
+},
+{
+  "id": 1,
+  "title": "Mr.",
+  "name": "Ross",
+  "dob": "01-01-1990",
+  "emailid": "ross@rediff.com",
+  "registeration": "01-12-2021",
+  "status": "Active"
+},
+{
+  "id": 1,
+  "title": "Ms.",
+  "name": "Monica",
+  "dob":"01-01-1990",
+  "emailid": "monica@outlook.com",
+  "registeration": "01-12-2021",
+  "status": "Active"
+},
+{
+  "id": 1,
+  "title": "Ms.",
+  "name": "Bhavya",
+  "dob": "01-01-1990",
+  "emailid": "bhavya@cth.com",
+  "registeration":"01-12-2021",
+  "status": "Active"
+}
+],
+"Employee":[
+  {
+    "id": 1,
+    "title": "Ms.",
+    "name": "Bhavya",
+    "dob": "01-01-1990",
+    "emailid": "bhavya@cth.com",
+    "role": "doctor",
+    "joining": "01-12-2021",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "title": "Ms.",
+    "name": "Aparna",
+    "dob": "01-01-1991",
+    "emailid": "aparna@cth.com",
+    "role": "nurse",
+    "joining": "01-12-2021",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "title": "Ms.",
+    "name": "Divya",
+    "dob": "01-01-1990",
+    "emailid": "divya@cth.com",
+    "role": "doctor",
+    "joining": "01-12-2021",
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "title": "Ms.",
+    "name": "Kavya",
+    "dob": "01-01-1990",
+    "emailid": "kavya@cth.com",
+    "role": "nurse",
+    "joining": "01-12-2021",
+    "status": "Active"
+  }
+],
   "Users": [
     {
       "Email": "praveen@gmail.com",
@@ -37,6 +125,17 @@
       "insertedDate": "2021-10-13T12:17:16.082Z",
       "updatedBy": "robert@ctgeneral.com",
       "id": 1
+    },
+    {
+      "patientVisitId": 1234,
+      "height": "123",
+      "weight": "123",
+      "bodyTemparature": "123",
+      "respirationRate": "123",
+      "bloodPressure": "123/321",
+      "insertedDate": "2021-10-14T16:13:13.666Z",
+      "updatedBy": "robert@ctgeneral.com",
+      "id": 2
     }
   ],
   "DiagnosisDetails": [
