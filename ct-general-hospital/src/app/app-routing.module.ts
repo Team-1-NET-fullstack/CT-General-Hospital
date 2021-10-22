@@ -29,6 +29,7 @@ import { MedicalInformationComponent } from './components/Patient/medical-inform
 import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
+import { PatientProfileComponent } from './components/Patient/patient-profile/patient-profile.component';
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 const routes: Routes = [
@@ -100,8 +101,12 @@ const routes: Routes = [
         component: MedicationDetailsComponent,
       },
       {
-        path: 'patient-demographics',
-        component: PatientDemographicsComponent,
+    path: 'patient-demographics',
+    component: PatientProfileComponent,
+  },
+  {
+    path: 'patient-details',
+    component: PatientDemographicsComponent,
       },
     ],
   },
@@ -147,6 +152,7 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
+  PatientProfileComponent,
   EditEmployeeComponent,
   AppointmentsComponent,
 ];
