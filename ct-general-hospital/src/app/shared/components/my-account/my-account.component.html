@@ -1,64 +1,60 @@
+<h3>Settings</h3>
 
-  <h3>Edit Account Details</h3>
+<mat-tab-group>
+  <mat-tab label="Edit Account Details">
+      <mat-radio-group>
+        <mat-radio-button value="Mr">Mr</mat-radio-button>
+        <mat-radio-button value="Mrs">Mrs</mat-radio-button>
+        <mat-radio-button value="Ms">Ms</mat-radio-button>
+      </mat-radio-group>
+      &nbsp; &nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" />
+      </mat-form-field>
+      &nbsp; &nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" />
+      </mat-form-field>
+      &nbsp; &nbsp;
+      <mat-form-field>
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker> </mat-datepicker>
+      </mat-form-field>
+      <br />
+     
+      <mat-form-field  appearance="legacy">
+        <mat-label>Address Line 1</mat-label>
+        <input matInput placeholder="Address Line 1" />
+      </mat-form-field>
+      &nbsp; &nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>Address Line 2(optional)</mat-label>
+        <input matInput placeholder="Address Line 2(Optional)" />
+      </mat-form-field>
+      &nbsp; &nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="Phone Number" />
+      </mat-form-field>&nbsp; &nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>Email ID</mat-label>
+        <input matInput placeholder="Email ID" />
+      </mat-form-field>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+          Submit
+        </button>
+      </mat-dialog-actions>
+    
+  </mat-tab>
 
-  <div class="container">
 
-    <br>
-    <mat-radio-group style="margin-left:3vw">
-      <mat-label>Title</mat-label>
-      <mat-radio-button value="Mr">Mr</mat-radio-button>
-      <mat-radio-button value="Mrs">Mrs</mat-radio-button>
-      <mat-radio-button value="Ms">Ms</mat-radio-button>
-    </mat-radio-group>
-    &nbsp; &nbsp;
-    <mat-form-field appearance="legacy">
-      <mat-label>First Name</mat-label>
-      <input matInput placeholder="First Name" />
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <mat-form-field appearance="legacy">
-      <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Last Name" />
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <mat-form-field>
-      <mat-label>Date Of Birth</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker> </mat-datepicker>
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <br>
-    <br>
-    <br>
-    <mat-form-field style="margin-left:3vw;" appearance="legacy">
-      <mat-label>Address Line 1</mat-label>
-      <input matInput placeholder="Address Line 1" />
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <mat-form-field  appearance="legacy">
-      <mat-label>Address Line 2(optional)</mat-label>
-      <input matInput placeholder="Address Line 2(Optional)" />
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <mat-form-field appearance="legacy">
-      <mat-label>Phone Number</mat-label>
-      <input matInput placeholder="Phone Number" />
-    </mat-form-field>
-    &nbsp; &nbsp;
-    <mat-form-field appearance="legacy">
-      <mat-label>Email ID</mat-label>
-      <input matInput placeholder="Email ID" />
-    </mat-form-field>
-    <br /><br /><br />
-    <br> <br>
-    <button
-      style="margin-left: 50vw"
-      mat-flat-button
-      type="submit"
-      class="button-submit"
-    >
-      Submit
-    </button>
-    <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-  </div>
+  <mat-tab label="Change Password " >
+    <app-change-password></app-change-password>
+  </mat-tab>
+</mat-tab-group>

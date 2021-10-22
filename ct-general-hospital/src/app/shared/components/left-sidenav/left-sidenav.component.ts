@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MyAccountComponent } from '../my-account/my-account.component';
 
 @Component({
   selector: 'app-left-sidenav',
@@ -7,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftSidenavComponent implements OnInit {
 
-  constructor() { }
-  openAccountDialog():void{
+  constructor(public dialog: MatDialog) {}
 
+  openDialog() {
+    const dialogRef = this.dialog.open(MyAccountComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
-  openPasswordDialog(){}
-  openFAQDialog(){}
-  openTCDialog(){}
   ngOnInit(): void {
   }
 }

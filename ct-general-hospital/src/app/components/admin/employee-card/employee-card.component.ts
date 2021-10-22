@@ -51,7 +51,9 @@ export class EmployeeCardComponent implements OnInit {
       status: 'Active',
     },
   ];
-
+  EditButton(){
+      
+  }
   constructor() {}
 
   ngOnInit(): void {}
