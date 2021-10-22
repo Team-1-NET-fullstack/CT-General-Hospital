@@ -9,7 +9,7 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
-import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
+
 
 
 @NgModule({
@@ -18,7 +18,6 @@ import { EditEmployeeComponent } from './components/admin/edit-employee/edit-emp
     routingComponents,
     AuthDirective,
     CapitalizePipe,
-    EditEmployeeComponent,
     
   ],
   imports: [

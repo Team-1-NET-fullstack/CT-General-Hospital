@@ -29,7 +29,7 @@ import { MedicalInformationComponent } from './components/Patient/medical-inform
 import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
-
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 const routes: Routes = [
   {
     path: 'employee-card',
@@ -139,4 +139,5 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
+  EditEmployeeComponent
 ];
