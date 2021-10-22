@@ -9,6 +9,8 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     routingComponents,
     AuthDirective,
     CapitalizePipe,
+    EditEmployeeComponent,
+    
   ],
   imports: [
     BrowserModule,
