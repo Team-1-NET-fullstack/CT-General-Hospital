@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from '../../models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MyAccountComponent } from '../my-account/my-account.component';
+import { MasterComponent } from 'src/app/components/admin/master/master.component';
 
 @Component({
   selector: 'app-left-sidenav',
@@ -18,6 +19,13 @@ export class LeftSidenavComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(MyAccountComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openMasterDialog(){
+    const dialogRef = this.dialog.open(MasterComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

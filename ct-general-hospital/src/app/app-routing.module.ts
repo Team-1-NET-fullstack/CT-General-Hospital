@@ -32,6 +32,11 @@ import { PatientAllergyComponent } from './components/Patient/patient-allergy/pa
 import { PatientProfileComponent } from './components/Patient/patient-profile/patient-profile.component';
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { MasterComponent } from './components/admin/master/master.component';
+import { ProcedureComponent } from './components/admin/procedure/procedure.component';
+import { DiagnosisComponent } from './components/admin/diagnosis/diagnosis.component';
+import { MedicationComponent } from './components/admin/medication/medication.component';
+import { AllergyComponent } from './components/admin/allergy/allergy.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
   { path: 'signin', component: SignInComponent },
@@ -108,6 +113,10 @@ const routes: Routes = [
     path: 'patient-details',
     component: PatientDemographicsComponent,
       },
+      {
+        path: 'master',
+        component: MasterComponent,
+      },
     ],
   },
   {
@@ -155,4 +164,9 @@ export const routingComponents = [
   PatientProfileComponent,
   EditEmployeeComponent,
   AppointmentsComponent,
+  MasterComponent,
+  ProcedureComponent,
+  DiagnosisComponent,
+  MedicationComponent,
+  AllergyComponent,
 ];

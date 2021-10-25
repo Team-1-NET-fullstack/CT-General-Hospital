@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-top',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent implements OnInit {
+  user: User | null = null;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    
+    this.authService.userInfo.subscribe((user) => {
+      this.user = user;
+    });
   }
 
-}
+  }
