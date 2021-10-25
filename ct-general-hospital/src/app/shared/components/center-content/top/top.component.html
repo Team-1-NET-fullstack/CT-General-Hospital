@@ -1,7 +1,7 @@
 <div class="top-menu-cards">
   <div class="card-align">
     <mat-card style="align-content: center">
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -19,11 +19,29 @@
           </td>
         </tr>
       </table>
+      <table *ngIf="user?.roleId == 2">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>block</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Appointments</button>
+          </td>
+        </tr>
+        </table>
     </mat-card>
   </div>
   <div class="card-align">
     <mat-card>
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -41,11 +59,29 @@
           </td>
         </tr>
       </table>
+      <table *ngIf="user?.roleId == 2">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>block</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Patients</button>
+          </td>
+        </tr>
+      </table>
     </mat-card>
   </div>
   <div class="card-align">
     <mat-card>
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -63,6 +99,25 @@
           </td>
         </tr>
       </table>
-    </mat-card>
+      <table *ngIf="user?.roleId != 1">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>mail</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Inbox</button>
+          </td>
+        </tr>
+      </table>
+     </mat-card>
+       
   </div>
 </div>

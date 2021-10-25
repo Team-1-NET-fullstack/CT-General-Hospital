@@ -60,6 +60,17 @@
     <mat-icon>access_time</mat-icon>
     <span>Appointments</span>
   </button>
+  <button
+  *ngIf="user?.roleId == 1"
+  mat-button  
+  class="menu-button"
+  routerLinkActive="active-link"
+  (click)="openMasterDialog()"
+>
+  <mat-icon>post_add</mat-icon>
+  <span>Master Data</span>
+
+</button>
 
   <button
     mat-button
