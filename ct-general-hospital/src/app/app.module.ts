@@ -19,15 +19,12 @@ import {
   MonthAgendaService,
 } from '@syncfusion/ej2-angular-schedule';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     AuthDirective,
     CapitalizePipe,
-    
   ],
   imports: [
     BrowserModule,

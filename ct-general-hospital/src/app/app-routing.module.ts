@@ -37,6 +37,12 @@ import { ProcedureComponent } from './components/admin/procedure/procedure.compo
 import { DiagnosisComponent } from './components/admin/diagnosis/diagnosis.component';
 import { MedicationComponent } from './components/admin/medication/medication.component';
 import { AllergyComponent } from './components/admin/allergy/allergy.component';
+import { DeclinedComponent } from './components/inbox/declined/declined.component';
+import { UpcomingComponent } from './components/inbox/upcoming/upcoming.component';
+import { NotesComponent } from './components/inbox/notes/notes.component';
+import { SendComponent } from './components/inbox/send/send.component';
+import { SentComponent } from './components/inbox/sent/sent.component';
+import { ReceivedComponent } from './components/inbox/received/received.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
   { path: 'signin', component: SignInComponent },
@@ -106,12 +112,20 @@ const routes: Routes = [
         component: MedicationDetailsComponent,
       },
       {
-    path: 'patient-demographics',
-    component: PatientProfileComponent,
-  },
-  {
-    path: 'patient-details',
-    component: PatientDemographicsComponent,
+        path: 'patient-demographics',
+        component: PatientProfileComponent,
+      },
+      {
+        path: 'notes',
+        component: NotesComponent,
+      },
+      {
+        path: 'upcoming',
+        component: UpcomingComponent,
+      },
+      {
+        path: 'patient-details',
+        component: PatientDemographicsComponent,
       },
       {
         path: 'master',
@@ -169,4 +183,10 @@ export const routingComponents = [
   DiagnosisComponent,
   MedicationComponent,
   AllergyComponent,
+  DeclinedComponent,
+  UpcomingComponent,
+  NotesComponent,
+  SendComponent,
+  SentComponent,
+  ReceivedComponent,
 ];

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-patient-allergy',
