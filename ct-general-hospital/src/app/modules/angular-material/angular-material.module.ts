@@ -71,7 +71,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRadioModule,
     MatTabsModule,
     MatCheckboxModule,
-    BrowserModule
+    BrowserModule,
     MatDialogModule,
   ],
 })
