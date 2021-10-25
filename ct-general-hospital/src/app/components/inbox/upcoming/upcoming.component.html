@@ -1,0 +1,46 @@
+<h3 style="text-align: left;padding-left: 16px;">Upcoming Appointments</h3>
+<mat-card>
+    <p style="font-weight:bold;font-size:12pt"><em>
+        "There are no appointments this week"</em>
+    </p>
+        </mat-card>
+
+<table
+class="table table-striped"
+style="
+  border-spacing: 1vw;
+  word-wrap: normal;
+  padding: 1vw;
+  text-align: left;
+"
+>
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Patient Details</th>
+    <th>Physician</th>
+    <th>Date Time</th>
+    <th>Edit History</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>1</td>
+    <td></td>
+    <td><a href="www.google.com">Open</a></td>
+    <td></td>
+    <td></td>
+    <td>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<mat-paginator
+[length]="4"
+[pageSize]="5"
+[pageSizeOptions]="[5, 10, 25, 100]"
+aria-label="Select page"
+>
+</mat-paginator>
