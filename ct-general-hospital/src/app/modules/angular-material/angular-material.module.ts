@@ -1,3 +1,4 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -45,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRadioModule,
     MatTabsModule,
     MatCheckboxModule,
+    BrowserModule,
     MatDialogModule,
   ],
   exports: [
@@ -69,6 +71,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRadioModule,
     MatTabsModule,
     MatCheckboxModule,
+    BrowserModule
     MatDialogModule,
   ],
 })

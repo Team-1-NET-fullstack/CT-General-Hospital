@@ -1,89 +1,48 @@
-<form class="allergy-form">
-  <mat-form-field class="allergy-full-width">
+<form class="demographics-form" [formGroup]="form">
+  <mat-form-field>
     <mat-label>Allergy Id</mat-label>
-    <mat-select
-      [formControl]="allergyId"
-      multiple
-      formControlName="allergyId"
-      id="allergyId"
-    >
-      <mat-select-trigger>
-        {{ allergyId.value ? allergyId.value[0] : "" }}
-        <span
-          *ngIf="allergyId.value?.length > 1"
-          class="allergy-additional-selection"
-        >
-          (+{{ allergyId.value.length - 1 }}
-          {{ allergyId.value?.length === 2 ? "other" : "others" }})
-        </span>
-      </mat-select-trigger>
-      <mat-option
-        *ngFor="let allergyId of allergyIdList"
-        [value]="allergyId"
-        enable-filter="true"
-        filter-placeholder="Filter stuff.."
-        >{{ allergyId }}</mat-option
-      >
-    </mat-select>
+    <select matNativeControl>
+      <option value="one">1</option>
+      <option value="two">2</option>
+      <option value="three">3</option>
+    </select>
   </mat-form-field>
-  <mat-form-field class="allergy-full-width">
+  <mat-form-field>
     <mat-label>Allergy Type</mat-label>
-    <mat-select
-      [formControl]="allergyType"
-      multiple
-      formControlName="allergyType"
-      id="allergyType"
-    >
-      <mat-select-trigger>
-        {{ allergyType.value ? allergyType.value[0] : "" }}
-        <span
-          *ngIf="allergyType.value?.length > 1"
-          class="allergy-additional-selection"
-        >
-          (+{{ allergyType.value.length - 1 }}
-          {{ allergyType.value?.length === 2 ? "other" : "others" }})
-        </span>
-      </mat-select-trigger>
-      <mat-option
-        *ngFor="let allergyType of allergyTypeList"
-        [value]="allergyType"
-        >{{ allergyType }}</mat-option
-      >
-    </mat-select>
+    <select matNativeControl>
+      <option value="dust">Dust</option>
+      <option value="dog">Dog</option>
+      <option value="sun">Sun</option>
+    </select>
   </mat-form-field>
-  <mat-form-field class="allergy-full-width">
+  <mat-form-field>
     <mat-label>Allergy Name</mat-label>
-    <mat-select
-      [formControl]="allergyName"
-      multiple
-      formControlName="allergyName"
-      id="allergyName"
-    >
-      <mat-select-trigger>
-        {{ allergyName.value ? allergyName.value[0] : "" }}
-        <span
-          *ngIf="allergyName.value?.length > 1"
-          class="allergy-additional-selection"
-        >
-          (+{{ allergyName.value.length - 1 }}
-          {{ allergyName.value?.length === 2 ? "other" : "others" }})
-        </span>
-      </mat-select-trigger>
-      <mat-option
-        *ngFor="let allergyName of allergyNameList"
-        [value]="allergyName"
-        >{{ allergyName }}</mat-option
-      >
-    </mat-select>
+    <select matNativeControl>
+      <option value="one">Name 1</option>
+      <option value="two">Name 2</option>
+      <option value="three">Name 3</option>
+    </select>
   </mat-form-field>
   <br />
   <mat-form-field>
     <mat-label>Allergy Description</mat-label>
-    <textarea matInput placeholder="xyz.. "></textarea>
+    <mat-error>Enter allergy description </mat-error>
+    <textarea
+      matInput
+      placeholder="xyz.. "
+      [formControl]="allergydescription"
+      required
+    ></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Allergy Clinical Information</mat-label>
-    <textarea matInput placeholder="pqr.. "></textarea>
+    <mat-error>Enter Clinical Information </mat-error>
+    <textarea
+      matInput
+      placeholder="pqr.. "
+      [formControl]="clinicalinfo"
+      required
+    ></textarea>
   </mat-form-field>
   <mat-radio-group>
     <mat-label>Is Allergy Fatal?</mat-label>
