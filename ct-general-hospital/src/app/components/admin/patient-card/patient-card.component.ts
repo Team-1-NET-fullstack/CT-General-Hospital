@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { EditPatientService } from 'src/app/core/services/edit-patient/edit-patient.service';
 import { EditPatient } from 'src/app/shared/models/edit-patient.model';
 
@@ -9,6 +10,7 @@ import { EditPatient } from 'src/app/shared/models/edit-patient.model';
 })
 export class PatientCardComponent implements OnInit {
   patient: EditPatient[] = [];
+  
 
   constructor(private editPatientService: EditPatientService) {
 
