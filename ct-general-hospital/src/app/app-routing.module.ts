@@ -32,6 +32,8 @@ import { PatientAllergyComponent } from './components/Patient/patient-allergy/pa
 import { PatientProfileComponent } from './components/Patient/patient-profile/patient-profile.component';
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 import { MasterComponent } from './components/admin/master/master.component';
 import { ProcedureComponent } from './components/admin/procedure/procedure.component';
 import { DiagnosisComponent } from './components/admin/diagnosis/diagnosis.component';
@@ -44,23 +46,22 @@ import { SendComponent } from './components/inbox/send/send.component';
 import { SentComponent } from './components/inbox/sent/sent.component';
 import { ReceivedComponent } from './components/inbox/received/received.component';
 const routes: Routes = [
+  //main
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'registration', component: SignupComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
 
-  //patient
-
+  //admin
   {
-    path: 'patient',
+    path: 'admin',
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'patient-visit', component: PatientVisitComponent },
       {
-        path: 'appointment',
-        component: AppointmentsComponent,
+        path: '',
+        component: DashboardComponent,
       },
       {
         path: 'employee-card',
@@ -70,7 +71,6 @@ const routes: Routes = [
         path: 'patient-card',
         component: PatientCardComponent,
       },
-
       {
         path: 'dashboard',
         component: DashboardComponent,
@@ -78,6 +78,104 @@ const routes: Routes = [
       {
         path: 'my-account',
         component: MyAccountComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+      },
+      {
+        path: 'faqs',
+        component: FAQsComponent,
+      },
+      {
+        path: 'terms-conditions',
+        component: TermsConditionsComponent,
+      },
+    ],
+  },
+
+  //doctor
+  {
+    path: 'doctor',
+    component: MainLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'patient-visit',
+        component: PatientVisitComponent,
+      },
+      {
+        path: 'appointment',
+        component: AppointmentsComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+      },
+      {
+        path: 'faqs',
+        component: FAQsComponent,
+      },
+      {
+        path: 'terms-conditions',
+        component: TermsConditionsComponent,
+      },
+      {
+        path: 'patient-visit',
+        component: PatientVisitComponent,
+      },
+      {
+        path: 'vital-signs',
+        component: VitalSignsComponent,
+      },
+      {
+        path: 'diagnosis-details',
+        component: DiagnosisDetailsComponent,
+      },
+      {
+        path: 'procedure-details',
+        component: ProcedureDetailsComponent,
+      },
+      {
+        path: 'medication-details',
+        component: MedicationDetailsComponent,
+      },
+      {
+        path: 'patient-demographics',
+        component: PatientDemographicsComponent,
+      },
+    ],
+  },
+
+  //nurse
+  {
+    path: 'nurse',
+    component: MainLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'patient-visit',
+        component: PatientVisitComponent,
+      },
+      {
+        path: 'appointment',
+        component: AppointmentsComponent,
       },
       {
         path: 'change-password',
@@ -133,6 +231,49 @@ const routes: Routes = [
       },
     ],
   },
+
+  //patient
+  {
+    path: 'patient',
+    component: MainLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DisplayAppointmentsComponent,
+      },
+      {
+        path: 'patient-visit',
+        component: PatientVisitComponent,
+      },
+      {
+        path: 'appointment',
+        component: AppointmentsComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+      },
+      {
+        path: 'faqs',
+        component: FAQsComponent,
+      },
+      {
+        path: 'terms-conditions',
+        component: TermsConditionsComponent,
+      },
+      {
+        path: 'patient-demographics',
+        component: PatientDemographicsComponent,
+      },
+    ],
+  },
+
+  //not found
   {
     path: '**',
     component: PageNotFoundComponent,
