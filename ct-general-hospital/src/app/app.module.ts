@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { SyncfusionModule } from './modules/syncfusion/syncfusion.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthDirective } from './shared/directives/auth.directive';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
-import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import {
   DayService,
   WeekService,
@@ -33,8 +33,8 @@ import {
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    SyncfusionModule,
     HttpClientModule,
-    ScheduleModule,
   ],
   providers: [
     DayService,

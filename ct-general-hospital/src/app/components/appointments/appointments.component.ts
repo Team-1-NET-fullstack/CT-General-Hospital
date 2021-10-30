@@ -1,38 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 import {
-  EventSettingsModel,
   DayService,
   WeekService,
-  TimelineMonthService,
+  WorkWeekService,
   MonthService,
   AgendaService,
+  EventSettingsModel,
+  EventRenderedArgs,
+  ScheduleComponent,
+  ResizeService,
+  DragAndDropService,
+  ActionEventArgs,
+  TimelineMonthService,
+  MonthAgendaService,
+  TimelineViewsService,
 } from '@syncfusion/ej2-angular-schedule';
+
+import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
+import { doctorsEventData } from './data';
+
+/**
+ * Schedule editor template sample
+ */
 
 @Component({
   selector: 'app-appointments',
   providers: [
     DayService,
     WeekService,
+    WorkWeekService,
     MonthService,
     AgendaService,
+    MonthAgendaService,
+    TimelineViewsService,
     TimelineMonthService,
+    ResizeService,
+    DragAndDropService,
   ],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.css'],
 })
 export class AppointmentsComponent {
-  public data: object[] = [
-    {
-      Id: 2,
-      Subject: 'Paris',
-      StartTime: new Date(2021, 1, 15, 10, 0),
-      EndTime: new Date(2021, 1, 15, 12, 30),
-    },
-  ];
-  public selectedDate: Date = new Date(2021, 1, 15);
-  public eventSettings: EventSettingsModel = {
-    dataSource: this.data,
-  };
   constructor() {}
 
   ngOnInit(): void {}

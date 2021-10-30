@@ -1,7 +1,43 @@
 <div>
   <img class="logo" src="../../../assets/images/logo.png" />
 
+  <!-- Dashboard Button Ends -->
+
   <button
+    *ngIf="user?.roleId == 1"
+    mat-button
+    class="menu-button"
+    routerLink="/admin/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+
+  <button
+    *ngIf="user?.roleId == 2"
+    mat-button
+    class="menu-button"
+    routerLink="/doctor/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+
+  <button
+    *ngIf="user?.roleId == 4"
     mat-button
     class="menu-button"
     routerLink="/patient/dashboard"
@@ -10,26 +46,31 @@
     <mat-icon>dashboard</mat-icon>
     <span>Dashboard</span>
   </button>
+
+  <!-- Dashboard Button Ends -->
+
   <button
     *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/patient/employee-card"
+    routerLink="/admin/employee-card"
     routerLinkActive="active-link"
   >
     <mat-icon>group_add</mat-icon>
     <span>Employee Detail</span>
   </button>
+
   <button
     *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/patient/patient-card"
+    routerLink="/admin/patient-card"
     routerLinkActive="active-link"
   >
     <mat-icon>edit</mat-icon>
     <span>Edit Patients</span>
   </button>
+
   <button
     *ngIf="user?.roleId == 4"
     mat-button
@@ -40,16 +81,51 @@
     <mat-icon>personal_injury</mat-icon>
     <span>Patients</span>
   </button>
+
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="user?.roleId == 2"
     mat-button
     class="menu-button"
-    routerLink="/patient/patient-visit"
+    routerLink="/doctor/patient-visit"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patient Visit</span>
   </button>
+
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/patient-visit"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>personal_injury</mat-icon>
+    <span>Patient Visit</span>
+  </button>
+
+  <button
+    *ngIf="user?.roleId == 2"
+    mat-button
+    class="menu-button"
+    routerLink="/doctor/appointment"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>access_time</mat-icon>
+    <span>Appointments</span>
+  </button>
+
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/appointment"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>access_time</mat-icon>
+    <span>Appointments</span>
+  </button>
+
   <button
     *ngIf="user?.roleId == 4"
     mat-button
@@ -60,62 +136,6 @@
     <mat-icon>access_time</mat-icon>
     <span>Appointments</span>
   </button>
-
-  <!-- <button
-    mat-button
-    class="menu-button"
-    routerLink="/patient/settings"
-    routerLinkActive="active-link"
-  >
-    <mat-icon>settings</mat-icon>
-    <span>Settings</span>
-  </button> -->
-
-  <mat-accordion *ngIf="user?.roleId == 1">
-    <mat-expansion-panel style="padding: 0%">
-      <mat-expansion-panel-header>
-        <mat-panel-title style="font-size: 14pt; text-align: left">
-          <mat-icon>settings</mat-icon>
-          Settings
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div style="text-align: left">
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/my-account"
-        >
-          My Account
-        </button>
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/change-password"
-        >
-          Change Password
-        </button>
-
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/faqs"
-        >
-          FAQs
-        </button>
-        <button
-          style="text-align: left"
-          mat-button
-          routerLinkActive="active-link"
-          routerLink="/patient/terms-conditions"
-        >
-          TnCs
-        </button>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
 
   <button
     mat-button
