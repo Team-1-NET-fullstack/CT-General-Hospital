@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from '../../models/user.model';
+import { MatDialog } from '@angular/material/dialog';
+import { MyAccountComponent } from '../my-account/my-account.component';
 
 @Component({
   selector: 'app-left-sidenav',
@@ -11,19 +13,23 @@ import { User } from '../../models/user.model';
 export class LeftSidenavComponent implements OnInit {
   user: User | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
-  openAccountDialog(): void {}
 
-  openPasswordDialog() {}
-  openFAQDialog() {}
-  openTCDialog() {}
+  constructor(private authService: AuthService, private router: Router,public dialog: MatDialog) {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(MyAccountComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   ngOnInit(): void {
     this.authService.userInfo.subscribe((user) => {
       this.user = user;
     });
-  }
-
-  onLogout() {
+}
+onLogout() {
     this.authService.logout();
     this.router.navigate(['/signin']);
   }

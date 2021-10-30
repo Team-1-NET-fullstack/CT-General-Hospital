@@ -2,7 +2,7 @@
   class="mediacal-information-stepper"
   [orientation]="(stepperOrientation | async)!"
 >
-  <mat-step [stepControl]="firstFormGroup" label="Fill out Vital Signs">
+  <mat-step [stepControl]="firstFormGroup" label="Vital Signs">
     <form [formGroup]="firstFormGroup">
       <app-vital-signs></app-vital-signs>
       <div>
@@ -10,7 +10,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Fill out Diagnosis Details">
+  <mat-step [stepControl]="secondFormGroup" label="Diagnosis Details">
     <form [formGroup]="secondFormGroup">
       <app-diagnosis-details></app-diagnosis-details>
       <div>
@@ -19,7 +19,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" label="Fill out Procedure Details">
+  <mat-step [stepControl]="thirdFormGroup" label="Procedure Details">
     <form [formGroup]="thirdFormGroup">
       <app-procedure-details></app-procedure-details>
       <div>

@@ -24,3 +24,9 @@
     color: #333333;
     background-color: #dddddd;
   }
+  .move-down{
+    margin-top: 16px;
+  }
+  .move-down-24px{
+    margin-top: 24px;
+  }
