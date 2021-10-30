@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/shared/models/patient.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { EditPatientService } from 'src/app/core/services/edit-patient/edit-patient.service';
+import { EditPatient } from 'src/app/shared/models/edit-patient.model';
 
 @Component({
   selector: 'app-patient-card',
@@ -7,56 +9,19 @@ import { Patient } from 'src/app/shared/models/patient.model';
   styleUrls: ['./patient-card.component.css'],
 })
 export class PatientCardComponent implements OnInit {
-  selected = 'option2';
-  constructor() {}
+  patient: EditPatient[] = [];
+  
 
-  patients: Patient[] = [
-    {
-      id: 1,
-      title: 'Ms.',
-      name: 'Bhavya',
-      dob: new Date('01-01-1990'),
-      emailid: 'bhavya@gmail.com',
-      registeration: new Date('01-12-2021'),
-      status: 'Active',
-    },
-    {
-      id: 2,
-      title: 'Ms.',
-      name: 'Rachel',
-      dob: new Date('01-01-1990'),
-      emailid: 'rachel@hotmail.com',
-      registeration: new Date('01-12-2021'),
-      status: 'Active',
-    },
-    {
-      id: 3,
-      title: 'Mr.',
-      name: 'Ross',
-      dob: new Date('01-01-1990'),
-      emailid: 'ross@rediff.com',
-      registeration: new Date('01-12-2021'),
-      status: 'Active',
-    },
-    {
-      id: 4,
-      title: 'Ms.',
-      name: 'Monica',
-      dob: new Date('01-01-1990'),
-      emailid: 'monica@outlook.com',
-      registeration: new Date('01-12-2021'),
-      status: 'Active',
-    },
-    {
-      id: 5,
-      title: 'Ms.',
-      name: 'Bhavya',
-      dob: new Date('01-01-1990'),
-      emailid: 'bhavya@cth.com',
-      registeration: new Date('01-12-2021'),
-      status: 'Active',
-    },
-  ];
+  constructor(private editPatientService: EditPatientService) {
+
+    this.editPatientService.getAllPatient().subscribe(
+      (patients) => {
+        // this.patients = patient;
+        this.patient.splice(0,this.patient.length); //clear array
+        this.patient.push(...patients); //add new element
+      }
+    );
+  }
 
   ngOnInit(): void {}
 }

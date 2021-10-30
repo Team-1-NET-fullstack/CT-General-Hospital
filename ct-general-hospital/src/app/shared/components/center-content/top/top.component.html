@@ -1,7 +1,7 @@
 <div class="top-menu-cards">
   <div class="card-align">
     <mat-card style="align-content: center">
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -19,11 +19,47 @@
           </td>
         </tr>
       </table>
+      <table *ngIf="user?.roleId == 2 || user?.roleId == 3">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>access_time</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Appointments</button>
+          </td>
+        </tr>
+      </table>
+      <table *ngIf="user?.roleId == 4">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>access_time</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Upcoming Appointments</button>
+          </td>
+        </tr>
+      </table>
     </mat-card>
   </div>
   <div class="card-align">
     <mat-card>
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -41,11 +77,47 @@
           </td>
         </tr>
       </table>
+      <table *ngIf="user?.roleId == 2 || user?.roleId == 3">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>personal_injury</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Patients</button>
+          </td>
+        </tr>
+      </table>
+      <table *ngIf="user?.roleId == 4">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white">
+              <mat-icon>history</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-button>Previous Visits</button>
+          </td>
+        </tr>
+      </table>
     </mat-card>
   </div>
   <div class="card-align">
     <mat-card>
-      <table>
+      <table *ngIf="user?.roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -60,6 +132,24 @@
         <tr>
           <td>
             <button mat-button>Inactive/Blocked</button>
+          </td>
+        </tr>
+      </table>
+      <table *ngIf="user?.roleId != 1">
+        <tr>
+          <th rowspan="2">
+            <button mat-icon-button color="white" routerLink="/notes">
+              <mat-icon>mail</mat-icon>
+            </button>
+          </th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
+        </tr>
+        <tr>
+          <td>
+            <button routerLink="/notes" mat-button>Inbox</button>
           </td>
         </tr>
       </table>

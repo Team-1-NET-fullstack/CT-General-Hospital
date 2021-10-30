@@ -1,123 +1,228 @@
-<mat-tab-group>
-  <mat-tab label="Demographics">
-    <mat-radio-group>
-      <mat-radio-button value="Mr">Mr</mat-radio-button>
-      <mat-radio-button value="Mrs">Mrs</mat-radio-button>
-      <mat-radio-button value="Ms">Ms</mat-radio-button>
-      <mat-radio-button value="Ms">Dr</mat-radio-button>
-    </mat-radio-group>
-    <mat-form-field appearance="legacy">
-      <mat-label>First Name</mat-label>
-      <input matInput placeholder="First Name" />
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Last Name" />
-    </mat-form-field>
-    <mat-form-field  appearance="legacy">
-      <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY"  />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker> </mat-datepicker>
-    </mat-form-field>
-    <br />
-    <mat-radio-group>
-      <mat-radio-button value="Mr"> Male</mat-radio-button>
-      <mat-radio-button value="Mrs"> Female </mat-radio-button>
-      <mat-radio-button value="Ms"> Other</mat-radio-button>
-    </mat-radio-group>
+<form
+  class="demographics-form"
+  [formGroup]="form"
+  (ngSubmit)="saveDemographicsDetails()"
+>
+  <mat-tab-group>
+    <mat-tab label="Profile">
+      <mat-radio-group formControlName="title" required>
+        <mat-radio-button value="Mr">Mr</mat-radio-button>
+        <mat-radio-button value="Mrs">Mrs</mat-radio-button>
+        <mat-radio-button value="Ms">Ms</mat-radio-button>
+        <mat-radio-button value="Dr">Dr</mat-radio-button>
+      </mat-radio-group>
 
-    <mat-form-field appearance="legacy">
-      <mat-label>Race</mat-label>
-      <input matInput placeholder="Race" />
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>Language</mat-label>
-      <input matInput placeholder="Language" />
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" />
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Address</mat-label>
-      <textarea matInput placeholder="Ex.909 Swapnlok "></textarea>
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>Pincode</mat-label>
-      <input matInput placeholder="Pincode" />
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>Country Code</mat-label>
-      <input matInput placeholder="Country Code" />
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>State</mat-label>
-      <input matInput placeholder="State" />
-    </mat-form-field>
-    <br/>
-    <mat-form-field appearance="legacy">
-      <mat-label>Contact Number</mat-label>
-      <input matInput placeholder="Contact Number" />
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
-      <mat-label>Emergency Contact Number</mat-label>
-      <input matInput placeholder="Emergency Contact Number" />
-    </mat-form-field>
-    <section>
-      <span class="emergencycontact">Emergency Contact Details</span>
+      <mat-form-field appearance="legacy">
+        <mat-label>First Name</mat-label>
+        <mat-error>Enter valid name must be alphabet only</mat-error>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstname"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Enter Last Name</mat-label>
+        <mat-error>Enter valid name must be alphabet only </mat-error>
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastname"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-error>Enter valid date</mat-error>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="MM/DD/YYYY"
+          formControlName="dob"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker> </mat-datepicker>
+      </mat-form-field>
       <br />
+      <mat-radio-group formControlName="gender" required>
+        <mat-radio-button value="male"> Male</mat-radio-button>
+        <mat-radio-button value="Female"> Female </mat-radio-button>
+        <mat-radio-button value="Other"> Other</mat-radio-button>
+      </mat-radio-group>
+
       <mat-form-field appearance="legacy">
-        <mat-label>First Name </mat-label>
-        <input matInput placeholder="First Name" />
+        <mat-label>Race</mat-label>
+        <mat-error>Enter valid race must be alphabet only</mat-error>
+        <input matInput placeholder="Race" formControlName="race" required />
       </mat-form-field>
+
       <mat-form-field appearance="legacy">
-        <mat-label>Last Name </mat-label>
-        <input matInput placeholder="Last Name" />
+        <mat-label>Language</mat-label>
+        <mat-error>Enter valid language must be alphabet only </mat-error>
+        <input
+          matInput
+          placeholder="Language"
+          formControlName="language"
+          required
+        />
       </mat-form-field>
+
       <mat-form-field appearance="legacy">
-        <mat-label>Email </mat-label>
-        <input matInput placeholder="Email" />
+        <mat-label>Email</mat-label>
+        <mat-error>Enter valid Email Id </mat-error>
+        <input matInput placeholder="Email" formControlName="email" required />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Relationship</mat-label>
-        <select matNativeControl required>
-          <option value="f">Father</option>
-          <option value="m">Mother</option>
-          <option value="s">Sister</option>
-          <option value="b">Brother</option>
-        </select>
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Contact Number</mat-label>
-        <input matInput placeholder="Contact Number" />
-      </mat-form-field>
+
       <mat-form-field appearance="legacy">
         <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Ex.909 Swapnlok "></textarea>
+        <mat-error>Enter valid address </mat-error>
+        <textarea
+          matInput
+          placeholder="Ex.909 Swapnlok"
+          formControlName="address"
+          required
+        ></textarea>
       </mat-form-field>
-      <mat-checkbox class="mat-checkbox">Same As Above</mat-checkbox>
-      <br />
-      <mat-label class="accesstoprtal">Access To Patient Portal </mat-label>
 
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="Yes"> Yes </mat-radio-button>
-        <mat-radio-button value="No"> No </mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <br />
-    <div>
-      <button mat-flat-button type="submit" class="button-submit">Next</button>
-      <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-    </div>
-  </mat-tab>
-  <mat-tab label="Allergy">
-    <app-patient-allergy></app-patient-allergy>
-  </mat-tab>
-  <!-- <mat-tab label="signup"> <app-signup></app-signup></mat-tab> -->
-</mat-tab-group>
+      <mat-form-field appearance="legacy">
+        <mat-label>Pincode</mat-label>
+        <mat-error> Enter valid pincode must be 6 digits </mat-error>
+        <input
+          matInput
+          placeholder="Pincode"
+          formControlName="pincode"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Country Code</mat-label>
+        <mat-error> Enter valid country code must be 2 digits </mat-error>
+        <input
+          matInput
+          placeholder="Country Code"
+          formControlName="countrycode"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>State</mat-label>
+        <mat-error>Enter valid name must be alphabet only</mat-error>
+        <input matInput placeholder="State" formControlName="state" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="legacy">
+        <mat-label>Contact Number</mat-label>
+        <mat-error>Enter valid contact must be 10 digits </mat-error>
+        <input
+          matInput
+          placeholder="Contact Number"
+          formControlName="contact1"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Emergency Contact Number</mat-label>
+        <mat-error>Enter valid contact must be 10 digits </mat-error>
+        <input
+          matInput
+          placeholder="Emergency Contact Number"
+          formControlName="emergencycontact"
+          required
+        />
+      </mat-form-field>
+      <br />
+      <section>
+        <span class="emergencycontact">Emergency Contact Details</span>
+        <br />
+        <mat-form-field appearance="legacy">
+          <mat-label>First Name</mat-label>
+          <mat-error>Enter valid name must be alphabet only</mat-error>
+          <input
+            matInput
+            placeholder="First Name"
+            formControlName="nomineefirstname"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Enter Last Name</mat-label>
+          <mat-error>Enter valid name must be alphabet only </mat-error>
+          <input
+            matInput
+            placeholder="Last Name"
+            formControlName="nomineelastname"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Email</mat-label>
+          <mat-error>Enter valid Email Id </mat-error>
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="namineeemail"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Relationship</mat-label>
+          <select matNativeControl formControlName="relationship" required>
+            <option value="father">Father</option>
+            <option value="mother">Mother</option>
+            <option value="sister">Sister</option>
+            <option value="brother">Brother</option>
+            <option value="husband">Huband</option>
+            <option value="wife">Wife</option>
+            <option value="son">Son</option>
+            <option value="daughter">Daughter</option>
+            <option value="friend">Friend</option>
+          </select>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Contact Number</mat-label>
+          <mat-error
+            >Enter valid contact number must be 10 digits only
+          </mat-error>
+          <input
+            matInput
+            placeholder="Contact Number"
+            formControlName="contact2"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Address</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex.909 Swapnlok "
+            formControlName="nomineeaddress"
+            required
+          ></textarea>
+        </mat-form-field>
+        <mat-checkbox class="mat-checkbox">Same As Above</mat-checkbox>
+        <br />
+        <mat-label class="accesstoprtal">Access To Patient Portal </mat-label>
+        <mat-radio-group aria-label="Select an option" formControlName="access">
+          <mat-radio-button value="Yes"> Yes </mat-radio-button>
+          <mat-radio-button value="No"> No </mat-radio-button>
+        </mat-radio-group>
+      </section>
+      <br />
+      <div>
+        <button mat-flat-button type="submit" class="button-submit">
+          Save
+        </button>
+        <button mat-flat-button type="reset" class="button-reset">
+          Cancel
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Allergy">
+      <app-patient-allergy></app-patient-allergy>
+    </mat-tab>
+  </mat-tab-group>
+</form>

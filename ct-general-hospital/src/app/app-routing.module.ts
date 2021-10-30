@@ -29,11 +29,22 @@ import { MedicalInformationComponent } from './components/Patient/medical-inform
 import { SignupComponent } from './components/Patient/signup/signup.component';
 import { PatientDemographicsComponent } from './components/Patient/patient-demographics/patient-demographics.component';
 import { PatientAllergyComponent } from './components/Patient/patient-allergy/patient-allergy.component';
+import { PatientProfileComponent } from './components/Patient/patient-profile/patient-profile.component';
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
-
 import { AuthGuard } from './core/guards/auth/auth.guard';
-
+import { MasterComponent } from './components/admin/master/master.component';
+import { ProcedureComponent } from './components/admin/procedure/procedure.component';
+import { DiagnosisComponent } from './components/admin/diagnosis/diagnosis.component';
+import { MedicationComponent } from './components/admin/medication/medication.component';
+import { AllergyComponent } from './components/admin/allergy/allergy.component';
+import { DeclinedComponent } from './components/inbox/declined/declined.component';
+import { UpcomingComponent } from './components/inbox/upcoming/upcoming.component';
+import { NotesComponent } from './components/inbox/notes/notes.component';
+import { SendComponent } from './components/inbox/send/send.component';
+import { SentComponent } from './components/inbox/sent/sent.component';
+import { ReceivedComponent } from './components/inbox/received/received.component';
 const routes: Routes = [
   //main
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
@@ -200,7 +211,23 @@ const routes: Routes = [
       },
       {
         path: 'patient-demographics',
+        component: PatientProfileComponent,
+      },
+      {
+        path: 'notes',
+        component: NotesComponent,
+      },
+      {
+        path: 'upcoming',
+        component: UpcomingComponent,
+      },
+      {
+        path: 'patient-details',
         component: PatientDemographicsComponent,
+      },
+      {
+        path: 'master',
+        component: MasterComponent,
       },
     ],
   },
@@ -289,5 +316,18 @@ export const routingComponents = [
   PatientDemographicsComponent,
   SignupComponent,
   PatientAllergyComponent,
+  PatientProfileComponent,
+  EditEmployeeComponent,
   AppointmentsComponent,
+  MasterComponent,
+  ProcedureComponent,
+  DiagnosisComponent,
+  MedicationComponent,
+  AllergyComponent,
+  DeclinedComponent,
+  UpcomingComponent,
+  NotesComponent,
+  SendComponent,
+  SentComponent,
+  ReceivedComponent,
 ];

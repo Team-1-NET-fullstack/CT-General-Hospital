@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-patient-allergy',
   templateUrl: './patient-allergy.component.html',
   styleUrls: ['./patient-allergy.component.css']
 })
 export class PatientAllergyComponent implements OnInit {
+  form: FormGroup = new FormGroup({});
+  clinicalinfo = new FormControl('', [Validators.required]);
+  allergydescription=new FormControl('',[Validators.required]);
+ 
   allergyId = new FormControl();
   allergyIdList: string[] = ['Al01', 'Al02', 'Al03', 'Al04'];
   allergyType = new FormControl();
