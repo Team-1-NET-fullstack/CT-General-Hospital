@@ -18,7 +18,6 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 
 import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
-import { doctorsEventData } from './data';
 
 /**
  * Schedule editor template sample
