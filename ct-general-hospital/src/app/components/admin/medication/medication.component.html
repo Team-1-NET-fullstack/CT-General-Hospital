@@ -1,11 +1,22 @@
 <mat-tab-group style="text-align: left">
     <mat-tab label="Add Medication">
+      <br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" />
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
         <input matInput placeholder="Description" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
-      <mat-checkbox class="mat-checkbox">Is Fatal</mat-checkbox>
+      <mat-form-field appearance="legacy">
+        <mat-label>Dosage</mat-label>
+        <input matInput placeholder="Dosage" />
+      </mat-form-field>
+      <br>
+      <mat-checkbox class="mat-checkbox">Is Deprecated</mat-checkbox>
       <br />
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">
@@ -14,13 +25,23 @@
         <button mat-flat-button type="reset" class="button-reset">Cancel</button>
       </mat-dialog-actions>
     </mat-tab>
-    <mat-tab label="Edit Medication">
+    <mat-tab label="Edit Medication"><br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" />
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
         <input matInput placeholder="Description" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
-      <mat-checkbox class="mat-checkbox">Is Fatal</mat-checkbox>
+      <mat-form-field appearance="legacy">
+        <mat-label>Dosage</mat-label>
+        <input matInput placeholder="Dosage" />
+      </mat-form-field>
+      <br>
+      <mat-checkbox class="mat-checkbox">Is Deprecated</mat-checkbox>
       <br />
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">

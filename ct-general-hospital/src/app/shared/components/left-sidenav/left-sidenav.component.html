@@ -38,11 +38,12 @@
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
-    <span>Patients Profile</span>
+    <span>Profile</span>
   </button>
 
   <button
     mat-button
+    *ngIf="user?.roleId == 3 || user?.roleId == 2"
     class="menu-button"
     routerLink="/patient-details"
     routerLinkActive="active-link"

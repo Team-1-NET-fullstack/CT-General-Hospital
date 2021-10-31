@@ -44,11 +44,11 @@
         <mat-label>Email ID</mat-label>
         <input matInput placeholder="Email ID" />
       </mat-form-field>
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      <mat-dialog-actions align="end">
+        <button mat-flat-button type="submit" class="button-submit">
           Submit
         </button>
+        <button mat-flat-button type="reset" class="button-reset">Cancel</button>
       </mat-dialog-actions>
     
   </mat-tab>
