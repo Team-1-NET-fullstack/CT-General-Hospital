@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AllergyComponent implements OnInit {
 
   constructor() { }
-
+OnSearch(){
+  
+}
   ngOnInit(): void {
   }
 

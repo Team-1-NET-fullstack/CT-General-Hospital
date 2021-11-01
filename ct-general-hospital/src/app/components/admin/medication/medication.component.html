@@ -26,6 +26,12 @@
       </mat-dialog-actions>
     </mat-tab>
     <mat-tab label="Edit Medication"><br>
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+      <input type="tel" matInput placeholder="Search" name="search" />
+      <button matSuffix mat-button (click)="OnSearch()"><mat-icon >search</mat-icon></button>
+      </mat-form-field>
+      <br />
       <mat-form-field appearance="legacy">
         <mat-label>Name</mat-label>
         <input matInput placeholder="Name" />
