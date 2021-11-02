@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-tab-group style="text-align: left">
+
+  <mat-tab-group style="text-align: left;">
     <mat-tab label="Add Procedure">
       <mat-form-field>
         <mat-label>Name</mat-label>
@@ -17,15 +17,15 @@
         <button mat-flat-button type="submit" class="button-submit">
           Submit
         </button>
-        <button mat-flat-button type="reset" class="button-reset">
-          Cancel
-        </button>
+        <button mat-flat-button mat-dialog-close class="button-reset" >Cancel</button>
       </mat-dialog-actions>
     </mat-tab>
+   
     <mat-tab label="Edit Procedure">
+      <div style="height: 100%;" >
       <mat-form-field>
         <mat-label>Search</mat-label>
-      <input type="tel" matInput placeholder="Search" name="search" />
+      <input type="search" matInput placeholder="Search" name="search" [(ngModel)]="search"/>
       <button matSuffix mat-button (click)="OnSearch()"><mat-icon >search</mat-icon></button>
       </mat-form-field>
       <br />
@@ -41,15 +41,13 @@
       &nbsp;&nbsp;&nbsp;
       <mat-checkbox class="mat-checkbox">Is Deprecated</mat-checkbox>
       <br />
-
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">
           Submit
         </button>
-        <button mat-flat-button type="reset" class="button-reset">
-          Cancel
-        </button>
+        <button mat-flat-button mat-dialog-close class="button-reset" >Cancel</button>
       </mat-dialog-actions>
+    </div>
     </mat-tab>
   </mat-tab-group>
-</mat-card>
+
