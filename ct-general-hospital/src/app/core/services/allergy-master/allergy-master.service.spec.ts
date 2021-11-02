@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MasterDataService } from './master-data.service';
+import { AllergyMasterService } from './allergy-master.service';
 
-describe('MasterDataService', () => {
-  let service: MasterDataService;
+describe('AllergyMasterService', () => {
+  let service: AllergyMasterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MasterDataService);
+    service = TestBed.inject(AllergyMasterService);
   });
 
   it('should be created', () => {

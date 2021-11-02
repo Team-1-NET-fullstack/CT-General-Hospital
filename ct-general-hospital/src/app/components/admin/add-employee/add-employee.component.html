@@ -1,3 +1,9 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  
+  
+>
 <mat-radio-group formControlName="title" required>
   <mat-radio-button value="Mr">Mr</mat-radio-button>
   <mat-radio-button value="Mrs">Mrs</mat-radio-button>
@@ -88,3 +94,4 @@
   <button mat-flat-button type="submit" class="button-submit" on>Save</button>
   <button mat-flat-button type="reset" class="button-reset">Cancel</button>
 </div>
+</form>
