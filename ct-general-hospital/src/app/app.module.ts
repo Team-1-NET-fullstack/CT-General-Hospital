@@ -19,10 +19,14 @@ import {
   AgendaService,
   MonthAgendaService,
 } from '@syncfusion/ej2-angular-schedule';
+import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DisplayAppointmentsComponent,
+    AppointmentsComponent,
     routingComponents,
     AuthDirective,
     CapitalizePipe,
@@ -37,7 +41,7 @@ import {
     SyncfusionModule,
     HttpClientModule,
     CommonModule,
-    ScheduleModule
+    ScheduleModule,
   ],
   providers: [
     DayService,

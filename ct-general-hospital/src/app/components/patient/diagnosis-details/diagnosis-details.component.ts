@@ -55,7 +55,7 @@ export class DiagnosisDetailsComponent implements OnInit {
     );
 
     this.listOfObjects.push(ob);
-    console.log('Added to list');
+    // console.log('Added to list');
     // Send to service
   }
 

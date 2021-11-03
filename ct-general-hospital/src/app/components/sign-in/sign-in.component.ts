@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.form);
+    // console.log(this.form);
 
     // gather data from form
     const userName: string = this.form.value.userName;
@@ -49,7 +49,7 @@ export class SignInComponent implements OnInit {
 
     // pass to auth service for login verfication
     if (this.authService.login(ob)) {
-      this.openSnackBar('Login Successful!', 'Okay');
+      this.openSnackBar('Login Successful!');
       switch (roleId) {
         case 1:
           this.router.navigate(['/admin/dashboard']);
@@ -71,13 +71,17 @@ export class SignInComponent implements OnInit {
           break;
       }
     } else {
-      console.log(ob);
-      this.openSnackBar('Login Failed!', 'Dismiss');
+      // console.log(ob);
+      this.openSnackBar('Login Failed!');
     }
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      // horizontalPosition: 'right',
+      // verticalPosition: 'top',
+      duration: 2000,
+    });
   }
 
   @Input()

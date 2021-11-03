@@ -18,7 +18,7 @@ export class EmployeeCardComponent implements OnInit {
     const dialogRef = this.dialog.open(EditEmployeeComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
   constructor(private editEmployeeservice: EditEmployeeService, public dialog:MatDialog) {

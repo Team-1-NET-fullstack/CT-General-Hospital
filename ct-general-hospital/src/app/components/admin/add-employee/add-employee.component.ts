@@ -16,7 +16,7 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    console.log(this.formVar.value);
+    // console.log(this.formVar.value);
   }
 
 }
