@@ -16,7 +16,10 @@
       <td>{{ appointment.PhysicianName }}</td>
       <td>{{ appointment.SlotDate | date: "shortDate" }}</td>
       <td>{{ appointment.TimeSlot }}</td>
-      <td>{{ appointment.Status }}</td>
+      <td>
+        <span *ngIf="appointment.Status" style="color: green">Approved</span>
+        <span *ngIf="!appointment.Status" style="color: red">Declined</span>
+      </td>
     </tr>
   </tbody>
 </table>

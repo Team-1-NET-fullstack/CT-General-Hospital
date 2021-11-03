@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/',
-  appointmentSchedulerDebugApiBaseUrl:
-    'https://localhost:44306/api/Appointments/',
+  // appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/', // Local Prod
+  appointmentSchedulerApiBaseUrl:
+    'https://localhost:44306/api/Appointments/', // Local Debug
 };
 
 /*

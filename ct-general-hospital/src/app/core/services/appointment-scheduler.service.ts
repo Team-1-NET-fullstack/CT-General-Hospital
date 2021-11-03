@@ -14,7 +14,7 @@ export class AppointmentSchedulerService {
   getAllAppointments() {
     this.http
       .get<Appointments[]>(
-        environment.appointmentSchedulerDebugApiBaseUrl + 'GetAllAppointments'
+        `${environment.appointmentSchedulerApiBaseUrl}GetAllAppointments`
       )
       .subscribe((appointments) => {
         // console.log(appointments);
@@ -28,5 +28,17 @@ export class AppointmentSchedulerService {
     // return this.http.get(
     //   environment.appointmentSchedulerApiBaseUrl + 'GetAllAppointments'
     // );
+  }
+
+  createAppointment(newAppointment: any) {
+    this.http
+      .post(
+        `${environment.appointmentSchedulerApiBaseUrl}CreateAppointment`,
+        newAppointment
+      )
+      .subscribe((res) => {
+        console.log(res);
+        console.log('data inserted successfully');
+      });
   }
 }

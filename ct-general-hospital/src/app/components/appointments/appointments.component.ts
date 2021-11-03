@@ -18,6 +18,8 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 
 import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
+import { Appointments } from 'src/app/shared/models/appointments.model';
+import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 
 /**
  * Schedule editor template sample
@@ -42,7 +44,30 @@ import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
   styleUrls: ['./appointments.component.css'],
 })
 export class AppointmentsComponent {
-  constructor() {}
+  appointment: Appointments | undefined;
+
+  constructor(private appointmentService: AppointmentSchedulerService) {
+    // this.createAppointment();
+  }
 
   ngOnInit(): void {}
+
+  createAppointment() {
+    this.appointment = new Appointments(
+      3,
+      6,
+      'Appointment',
+      4,
+      20,
+      false,
+      false,
+      3,
+      new Date(),
+      1,
+      new Date(),
+      new Date()
+    );
+
+    this.appointmentService.createAppointment(this.appointment);
+  }
 }

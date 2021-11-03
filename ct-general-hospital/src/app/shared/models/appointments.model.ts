@@ -1,6 +1,5 @@
 export class Appointments {
   constructor(
-    public AppointmentId: number,
     public PatientId: number,
     public PhysicianId: number,
     public Reason: string,
@@ -13,8 +12,9 @@ export class Appointments {
     public UpdatedBy: number,
     public SlotDate: Date,
     public UpdatedDate: Date,
-    public PhysicianName: string,
-    public PatientName: string,
-    public PhysicianEmployeeId: number
+    public AppointmentId?: number,
+    public PhysicianName?: string,
+    public PatientName?: string,
+    public PhysicianEmployeeId?: number
   ) {}
 }
