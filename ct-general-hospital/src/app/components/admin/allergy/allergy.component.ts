@@ -40,21 +40,20 @@ export class AllergyComponent implements OnInit {
   }
   onSearch() {
     
-    debugger;
     this.masterService.getAllAllergybyDesc(this.form1.value.searchterm).subscribe((response) => {
-      debugger;
-      this.form1.value.Description1= response.Description;
-      this.form1.value.Fatal1= response.IsFatal;
+      this.form1.controls.Description1.setValue(response.Description);
+      this.form1.controls.Fatal1.setValue(response.IsFatal);
+      console.log(response);
     });
   }
   onEdit() {
     {
       
       let description: string = this.form1.value.Description1;
-      let fatal1: boolean = this.form1.value.fatal1;
+      let fatal1: boolean = this.form1.value.Fatal1;
       var allergy1 = new AllergyMaster(description, fatal1);
       if (this.form1.valid) {
-        this.masterService.createAllergy(allergy1);
+        this.masterService.updateAllergy(allergy1);
       }
     }
 
