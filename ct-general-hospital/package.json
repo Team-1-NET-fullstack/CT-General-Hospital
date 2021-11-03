@@ -29,6 +29,7 @@
     "@syncfusion/ej2-angular-schedule": "^19.3.46",
     "@syncfusion/ej2-angular-splitbuttons": "^19.3.45",
     "ngx-mat-select-search": "^3.3.0",
+    "ngx-spinner": "^12.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

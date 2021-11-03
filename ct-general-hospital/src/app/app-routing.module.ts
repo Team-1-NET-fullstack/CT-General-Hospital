@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -281,7 +284,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CommonModule, BrowserModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
