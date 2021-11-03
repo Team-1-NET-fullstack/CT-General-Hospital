@@ -22,6 +22,7 @@ import {
 import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

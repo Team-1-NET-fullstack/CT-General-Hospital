@@ -1,48 +1,97 @@
-<mat-radio-group>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  
+  
+>
+<mat-radio-group formControlName="title" required>
   <mat-radio-button value="Mr">Mr</mat-radio-button>
   <mat-radio-button value="Mrs">Mrs</mat-radio-button>
   <mat-radio-button value="Ms">Ms</mat-radio-button>
 </mat-radio-group>
-&nbsp;&nbsp;&nbsp;
+
 <mat-form-field appearance="legacy">
   <mat-label>First Name</mat-label>
-  <input matInput placeholder="First Name" />
+  <mat-error>Enter valid name must be alphabet only</mat-error>
+  <input
+    matInput
+    placeholder="First Name"
+    formControlName="firstname"
+    required
+  />
 </mat-form-field>
-&nbsp;&nbsp;&nbsp;
 <mat-form-field appearance="legacy">
   <mat-label>Last Name</mat-label>
-  <input matInput placeholder="Last Name" />
+  <mat-error>Enter valid name must be alphabet only </mat-error>
+  <input matInput placeholder="Last Name" formControlName="lastname" required />
 </mat-form-field>
-&nbsp;&nbsp;&nbsp;
+<mat-radio-group formControlName="gender" required>
+  <mat-radio-button value="D"> Doctor</mat-radio-button>
+  <mat-radio-button value="N"> Nurse </mat-radio-button>
+</mat-radio-group>
 <mat-form-field appearance="legacy">
-  <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
+  <mat-error>Enter valid date</mat-error>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    placeholder="MM/DD/YYYY"
+    formControlName="dob"
+    required
+  />
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker> </mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="legacy">
+  <mat-label>Email</mat-label>
+  <mat-error>Enter valid Email Id </mat-error>
+  <input matInput placeholder="Email" formControlName="email" required />
 </mat-form-field>
 
 <mat-form-field appearance="legacy">
   <mat-label>Address</mat-label>
-  <textarea matInput placeholder="Ex.909 Swapnlok "></textarea>
+  <mat-error>Enter valid address </mat-error>
+  <textarea
+    matInput
+    placeholder="Ex.909 Swapnlok"
+    formControlName="address"
+    required
+  ></textarea>
 </mat-form-field>
-
 <mat-form-field appearance="legacy">
   <mat-label>Pincode</mat-label>
-  <input matInput placeholder="Pincode" />
+  <mat-error> Enter valid pincode must be 6 digits </mat-error>
+  <input matInput placeholder="Pincode" formControlName="pincode" required />
 </mat-form-field>
+<br />
+<mat-radio-group formControlName="gender" required>
+  <mat-radio-button value="M"> Male</mat-radio-button>
+  <mat-radio-button value="F"> Female </mat-radio-button>
+  <mat-radio-button value="O"> Other</mat-radio-button>
+</mat-radio-group>
 
 <mat-form-field appearance="legacy">
-  <mat-label>Email Id</mat-label>
-  <input matInput placeholder="Email Id" />
+  <mat-label>Country Code</mat-label>
+  <mat-error> Enter valid country code must be 2 digits </mat-error>
+  <input
+    matInput
+    placeholder="Country Code"
+    formControlName="countrycode"
+    required
+  />
 </mat-form-field>
 
 <mat-form-field appearance="legacy">
   <mat-label>Contact Number</mat-label>
-  <input matInput placeholder="Contact Number" />
+  <mat-error>Enter valid contact must be 10 digits </mat-error>
+  <input
+    matInput
+    placeholder="Contact Number"
+    formControlName="contact1"
+    required
+  />
 </mat-form-field>
-<br>
-<mat-dialog-actions align="end">
-            
-  <button mat-flat-button type="submit" class="button-submit">Submit</button>
+<div>
+  <button mat-flat-button type="submit" class="button-submit" on>Save</button>
   <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-
-</mat-dialog-actions>
+</div>
+</form>

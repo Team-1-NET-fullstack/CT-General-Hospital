@@ -1,5 +1,12 @@
 <h3>Edit Patient Details</h3>
 
+<mat-form-field style="margin-left: 2vw;">
+  <mat-label>Search</mat-label>
+  <input type="tel" matInput placeholder="Search" name="search" />
+  <button matSuffix mat-button (click)="OnSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-form-field>
 <mat-card-content
   style="align-content: center; margin-left: 2vw; text-align: left"
 >
@@ -33,7 +40,7 @@
   </table>
 
   <mat-paginator
-  [length]=0
+    [length]="0"
     [pageSize]="5"
     [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page"

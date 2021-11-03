@@ -22,6 +22,8 @@ export class PatientCardComponent implements OnInit {
       }
     );
   }
-
+  OnSearch(){
+    
+  }
   ngOnInit(): void {}
 }

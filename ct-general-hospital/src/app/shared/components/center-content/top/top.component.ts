@@ -9,6 +9,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class TopComponent implements OnInit {
   user: User | null = null;
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
 
   constructor(private authService: AuthService) { }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditEmployeeService } from 'src/app/core/services/edit-employee/edit-employee.service';
 import { EditEmployee } from 'src/app/shared/models/edit-employee.model';
-
 import { MatDialog } from '@angular/material/dialog';
 import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 
@@ -30,6 +29,9 @@ export class EmployeeCardComponent implements OnInit {
         this.employee.push(...employees); //add new element
       }
     );
+  }
+  OnSearch(){
+    
   }
 
   ngOnInit(): void {}
