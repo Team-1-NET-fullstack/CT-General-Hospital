@@ -48,6 +48,8 @@ export class AuthService {
 
   // login
   login(user: User): boolean {
+    // API call here
+    
     const foundUser: User | undefined = this.listOfUsers.find(
       (ob) =>
         ob.userName === user.userName &&

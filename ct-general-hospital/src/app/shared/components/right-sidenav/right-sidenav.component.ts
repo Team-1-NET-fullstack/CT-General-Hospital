@@ -20,14 +20,14 @@ export class RightSidenavComponent implements OnInit {
       const dialogRef = this.dialog.open(TermsConditionsComponent);
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
+        // console.log(`Dialog result: ${result}`);
       });
     }
     FAQClick() {
       const dialogRef = this.dialog.open(FAQsComponent);
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
+        // console.log(`Dialog result: ${result}`);
       });
     }
 

@@ -21,7 +21,7 @@ export class LeftSidenavComponent implements OnInit {
     const dialogRef = this.dialog.open(MyAccountComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
   openMasterDialog(){
@@ -36,7 +36,7 @@ export class LeftSidenavComponent implements OnInit {
     const dialogRef = this.dialog.open(MasterComponent,dialogConfig);
    
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 

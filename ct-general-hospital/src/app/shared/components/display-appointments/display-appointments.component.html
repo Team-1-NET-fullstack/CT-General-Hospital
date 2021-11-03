@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Patient Name</th>
+      <th>Physicain Name</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments">
+      <td>{{ appointment.Reason }}</td>
+      <td>{{ appointment.PatientName }}</td>
+      <td>{{ appointment.PhysicianName }}</td>
+      <td>{{ appointment.SlotDate | date: "shortDate" }}</td>
+      <td>{{ appointment.TimeSlot }}</td>
+      <td>{{ appointment.Status }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -116,7 +116,7 @@ export class PatientDemographicsComponent implements OnInit {
   ngOnInit(): void {}
 
   saveDemographicsDetails() {
-    console.log(this.form);
+    // console.log(this.form);
 
     if (this.form.valid) {
       //console.log('form valid');

@@ -1,7 +1,39 @@
 <div>
   <img class="logo" src="../../../assets/images/logo.png" />
 
+  <!-- Dashboard Button Starts -->
   <button
+    *ngIf="user?.roleId == 1"
+    mat-button
+    class="menu-button"
+    routerLink="/admin/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 2"
+    mat-button
+    class="menu-button"
+    routerLink="/doctor/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/dashboard"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span>Dashboard</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 4"
     mat-button
     class="menu-button"
     routerLink="/patient/dashboard"
@@ -10,11 +42,13 @@
     <mat-icon>dashboard</mat-icon>
     <span>Dashboard</span>
   </button>
+  <!-- Dashboard Button Ends -->
+
   <button
     *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/patient/employee-card"
+    routerLink="/admin/employee-card"
     routerLinkActive="active-link"
   >
     <mat-icon>group_add</mat-icon>
@@ -24,7 +58,7 @@
     *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
-    routerLink="/patient/patient-card"
+    routerLink="/admin/patient-card"
     routerLinkActive="active-link"
   >
     <mat-icon>edit</mat-icon>
@@ -40,26 +74,55 @@
     <mat-icon>personal_injury</mat-icon>
     <span>Profile</span>
   </button>
-
   <button
     mat-button
     *ngIf="user?.roleId == 3 || user?.roleId == 2"
     class="menu-button"
-    routerLink="/patient-details"
+    routerLink="/patient/patient-details"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patients Details</span>
   </button>
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="user?.roleId == 2"
     mat-button
     class="menu-button"
-    routerLink="/patient/patient-visit"
+    routerLink="/doctor/patient-visit"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patient Visit</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/patient-visit"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>personal_injury</mat-icon>
+    <span>Patient Visit</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 2"
+    mat-button
+    class="menu-button"
+    routerLink="/doctor/appointment"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>access_time</mat-icon>
+    <span>Appointments</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLink="/nurse/appointment"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>access_time</mat-icon>
+    <span>Appointments</span>
   </button>
   <button
     *ngIf="user?.roleId == 4"
@@ -72,18 +135,17 @@
     <span>Appointments</span>
   </button>
   <button
-  *ngIf="user?.roleId == 1"
-  mat-button  
-  class="menu-button"
-  routerLinkActive="active-link"
-  (click)="openMasterDialog()"
->
-  <mat-icon>post_add</mat-icon>
-  <span>Master Data</span>
-
-</button>
-
+    *ngIf="user?.roleId == 1"
+    mat-button
+    class="menu-button"
+    routerLinkActive="active-link"
+    (click)="openMasterDialog()"
+  >
+    <mat-icon>post_add</mat-icon>
+    <span>Master Data</span>
+  </button>
   <button
+    *ngIf="user?.roleId == 1"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
@@ -91,9 +153,37 @@
   >
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
-
   </button>
-
+  <button
+    *ngIf="user?.roleId == 2"
+    mat-button
+    class="menu-button"
+    routerLinkActive="active-link"
+    (click)="openDialog()"
+  >
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 3"
+    mat-button
+    class="menu-button"
+    routerLinkActive="active-link"
+    (click)="openDialog()"
+  >
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button
+    *ngIf="user?.roleId == 4"
+    mat-button
+    class="menu-button"
+    routerLinkActive="active-link"
+    (click)="openDialog()"
+  >
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
   <button
     mat-button
     class="menu-button"

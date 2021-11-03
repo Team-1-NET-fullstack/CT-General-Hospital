@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
@@ -24,7 +25,7 @@ export class SignInComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.form);
+    // console.log(this.form);
 
     // gather data from form
     const userName: string = this.form.value.userName;
@@ -48,12 +49,39 @@ export class SignInComponent implements OnInit {
 
     // pass to auth service for login verfication
     if (this.authService.login(ob)) {
-      console.log(ob);
-      this.router.navigate(['/patient/dashboard']);
+      this.openSnackBar('Login Successful!');
+      switch (roleId) {
+        case 1:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+
+        case 2:
+          this.router.navigate(['/doctor/dashboard']);
+          break;
+
+        case 3:
+          this.router.navigate(['/nurse/dashboard']);
+          break;
+        case 4:
+          this.router.navigate(['/patient/dashboard']);
+          break;
+
+        default:
+          this.router.navigate(['/page-not-found']);
+          break;
+      }
     } else {
-      console.log(ob);
-      alert('Login failed');
+      // console.log(ob);
+      this.openSnackBar('Login Failed!');
     }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      // horizontalPosition: 'right',
+      // verticalPosition: 'top',
+      duration: 2000,
+    });
   }
 
   @Input()
@@ -61,7 +89,11 @@ export class SignInComponent implements OnInit {
 
   @Output() submitEM = new EventEmitter();
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
 }
