@@ -7,7 +7,7 @@
         <input matInput placeholder="Description" formControlName="Description" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
-      <mat-checkbox class="mat-checkbox" formControlName="Fatal" [(ngModel)]="checked">Is Fatal</mat-checkbox>
+      <mat-checkbox class="mat-checkbox" formControlName="Fatal" >Is Fatal</mat-checkbox>
       <br />
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">
@@ -26,8 +26,8 @@
       <form [formGroup]="form1" (ngSubmit)="onEdit()">
       <mat-form-field>
         <mat-label>Search</mat-label>
-        <input type="search" matInput placeholder="Search" name="search" />
-        <button matSuffix mat-button><mat-icon>search</mat-icon></button>
+        <input type="search" matInput placeholder="Search" formControlName="searchterm" />
+        <button matSuffix mat-button (click)="onSearch()"><mat-icon>search</mat-icon></button>
       </mat-form-field>
       <br />
       

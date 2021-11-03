@@ -22,13 +22,14 @@ export class MedicationComponent implements OnInit {
       Name: new FormControl(null),
       Description: new FormControl(null),
       Dosage: new FormControl(null),
-      Fatal: new FormControl(null),
+      Deprecated: new FormControl(null),
     });
+    
     this.form1 = new FormGroup({
       Name1: new FormControl(null),
       Description1: new FormControl(null),
       Dosage1: new FormControl(null),
-      Fatal1: new FormControl(null),
+      Deprecated1: new FormControl(null),
     });
   }
 
@@ -53,7 +54,7 @@ export class MedicationComponent implements OnInit {
       let name1: string = this.form.value.Name;
       let description1: string = this.form.value.Description;
       let dosage1: string = this.form.value.Dosage;
-      let deprecated1: string = this.form.value.Deprecated;
+      let deprecated1: string = this.form.value.Deprecated1;
       var medication1 = new MedicationMaster(name1,description1, dosage1,deprecated1);
       if (this.form.valid) {
         this.masterService.createMedication(medication1);

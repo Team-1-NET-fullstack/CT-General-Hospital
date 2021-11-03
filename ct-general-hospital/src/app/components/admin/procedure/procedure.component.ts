@@ -42,6 +42,7 @@ export class ProcedureComponent implements OnInit {
   }
   OnSearch() {
     this.masterService.getAllProcedurebyDesc(this.search).subscribe();
+    
   }
   onEdit() {
     {
