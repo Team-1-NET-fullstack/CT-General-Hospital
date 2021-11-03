@@ -1,60 +1,72 @@
 <mat-tab-group style="text-align: left">
-    <mat-tab label="Add Medication">
-      <br>
+  <mat-tab label="Add Medication">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="legacy">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" />
+        <input matInput placeholder="Name" formControlName="Name" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" />
+        <input matInput placeholder="Description" formControlName="Description" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Dosage</mat-label>
-        <input matInput placeholder="Dosage" />
+        <input matInput placeholder="Dosage" formControlName="Dosage" />
       </mat-form-field>
-      <br>
-      <mat-checkbox class="mat-checkbox">Is Deprecated</mat-checkbox>
+      &nbsp;&nbsp;&nbsp;
+      <mat-checkbox class="mat-checkbox" formControlName="Deprecated" [(ngModel)]="checked">Is Deprecated</mat-checkbox>
       <br />
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">
           Submit
         </button>
-        <button mat-flat-button mat-dialog-close class="button-reset" >Cancel</button>
+        <button mat-flat-button mat-dialog-close class="button-reset">
+          Cancel
+        </button>
       </mat-dialog-actions>
-    </mat-tab>
-    <mat-tab label="Edit Medication"><br>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Edit Medication">
+   
+    <div style="height: 100%">
+      <form [formGroup]="form1" (ngSubmit)="onEdit()">
       <mat-form-field>
         <mat-label>Search</mat-label>
-      <input type="search" matInput placeholder="Search" name="search" />
-      <button matSuffix mat-button (click)="OnSearch()"><mat-icon >search</mat-icon></button>
+        <input type="search" matInput placeholder="Search" name="search" />
+        <button matSuffix mat-button><mat-icon>search</mat-icon></button>
       </mat-form-field>
       <br />
+      
       <mat-form-field appearance="legacy">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" />
+        <input matInput placeholder="Name" formControlName="Name1" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" />
+        <input matInput placeholder="Description" formControlName="Description1" />
       </mat-form-field>
       &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Dosage</mat-label>
-        <input matInput placeholder="Dosage" />
+        <input matInput placeholder="Dosage" formControlName="Dosage1" />
       </mat-form-field>
-      <br>
-      <mat-checkbox class="mat-checkbox">Is Deprecated</mat-checkbox>
+      &nbsp;&nbsp;&nbsp;
+      <mat-checkbox class="mat-checkbox" formControlName="Deprecated1" [(ngModel)]="checked1">Is Deprecated</mat-checkbox>
       <br />
       <mat-dialog-actions align="end">
         <button mat-flat-button type="submit" class="button-submit">
           Submit
         </button>
-        <button mat-flat-button mat-dialog-close class="button-reset" >Cancel</button>
+        <button mat-flat-button mat-dialog-close class="button-reset">
+          Cancel
+        </button>
       </mat-dialog-actions>
-    </mat-tab>
-  </mat-tab-group>
+      </form>
+      </div>
+  </mat-tab>
   
+</mat-tab-group>

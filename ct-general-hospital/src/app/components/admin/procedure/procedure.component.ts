@@ -34,7 +34,7 @@ export class ProcedureComponent implements OnInit {
       let name: string = this.form.value.Name;
       let description: string = this.form.value.Description;
       let deprecated: string = this.form.value.Deprecated;
-      var procedures = new ProcedureMaster('0', name, description, deprecated);
+      var procedures = new ProcedureMaster(name, description, deprecated);
       if (this.form.valid) {
         this.masterService.createProcedure(procedures);
       }
@@ -48,7 +48,7 @@ export class ProcedureComponent implements OnInit {
       let name: string = this.form1.value.Name1;
       let description: string = this.form1.value.Description1;
       let deprecated: string = this.form1.value.Deprecated1;
-      var procedures1 = new ProcedureMaster('0', name, description, deprecated);
+      var procedures1 = new ProcedureMaster(name, description, deprecated);
       if (this.form1.valid) {
         this.masterService.createProcedure(procedures1);
       }
