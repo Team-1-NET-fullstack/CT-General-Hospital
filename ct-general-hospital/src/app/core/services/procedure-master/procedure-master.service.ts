@@ -25,12 +25,10 @@ export class ProcedureMasterService {
         console.log('data inserted successfully');
       });
   }
-  updateProcedure(id: string, procedure: ProcedureMaster) {
+  
+  updateProcedure(procedure: ProcedureMaster) {
     this.masterClient
-      .put(
-        'http://localhost:9001/api/ProcedureMasters/UpdateProcedure?id=' + id,
-        procedure
-      )
+      .put('http://localhost:9001/api/ProcedureMasters/UpdateProcedure',procedure)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

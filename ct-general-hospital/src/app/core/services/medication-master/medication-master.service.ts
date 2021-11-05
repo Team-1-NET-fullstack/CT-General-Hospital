@@ -27,12 +27,10 @@ export class MedicationMasterService {
         console.log('data inserted successfully');
       });
   }
-  updateMedication(id: string, medication: MedicationMaster) {
+  updateMedication(medication: MedicationMaster) {
+    console.log(medication);
     this.masterClient
-      .put(
-        'http://localhost:9001/api/MedicationMasters/UpdateMedication?id=' + id,
-        medication
-      )
+      .put('http://localhost:9001/api/MedicationMasters/UpdateMedication',medication)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

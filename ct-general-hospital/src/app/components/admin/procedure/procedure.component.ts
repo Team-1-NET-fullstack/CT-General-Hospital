@@ -14,7 +14,7 @@ export class ProcedureComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
   searchterm: string = '';
-  hiddenMedicationId: string = '';
+  objId: string = '';
 
   constructor(private masterService: ProcedureMasterService) {
     this.form = new FormGroup({
@@ -54,27 +54,27 @@ export class ProcedureComponent implements OnInit {
     this.masterService
       .getAllProcedurebyDesc(this.form1.value.searchterm)
       .subscribe((response) => {
-        this.form1.controls.ObjectId.setValue(response.Id);
+        this.objId = response.Id;
         this.form1.controls.Name1.setValue(response.Name);
         this.form1.controls.Description1.setValue(response.Description);
-        this.form1.controls.Deprecated1.setValue(response.isDeprecated);
+        this.form1.controls.Deprecated1.setValue(response.IsDeprecated);
         console.log(response);
       });
   }
   onEdit() {
     {
       let objectId: string = this.form1.value.ObjectId;
-      let name: string = this.form.value.Name1;
-      let description: string = this.form.value.Description1;
-      let deprecated: boolean = this.form.value.Deprecated1;
+      let name: string = this.form1.value.Name1;
+      let description: string = this.form1.value.Description1;
+      let deprecated: boolean = this.form1.value.Deprecated1;
       var procedure = new ProcedureMaster(
-        '',
+        this.objId,
         name,
         description,
         deprecated
       );
       if (this.form1.valid) {
-        this.masterService.updateProcedure(objectId, procedure);
+        this.masterService.updateProcedure(procedure);
       }
     }
   }
