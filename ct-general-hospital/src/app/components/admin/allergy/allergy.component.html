@@ -1,6 +1,6 @@
 <div style="width: 90%; margin: auto">
   <mat-tab-group style="text-align: left">
-    <mat-tab  label="Add Allergy">
+    <mat-tab label="Add Allergy">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="legacy">
           <mat-label>Description</mat-label>
@@ -28,7 +28,7 @@
 
     <mat-tab label="Edit Allergy">
       <div style="height: 100%">
-        <form [formGroup]="form1" (ngSubmit)="onEdit()">
+        <form [formGroup]="form1" >
           <mat-form-field>
             <mat-label>Search</mat-label>
             <input
@@ -43,6 +43,9 @@
           </mat-form-field>
           <br />
 
+          <input type="hidden" formControlName="ObjectId" />
+
+          &nbsp;&nbsp;&nbsp;
           <mat-form-field appearance="legacy">
             <mat-label>Description</mat-label>
             <input
@@ -57,7 +60,7 @@
           >
           <br />
           <mat-dialog-actions align="end">
-            <button mat-flat-button type="submit" class="button-submit">
+            <button mat-flat-button type="submit" class="button-submit" (click)="onEdit()">
               Submit
             </button>
             <button mat-flat-button mat-dialog-close class="button-reset">

@@ -1,14 +1,18 @@
-<h3 style="text-align: left;padding-left: 16px;">Employee Details</h3>
+<h3 style="text-align: left; padding-left: 16px">Employee Details</h3>
 <mat-tab-group style="text-align: left">
   <mat-tab label="Add Employee">
     <app-add-employee></app-add-employee>
   </mat-tab>
   <mat-tab label="Edit Employee">
-    <mat-form-field>
+    <mat-form-field style="margin-left: 2vw">
       <mat-label>Search</mat-label>
-    <input type="tel" matInput placeholder="Search" name="search" />
-    <button matSuffix mat-button (click)="OnSearch()"><mat-icon >search</mat-icon></button>
+      <input type="tel" matInput placeholder="Search" name="search" />
+      <button matSuffix mat-button (click)="OnSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
+    <br />
+    <br />
     <mat-card-content style="align-content: center; margin-left: 2vw">
       <table
         class="table table-striped"

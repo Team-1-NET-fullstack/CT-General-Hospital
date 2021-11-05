@@ -13,6 +13,7 @@ export class AllergyComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
   searchterm: string = '';
+  hiddenAllergyId:string='';
 
   constructor(private masterService: AllergyMasterService,private formBuilder: FormBuilder) {
     this.form = new FormGroup({
@@ -21,6 +22,7 @@ export class AllergyComponent implements OnInit {
     });
     this.form1 = new FormGroup({
       searchterm:new FormControl(null),
+      ObjectId:new FormControl(null),
       Description1: new FormControl(null),
       Fatal1: new FormControl(null),
     });
@@ -32,7 +34,7 @@ export class AllergyComponent implements OnInit {
       
       let description: string = this.form.value.Description;
       let fatal: boolean = this.form.value.Fatal;
-      var allergy = new AllergyMaster(description, fatal);
+      var allergy = new AllergyMaster('',description, fatal);
       if (this.form.valid ) {
         this.masterService.createAllergy(allergy);
       }
@@ -41,19 +43,19 @@ export class AllergyComponent implements OnInit {
   onSearch() {
     
     this.masterService.getAllAllergybyDesc(this.form1.value.searchterm).subscribe((response) => {
+      this.form1.controls.ObjectId.setValue(response.Id);
       this.form1.controls.Description1.setValue(response.Description);
       this.form1.controls.Fatal1.setValue(response.IsFatal);
-      console.log(response);
     });
   }
   onEdit() {
     {
-      
-      let description: string = this.form1.value.Description1;
+       let objectId:string=this.form1.value.ObjectId;
+      let description1: string = this.form1.value.Description1;
       let fatal1: boolean = this.form1.value.Fatal1;
-      var allergy1 = new AllergyMaster(description, fatal1);
+      var allergy1 = new AllergyMaster(objectId,description1, fatal1);
       if (this.form1.valid) {
-        this.masterService.updateAllergy(allergy1);
+        this.masterService.updateAllergy(objectId, allergy1);
       }
     }
 
