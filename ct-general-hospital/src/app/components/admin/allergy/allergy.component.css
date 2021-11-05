@@ -11,6 +11,6 @@ mat-checkbox {
   background-color: #ffad1f;
   margin: 0 1px 0;
 }
-mat-tab{
-  font-size: 5px;
+.mat-tab-label .mat-tab-label-content{
+  font-size: 100px;
 }

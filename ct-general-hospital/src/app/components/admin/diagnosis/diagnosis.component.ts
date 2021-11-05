@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DiagnosisMasterService } from 'src/app/core/services/diagnosis-master/diagnosis-master.service';
 import { DiagnosisMaster } from 'src/app/shared/models/diagnosismaster.model';
 
@@ -13,9 +13,10 @@ export class DiagnosisComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
-  search: string = '';
+  searchterm: string = '';
+  hiddenAllergyId:string='';
 
-  constructor(private masterService: DiagnosisMasterService) {
+  constructor(private masterService: DiagnosisMasterService,private formBuilder: FormBuilder) {
     this.form = new FormGroup({
       Name: new FormControl(null),
       Description: new FormControl(null)
@@ -23,31 +24,41 @@ export class DiagnosisComponent implements OnInit {
     this.form1 = new FormGroup({
       Name1: new FormControl(null),
       Description1: new FormControl(null)
+      
     });
   }
 
   ngOnInit(): void {}
   onSubmit() {
     {
-      let name: string = this.form.value.Name;
+      let name:string=this.form.value.Name;
       let description: string = this.form.value.Description;
-      var diagnosis = new DiagnosisMaster(name, description);
-      if (this.form.valid) {
+      var diagnosis = new DiagnosisMaster('',name,description);
+      if (this.form.valid ) {
         this.masterService.createDiagnosis(diagnosis);
       }
     }
   }
-  OnSearch() {
-    this.masterService.getAllDiagnosisbyDesc(this.search).subscribe();
+  onSearch() {
+    
+    this.masterService.getAllDiagnosisbyDesc(this.form1.value.searchterm).subscribe((response) => {
+      this.form1.controls.ObjectId.setValue(response.Id);
+      this.form1.controls.Description1.setValue(response.Description);
+      this.form1.controls.Name1.setValue(response.Name);
+      console.log(response);
+    });
   }
   onEdit() {
     {
-      let name: string = this.form1.value.Name1;
-      let description: string = this.form1.value.Description1;
-      var procedures1 = new DiagnosisMaster(name, description);
+       let objectId:string=this.form1.value.ObjectId;
+       let name1: string = this.form1.value.Name1;
+      let description1: string = this.form1.value.Description1;
+      
+      var allergy1 = new DiagnosisMaster(objectId,name1,description1);
       if (this.form1.valid) {
-        this.masterService.createDiagnosis(procedures1);
+        this.masterService.updateDiagnosis(objectId, allergy1);
       }
     }
-  }
+
+}
 }

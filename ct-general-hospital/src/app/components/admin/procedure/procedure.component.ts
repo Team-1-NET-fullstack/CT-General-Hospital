@@ -13,17 +13,22 @@ export class ProcedureComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
-  search: string = '';
+  searchterm: string = '';
+  hiddenMedicationId: string = '';
 
   constructor(private masterService: ProcedureMasterService) {
     this.form = new FormGroup({
       Name: new FormControl(null),
       Description: new FormControl(null),
+      Dosage: new FormControl(null),
       Deprecated: new FormControl(null),
     });
     this.form1 = new FormGroup({
+      searchterm: new FormControl(null),
+      ObjectId: new FormControl(null),
       Name1: new FormControl(null),
       Description1: new FormControl(null),
+      Dosage1: new FormControl(null),
       Deprecated1: new FormControl(null),
     });
   }
@@ -33,25 +38,43 @@ export class ProcedureComponent implements OnInit {
     {
       let name: string = this.form.value.Name;
       let description: string = this.form.value.Description;
-      let deprecated: string = this.form.value.Deprecated;
-      var procedures = new ProcedureMaster(name, description, deprecated);
+      let deprecated: boolean = this.form.value.Deprecated;
+      var procedure = new ProcedureMaster(
+        '',
+        name,
+        description,
+        deprecated
+      );
       if (this.form.valid) {
-        this.masterService.createProcedure(procedures);
+        this.masterService.createProcedure(procedure);
       }
     }
   }
-  OnSearch() {
-    this.masterService.getAllProcedurebyDesc(this.search).subscribe();
-    
+  onSearch() {
+    this.masterService
+      .getAllProcedurebyDesc(this.form1.value.searchterm)
+      .subscribe((response) => {
+        this.form1.controls.ObjectId.setValue(response.Id);
+        this.form1.controls.Name1.setValue(response.Name);
+        this.form1.controls.Description1.setValue(response.Description);
+        this.form1.controls.Deprecated1.setValue(response.isDeprecated);
+        console.log(response);
+      });
   }
   onEdit() {
     {
-      let name: string = this.form1.value.Name1;
-      let description: string = this.form1.value.Description1;
-      let deprecated: string = this.form1.value.Deprecated1;
-      var procedures1 = new ProcedureMaster(name, description, deprecated);
+      let objectId: string = this.form1.value.ObjectId;
+      let name: string = this.form.value.Name1;
+      let description: string = this.form.value.Description1;
+      let deprecated: boolean = this.form.value.Deprecated1;
+      var procedure = new ProcedureMaster(
+        '',
+        name,
+        description,
+        deprecated
+      );
       if (this.form1.valid) {
-        this.masterService.createProcedure(procedures1);
+        this.masterService.updateProcedure(objectId, procedure);
       }
     }
   }
