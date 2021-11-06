@@ -27,12 +27,9 @@ export class DiagnosisMasterService {
         console.log('data inserted successfully');
       });
   }
-  updateDiagnosis(id: string, diagnosis: DiagnosisMaster) {
+  updateDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
-      .put(
-        'http://localhost:9001/api/DiagnosisMasters/UpdateDiagnosis?id=' + id,
-        diagnosis
-      )
+      .put('http://localhost:9001/api/DiagnosisMasters/UpdateDiagnosis',diagnosis)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

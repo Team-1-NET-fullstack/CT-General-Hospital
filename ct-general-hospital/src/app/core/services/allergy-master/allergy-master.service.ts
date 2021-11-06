@@ -27,9 +27,9 @@ export class AllergyMasterService {
         console.log('data inserted successfully');
       });
   }
-  updateAllergy(id:string, allergy: AllergyMaster) {
+  updateAllergy(allergy: AllergyMaster) {
     this.masterClient
-      .put('http://localhost:9001/api/AllergyMasters/UpdateAllergy?id=' +id,allergy)
+      .put('http://localhost:9001/api/AllergyMasters/UpdateAllergy',allergy)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AllergyMasterService } from 'src/app/core/services/allergy-master/allergy-master.service';
 import { AllergyMaster } from 'src/app/shared/models/allergymaster.model';
 @Component({
   selector: 'app-allergy',
   templateUrl: './allergy.component.html',
-  styleUrls: ['./allergy.component.css']
+  styleUrls: ['./allergy.component.css'],
 })
 export class AllergyComponent implements OnInit {
   allergy!: AllergyMaster;
@@ -13,16 +18,19 @@ export class AllergyComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
   searchterm: string = '';
-  hiddenAllergyId:string='';
+  objId: string = '';
 
-  constructor(private masterService: AllergyMasterService,private formBuilder: FormBuilder) {
+  constructor(
+    private masterService: AllergyMasterService,
+    private formBuilder: FormBuilder
+  ) {
     this.form = new FormGroup({
       Description: new FormControl(null),
       Fatal: new FormControl(null),
     });
     this.form1 = new FormGroup({
-      searchterm:new FormControl(null),
-      ObjectId:new FormControl(null),
+      searchterm: new FormControl(null),
+      ObjectId: new FormControl(null),
       Description1: new FormControl(null),
       Fatal1: new FormControl(null),
     });
@@ -31,33 +39,36 @@ export class AllergyComponent implements OnInit {
   ngOnInit(): void {}
   onSubmit() {
     {
-      
       let description: string = this.form.value.Description;
       let fatal: boolean = this.form.value.Fatal;
-      var allergy = new AllergyMaster('',description, fatal);
-      if (this.form.valid ) {
+      var allergy = new AllergyMaster('', description, fatal);
+      if (this.form.valid) {
         this.masterService.createAllergy(allergy);
       }
     }
   }
   onSearch() {
-    
-    this.masterService.getAllAllergybyDesc(this.form1.value.searchterm).subscribe((response) => {
-      this.form1.controls.ObjectId.setValue(response.Id);
-      this.form1.controls.Description1.setValue(response.Description);
-      this.form1.controls.Fatal1.setValue(response.IsFatal);
-    });
+    this.masterService
+      .getAllAllergybyDesc(this.form1.value.searchterm)
+      .subscribe((response) => {
+        
+        this.objId = response.Id;
+        this.form1.controls.Description1.setValue(response.Description);
+        this.form1.controls.Fatal1.setValue(response.IsFatal);
+      });
   }
   onEdit() {
     {
-       let objectId:string=this.form1.value.ObjectId;
       let description1: string = this.form1.value.Description1;
       let fatal1: boolean = this.form1.value.Fatal1;
-      var allergy1 = new AllergyMaster(objectId,description1, fatal1);
+      var allergy1 = new AllergyMaster(
+        this.objId,
+        description1,
+        fatal1
+      );
       if (this.form1.valid) {
-        this.masterService.updateAllergy(objectId, allergy1);
+        this.masterService.updateAllergy(allergy1);
       }
     }
-
-}
+  }
 }

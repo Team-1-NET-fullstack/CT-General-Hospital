@@ -10,5 +10,5 @@ export interface ProcedureMasterIncomingDTO {
   Id: string;
   Name: string;
   Description: string;
-  isDeprecated: boolean;
+  IsDeprecated: boolean;
 }

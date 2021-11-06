@@ -16,7 +16,7 @@ export class MedicationComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   form1: FormGroup = new FormGroup({});
   searchterm: string = '';
-  hiddenMedicationId: string = '';
+  objId : string = '';
 
   constructor(private masterService: MedicationMasterService) {
     this.form = new FormGroup({
@@ -58,30 +58,29 @@ export class MedicationComponent implements OnInit {
     this.masterService
       .getAllMedicationbyDesc(this.form1.value.searchterm)
       .subscribe((response) => {
-        this.form1.controls.ObjectId.setValue(response.Id);
+        this.objId = response.Id;
         this.form1.controls.Name1.setValue(response.Name);
         this.form1.controls.Description1.setValue(response.Description);
         this.form1.controls.Dosage1.setValue(response.Dosage);
-        this.form1.controls.Deprecated1.setValue(response.isDeprecated);
+        this.form1.controls.Deprecated1.setValue(response.IsDeprecated);
         console.log(response);
       });
   }
   onEdit() {
     {
-      let objectId: string = this.form1.value.ObjectId;
-      let name: string = this.form.value.Name1;
-      let description: string = this.form.value.Description1;
-      let dosage: string = this.form.value.Dosage1;
-      let deprecated: boolean = this.form.value.Deprecated1;
-      var medication = new MedicationMaster(
-        '',
+      let name: string = this.form1.value.Name1;
+      let dosage: string = this.form1.value.Dosage1;
+      let description: string = this.form1.value.Description1;
+      let deprecated: boolean = this.form1.value.Deprecated1;
+      var medications = new MedicationMaster(
+        this.objId,
         name,
-        description,
         dosage,
+        description,
         deprecated
       );
       if (this.form1.valid) {
-        this.masterService.updateMedication(objectId, medication);
+        this.masterService.updateMedication(medications);
       }
     }
   }
