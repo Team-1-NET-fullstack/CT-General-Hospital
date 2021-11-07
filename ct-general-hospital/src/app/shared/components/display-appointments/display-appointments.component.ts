@@ -46,7 +46,10 @@ export class DisplayAppointmentsComponent implements OnInit {
 
   getAllAppointments() {
     this.spinner.show();
-    this.appointments = this.appointmentService.getAllAppointments();
+    this.appointmentService.getAllAppointments().subscribe((res) => {
+      this.appointments.splice(0, this.appointments.length); //clear array
+      this.appointments.push(...res); //add new element
+    });
     this.spinner.hide();
   }
 }

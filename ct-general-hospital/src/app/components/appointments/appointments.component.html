@@ -50,7 +50,6 @@
                 class="e-field"
                 data-name="Physician"
                 placeholder="Select Physician"
-                [dataSource]="physicianList"
                 [fields]="physicianFields"
                 value="{{ data.Physician }}"
               >
@@ -101,7 +100,7 @@
             </td>
           </tr>
           <tr>
-            <td class="e-textlabel">Reason</td>
+            <td class="e-textlabel">Description</td>
             <td colspan="4">
               <textarea
                 id="Description"
