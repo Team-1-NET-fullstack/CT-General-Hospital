@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   MedicationMaster,
   MedicationMasterIncomingDTO,
@@ -10,14 +11,18 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class MedicationMasterService {
-  constructor(private masterClient: HttpClient) {}
+  constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
   getAllMedicationbyDesc(desc: string) {
     return this.masterClient.get<MedicationMasterIncomingDTO>(
       `${environment.medicationApiBaseUrl}GetMedicationByDescription?desc=` +
         desc
     );
   }
-
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
+  }
   createMedication(medication: MedicationMaster) {
     this.masterClient
       .post(
@@ -25,7 +30,7 @@ export class MedicationMasterService {
         medication
       )
       .subscribe((res) => {
-        console.log('data inserted successfully');
+        this.openSnackBar('Medication added!');
       });
   }
   updateMedication(medication: MedicationMaster) {
@@ -34,7 +39,7 @@ export class MedicationMasterService {
       .put(`${environment.medicationApiBaseUrl}UpdateMedication`,medication)
       .subscribe((res) => {
         console.log(res);
-        console.log('data updated successfully');
+        this.openSnackBar('Medication updated!');
       });
   }
 }
