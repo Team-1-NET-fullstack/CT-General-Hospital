@@ -4,6 +4,7 @@ import {
   DiagnosisMaster,
   DiagnosisMasterIncomingDTO,
 } from 'src/app/shared/models/diagnosismaster.model';
+import { environment } from 'src/environments/environment'; 
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class DiagnosisMasterService {
   constructor(private masterClient: HttpClient) {}
   getAllDiagnosisbyDesc(desc: string) {
     return this.masterClient.get<DiagnosisMasterIncomingDTO>(
-      'http://localhost:9001/api/DiagnosisMasters/GetDiagnosisByDescription?desc=' +
+      `${environment.diagnosisApiBaseUrl}GetDiagnosisByDescription?desc=` +
         desc
     );
   }
@@ -20,7 +21,7 @@ export class DiagnosisMasterService {
   createDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/DiagnosisMasters/CreateNewDiagnosis',
+        `${environment.diagnosisApiBaseUrl}CreateNewDiagnosis`,
         diagnosis
       )
       .subscribe((res) => {
@@ -29,7 +30,7 @@ export class DiagnosisMasterService {
   }
   updateDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
-      .put('http://localhost:9001/api/DiagnosisMasters/UpdateDiagnosis',diagnosis)
+      .put(`${environment.diagnosisApiBaseUrl}UpdateDiagnosis`,diagnosis)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

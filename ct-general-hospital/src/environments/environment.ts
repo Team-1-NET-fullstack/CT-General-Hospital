@@ -7,6 +7,10 @@ export const environment = {
   appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/',
   appointmentSchedulerDebugApiBaseUrl:
     'https://localhost:44306/api/Appointments/',
+    allergyApiBaseUrl: 'http://localhost:9001/api/AllergyMasters/',
+    medicationApiBaseUrl: 'http://localhost:9001/api/MedicationMasters/',
+    diagnosisApiBaseUrl: 'http://localhost:9001/api/DiagnosisMasters/',
+    procedureApiBaseUrl: 'http://localhost:9001/api/ProcedureMasters/',
 };
 
 /*
