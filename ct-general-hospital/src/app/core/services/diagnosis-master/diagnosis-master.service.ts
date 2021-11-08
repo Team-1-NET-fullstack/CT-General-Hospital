@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   DiagnosisMaster,
   DiagnosisMasterIncomingDTO,
@@ -10,14 +11,18 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DiagnosisMasterService {
-  constructor(private masterClient: HttpClient) {}
+  constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
   getAllDiagnosisbyDesc(desc: string) {
     return this.masterClient.get<DiagnosisMasterIncomingDTO>(
       `${environment.diagnosisApiBaseUrl}GetDiagnosisByDescription?desc=` +
         desc
     );
   }
-
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
+  }
   createDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
       .post(
@@ -25,7 +30,7 @@ export class DiagnosisMasterService {
         diagnosis
       )
       .subscribe((res) => {
-        console.log('data inserted successfully');
+        this.openSnackBar('Diagnosis added!');
       });
   }
   updateDiagnosis(diagnosis: DiagnosisMaster) {
@@ -33,7 +38,7 @@ export class DiagnosisMasterService {
       .put(`${environment.diagnosisApiBaseUrl}UpdateDiagnosis`,diagnosis)
       .subscribe((res) => {
         console.log(res);
-        console.log('data updated successfully');
+        this.openSnackBar('Diagnosis updated!');
       });
   }
 }
