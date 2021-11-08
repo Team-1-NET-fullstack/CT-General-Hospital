@@ -12,6 +12,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
+import { UserLogin } from 'src/app/shared/models/UserLogin.model';
 import { AuthService } from '../../services/auth.service';
 
 @Injectable({
@@ -20,10 +21,10 @@ import { AuthService } from '../../services/auth.service';
 export class AuthGuard
   implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad
 {
-  public user: User | null = null;
+  public user: UserLogin | null = null;
 
   constructor(private authService: AuthService) {
-    authService.userInfo.subscribe((user) => {
+    authService.currentUser.subscribe((user) => {
       this.user = user;
     });
   }

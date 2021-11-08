@@ -5,6 +5,7 @@ import { User } from '../../models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MyAccountComponent } from '../my-account/my-account.component';
 import { MasterComponent } from 'src/app/components/admin/master/master.component';
+import { UserLogin } from '../../models/UserLogin.model';
 
 @Component({
   selector: 'app-left-sidenav',
@@ -12,7 +13,7 @@ import { MasterComponent } from 'src/app/components/admin/master/master.componen
   styleUrls: ['./left-sidenav.component.css'],
 })
 export class LeftSidenavComponent implements OnInit {
-  user: User | null = null;
+  user: UserLogin | null = null;
 
 
   constructor(private authService: AuthService, private router: Router,public dialog: MatDialog) {}
@@ -33,7 +34,7 @@ export class LeftSidenavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.userInfo.subscribe((user) => {
+    this.authService.currentUser.subscribe((user) => {
       this.user = user;
     });
 }

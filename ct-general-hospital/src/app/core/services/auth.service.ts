@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
+import { UserLogin } from 'src/app/shared/models/UserLogin.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public userInfo = new BehaviorSubject<User | null>(null);
+  public currentUser = new BehaviorSubject<UserLogin | null>(null);
 
   constructor() {
-    this.userInfo.subscribe((user) => {
+    this.currentUser.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
       }
@@ -16,14 +17,14 @@ export class AuthService {
     if (localStorage.getItem('user')) {
       const str: string | null = localStorage.getItem('user');
 
-      const user: User = JSON.parse(str === null ? '{}' : str);
+      const user: UserLogin = JSON.parse(str === null ? '{}' : str);
 
-      this.userInfo.next(user);
+      this.currentUser.next(user);
     }
   }
 
   // Array of users
-  listOfUsers: User[] = [
+  listOfUsers: UserLogin[] = [
     {
       userName: 'admin@ct.com',
       password: 'test',
@@ -47,10 +48,10 @@ export class AuthService {
   ];
 
   // login
-  login(user: User): boolean {
+  login(user: UserLogin): boolean {
     // API call here
-    
-    const foundUser: User | undefined = this.listOfUsers.find(
+
+    const foundUser: UserLogin | undefined = this.listOfUsers.find(
       (ob) =>
         ob.userName === user.userName &&
         ob.password === user.password &&
@@ -58,7 +59,7 @@ export class AuthService {
     );
 
     if (foundUser) {
-      this.userInfo.next(user); // Send alert
+      this.currentUser.next(user); // Send alert
       return true;
     } else {
       return false;
@@ -66,8 +67,8 @@ export class AuthService {
   }
 
   // signup
-  signup(user: User) {
-    const foundUser: User | undefined = this.listOfUsers.find(
+  signup(user: UserLogin) {
+    const foundUser: UserLogin | undefined = this.listOfUsers.find(
       (ob) => ob.userName === user.userName
     );
 
@@ -75,13 +76,13 @@ export class AuthService {
       return false;
     } else {
       this.listOfUsers.push(user);
-      this.userInfo.next(user); // Send alert
+      this.currentUser.next(user); // Send alert
       return true;
     }
   }
 
   logout() {
-    this.userInfo.next(null); // Send alert
+    this.currentUser.next(null); // Send alert
     localStorage.removeItem('user');
   }
 }

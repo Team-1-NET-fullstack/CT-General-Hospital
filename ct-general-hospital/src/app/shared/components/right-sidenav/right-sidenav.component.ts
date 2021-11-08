@@ -4,6 +4,7 @@ import { User } from '../../models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { FAQsComponent } from '../faqs/faqs.component';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
+import { UserLogin } from '../../models/UserLogin.model';
 
 @Component({
   selector: 'app-right-sidenav',
@@ -12,7 +13,7 @@ import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.c
 })
 export class RightSidenavComponent implements OnInit {
 
-  user: User | null = null;
+  user: UserLogin | null = null;
 
     constructor(private authService: AuthService,public dialog: MatDialog) {}
   
@@ -32,7 +33,7 @@ export class RightSidenavComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.authService.userInfo.subscribe((user) => {
+    this.authService.currentUser.subscribe((user) => {
       this.user = user;
     });
   }

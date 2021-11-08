@@ -1,33 +1,32 @@
-import { Component, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
-import { L10n, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
+import { Component, NgZone, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   DayService,
   WeekService,
   WorkWeekService,
   MonthService,
-  AgendaService,
   EventSettingsModel,
-  EventRenderedArgs,
-  ScheduleComponent,
   ResizeService,
   DragAndDropService,
+  ScheduleComponent,
+  EventRenderedArgs,
+  AgendaService,
   ActionEventArgs,
   TimelineMonthService,
   MonthAgendaService,
   TimelineViewsService,
 } from '@syncfusion/ej2-angular-schedule';
-
-import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
 import { Appointments } from 'src/app/shared/models/appointments.model';
-import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
-
+import { AppointmentInfo } from 'src/app/shared/models/appointment-info.model';
+import { PhysicianDetailList } from 'src/app/shared/models/physician-detail-list.model';
 import { User } from 'src/app/shared/models/user.model';
-// import { AuthenticateService, UserService } from 'src/app/services';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user/user.service';
-// import { Status } from 'src/app/Enums/status';
+import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Status } from 'src/app/shared/enums/status.enum';
+import { L10n, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 // import { CommonService } from 'src/app/services/common.service';
-// import { Appointment, AppointmentInfo, PhysicianDetailList } from 'src/app/models/appointment';
+import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
 
 L10n.load({
   'en-US': {
@@ -47,29 +46,27 @@ L10n.load({
 
 @Component({
   selector: 'app-appointments',
+  templateUrl: './appointments.component.html',
   providers: [
     DayService,
     WeekService,
     WorkWeekService,
     MonthService,
+    ResizeService,
+    DragAndDropService,
     AgendaService,
     MonthAgendaService,
     TimelineViewsService,
     TimelineMonthService,
-    ResizeService,
-    DragAndDropService,
   ],
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppointmentsComponent {
-  appointment: Appointments | undefined;
-
   @ViewChild('scheduleObj')
   public scheduleObj: ScheduleComponent | undefined;
-  // currentUser: User;
-  // physicianList: Array<PhysicianDetailList> = [];
+  currentUser: User;
+  physicianList: Array<PhysicianDetailList> = [];
   appointmentList: any = [];
   appointmentEdit: boolean = true;
   appointmentAdd: boolean = true;
@@ -107,34 +104,42 @@ export class AppointmentsComponent {
   constructor(
     private appointmentService: AppointmentSchedulerService,
     private userService: UserService,
-    private auth: AppointmentSchedulerService,
+    private auth: AuthService,
     private snackBar: MatSnackBar,
-    private zone: NgZone
-  ) // private commonService: CommonService
-  {
+    private zone: NgZone // private commonService: CommonService
+  ) {
     // this.createAppointment();
-    // this.currentUser = this.auth.currentUser.result;
+
+    this.currentUser = {
+      userId: 1,
+      roleId: 1,
+      firstName: 'Aditya',
+      lastName: 'Test',
+    }; // this.auth.currentUser.result;
+
     // this.commonService.currentRoute = 'appointment';
   }
 
   ngOnInit(): void {
     // this.getPhysicians();
     this.getAllAppointments();
-    // if (this.currentUser.roleId == 2 || this.currentUser.roleId == 3) {
-    //   this.eventSettings.allowAdding = false;
-    //   this.eventSettings.allowEditing = false;
-    //   this.eventSettings.allowDeleting = false;
-    // }
+    if (this.currentUser.roleId == 2 || this.currentUser.roleId == 3) {
+      this.eventSettings.allowAdding = false;
+      this.eventSettings.allowEditing = false;
+      this.eventSettings.allowDeleting = false;
+    }
   }
 
   // private getPhysicians() {
-  //   this.userService.getAllUsers('Physician').subscribe((result) => {
-  //     result.forEach((physicianObj) => {
-  //       this.physicianList.push({
-  //         Id: physicianObj.userId,
-  //         PhysicianText: physicianObj.firstName + ' ' + physicianObj.lastName,
-  //       });
-  //     });
+  //   this.userService.getAllUsers(2).subscribe((result) => {
+  //     result.forEach(
+  //       (e: { userId: any; firstName: string; lastName: string }) => {
+  //         this.physicianList.push({
+  //           Id: e.userId,
+  //           PhysicianText: e.firstName + ' ' + e.lastName,
+  //         });
+  //       }
+  //     );
   //   });
   // }
 
@@ -150,14 +155,13 @@ export class AppointmentsComponent {
               Subject: element.Reason,
               Description: element.Reason,
               Physician: element.PhysicianId,
-              StartTime: element.TimeSlot,
-              EndTime: element.TimeSlot,
+              StartTime: element.StartTime,
+              EndTime: element.EndTime,
               Status: element.Status,
-              PhysicianName: element.PhysicianName, // this.searchPhysician(element.PhysicianId),
+              // PhysicianName: this.searchPhysician(element.PhysicianId),
             };
             this.appointmentList.push(appointment);
           });
-          console.log(this.appointmentList);
         });
     });
   }
@@ -178,7 +182,7 @@ export class AppointmentsComponent {
 
   public onCellDoubleClick(event: any) {
     var startDate = new Date(event.startTime);
-    // this.physicianList = [];
+    this.physicianList = [];
     // this.getPhysiciansByAvailability(startDate);
     console.log(event);
   }
@@ -198,11 +202,11 @@ export class AppointmentsComponent {
 
   public onEventRendered(args: EventRenderedArgs): void {
     switch (args.data.Status) {
-      case false:
-        (args.element as HTMLElement).style.backgroundColor = '#ff0000';
+      case 'Declined':
+        (args.element as HTMLElement).style.backgroundColor = '#f44336';
         break;
-      case true:
-        (args.element as HTMLElement).style.backgroundColor = '#00ff00';
+      case 'Active':
+        (args.element as HTMLElement).style.backgroundColor = '#04AA6D';
         break;
       case 'Pending':
         (args.element as HTMLElement).style.backgroundColor = '#3f51b5';
@@ -218,34 +222,22 @@ export class AppointmentsComponent {
     ) {
       if (args.requestType === 'eventCreate') {
         var data = args.data[0];
-        var appointmentInfo: Appointments = {
-          PatientId: 3,
-          PhysicianId: 5,
-          Reason: data.Subject,
-          TimeSlot: 5,
-          Duration: 30,
-          Status: false,
-          IsActive: false,
-          CreatedBy: 3,
-          CreatedDate: new Date(),
-          UpdatedBy: 7,
-          SlotDate: data.StartTime,
-          UpdatedDate: new Date(),
-          // patientId: this.currentUser.userId,
-          // physicianId: data.Physician,
-          // title: data.Subject,
-          // startTime: data.StartTime,
-          // endTime: data.EndTime,
-          // status: Status[Status.Pending],
-          // reason: data.Description,
-          // patientName: null,
-          // id: 0,
-          // date: null,
-          // time: null,
-          // physicianName: data.Physician,
+        var appointmentInfo: AppointmentInfo = {
+          patientId: 2, // this.currentUser.userId,
+          physicianId: data.Physician,
+          title: data.Subject,
+          startTime: data.StartTime,
+          endTime: data.EndTime,
+          status: Status[Status.Pending],
+          reason: data.Description,
+          patientName: null,
+          id: 0,
+          date: null,
+          time: null,
+          physicianName: data.Physician,
         };
         console.log(appointmentInfo);
-        //console.log(this.physicianList);
+        console.log(this.physicianList);
         this.appointmentService.createAppointment(appointmentInfo);
         // .subscribe((response: any) => {
         //   if (response.isSuccess) {
@@ -265,56 +257,41 @@ export class AppointmentsComponent {
         //     });
         //   }
         // });
-        // } else if (args.requestType === 'eventRemove') {
-        //   var data = args.data[0];
-        //   this.appointmentService
-        //     .deleteAppointment(data.Id)
-        //     .subscribe((response: any) => {
-        //       if (response.isSuccess) {
-        //         this.snackBar.open('Appointment deleted successfully', 'X', {
-        //           horizontalPosition: 'right',
-        //           verticalPosition: 'top',
-        //           duration: 5000,
-        //           panelClass: ['mat-toolbar', 'custom-snackbar'],
-        //         });
-        //       } else {
-        //         this.snackBar.open('failed', 'X', {
-        //           horizontalPosition: 'right',
-        //           verticalPosition: 'top',
-        //           duration: 5000,
-        //           panelClass: ['mat-toolbar', 'error-snackbar'],
-        //         });
-        //       }
+      } else if (args.requestType === 'eventRemove') {
+        var data = args.data[0];
+        this.appointmentService.deleteAppointment(data.Id);
+        // .subscribe((response: any) => {
+        //   if (response.isSuccess) {
+        //     this.snackBar.open('Appointment deleted successfully', 'X', {
+        //       horizontalPosition: 'right',
+        //       verticalPosition: 'top',
+        //       duration: 5000,
+        //       panelClass: ['mat-toolbar', 'custom-snackbar'],
         //     });
+        //   } else {
+        //     this.snackBar.open('failed', 'X', {
+        //       horizontalPosition: 'right',
+        //       verticalPosition: 'top',
+        //       duration: 5000,
+        //       panelClass: ['mat-toolbar', 'error-snackbar'],
+        //     });
+        //   }
+        // });
       } else if (args.requestType === 'eventChange') {
         var updateData = args.changedRecords[0];
-        var appointmentInformation: Appointments = {
-          AppointmentId: 37,
-          PatientId: 0,
-          PhysicianId: 0,
-          Reason: 'string',
-          TimeSlot: 0,
-          Duration: 0,
-          Status: true,
-          IsActive: true,
-          CreatedBy: 0,
-          CreatedDate: new Date(),
-          UpdatedBy: 0,
-          UpdatedDate: new Date(),
-          SlotDate: new Date(),
-
-          // PatientId: 3, // patientId: this.currentUser.userId,
-          // PhysicianId: 5, // physicianId: 0,
-          // Reason: updateData.Subject,
-          // TimeSlot: updateData.StartTime,
-          // Duration: 30,
-          // Status: false,
-          // IsActive: false,
-          // CreatedBy: 3,
-          // CreatedDate: new Date(),
-          // UpdatedBy: 7,
-          // SlotDate: new Date(),
-          // UpdatedDate: new Date(),
+        var appointmentInformation: AppointmentInfo = {
+          patientId: 9, // this.currentUser.userId,
+          physicianId: 0,
+          title: updateData.Subject,
+          startTime: updateData.StartTime,
+          endTime: updateData.EndTime,
+          status: Status[Status.Pending],
+          reason: updateData.Description,
+          patientName: null,
+          id: 0,
+          date: null,
+          time: null,
+          physicianName: updateData.Physician,
         };
         this.appointmentService.updateAppointment(appointmentInformation);
         // .subscribe((response: any) => {
@@ -339,24 +316,5 @@ export class AppointmentsComponent {
       //   args.cancel = true;
       // }
     }
-  }
-
-  createAppointment() {
-    // this.appointment = new Appointments(
-    //   3,
-    //   6,
-    //   'Appointment',
-    //   4,
-    //   20,
-    //   false,
-    //   false,
-    //   3,
-    //   new Date(),
-    //   1,
-    //   new Date(),
-    //   new Date()
-    // );
-
-    this.appointmentService.createAppointment(this.appointment);
   }
 }

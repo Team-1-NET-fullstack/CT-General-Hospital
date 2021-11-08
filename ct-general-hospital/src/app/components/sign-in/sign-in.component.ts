@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
+import { UserLogin } from 'src/app/shared/models/UserLogin.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -41,7 +42,7 @@ export class SignInComponent implements OnInit {
       : 4;
 
     // Creating object
-    const ob: User = {
+    const ob: UserLogin = {
       userName: userName,
       password: password,
       roleId: roleId,

@@ -14,8 +14,8 @@
       <td>{{ appointment.Reason }}</td>
       <td>{{ appointment.PatientName }}</td>
       <td>{{ appointment.PhysicianName }}</td>
-      <td>{{ appointment.SlotDate | date: "shortDate" }}</td>
-      <td>{{ appointment.TimeSlot }}</td>
+      <td>{{ appointment.StartTime | date: "shortDate" }}</td>
+      <td>{{ appointment.EndTime }}</td>
       <td>
         <span *ngIf="appointment.Status" style="color: green">Approved</span>
         <span *ngIf="!appointment.Status" style="color: red">Declined</span>

@@ -15,6 +15,10 @@ export class AppointmentSchedulerService {
     );
   }
 
+  GetAllAvailablePhysicians(startDate: Date) {
+    throw new Error('Method not implemented.');
+  }
+
   createAppointment(newAppointment: any) {
     this.http
       .post(
@@ -37,5 +41,9 @@ export class AppointmentSchedulerService {
         console.log(res);
         console.log('data updated successfully');
       });
+  }
+
+  deleteAppointment(Id: any) {
+    throw new Error('Method not implemented.');
   }
 }
