@@ -22,6 +22,7 @@ import {
 import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 
+import { PatientVisitDetailsComponent } from './components/Patient/patient-visit-details/patient-visit-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
     routingComponents,
     AuthDirective,
     CapitalizePipe,
+    PatientVisitDetailsComponent,
   ],
   imports: [
     BrowserModule,

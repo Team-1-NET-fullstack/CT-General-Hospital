@@ -16,22 +16,25 @@ export class VitalSignsComponent implements OnInit {
   ngOnInit(): void {
     let height = null;
     let weight = null;
-    let bodyTemparature = null;
+    let bodyTemperature = null;
     let respirationRate = null;
     let bloodPressure = null;
+    let patientVisitId;
+    let PatientVitalId;
 
     this.form = new FormGroup({
       height: new FormControl(height, [
         Validators.required,
         Validators.maxLength(3),
       ]),
+
       weight: new FormControl(weight, [
         Validators.required,
         Validators.maxLength(3),
       ]),
-      bodyTemparature: new FormControl(bodyTemparature, [
+      bodyTemperature: new FormControl(bodyTemperature, [
         Validators.required,
-        Validators.maxLength(3),
+        Validators.maxLength(6),
       ]),
       respirationRate: new FormControl(respirationRate, [
         Validators.required,
@@ -50,28 +53,30 @@ export class VitalSignsComponent implements OnInit {
 
   saveVitals() {
     // Gathering data
-    const patientVisitId = 1234;
+    const patientVisitId = 4;
     const height = this.form.value.height;
     const weight = this.form.value.weight;
-    const bodyTemparature = this.form.value.bodyTemparature;
+    const bodyTemperature = this.form.value.bodyTemperature;
     const respirationRate = this.form.value.respirationRate;
     const bloodPressure = this.form.value.bloodPressure;
-    const updatedBy = 'robert@ctgeneral.com';
-    const insertedDate = new Date();
-    const id = this.form.value.id;
+
+    //   const updatedBy = 'robert@ctgeneral.com';
+    // const insertedDate = new Date();
+    //const PatientVitalId = this.form.value.id;
 
     // Create Ob
     const ob = new VitalSigns(
       patientVisitId,
       height,
       weight,
-      bodyTemparature,
+      bodyTemperature,
       respirationRate,
-      bloodPressure,
-      insertedDate,
-      updatedBy,
-      id
+      bloodPressure
+      //insertedDate,
+      //  updatedBy,
+      // PatientVitalId
     );
+    console.log(ob);
 
     // Send to service
     this.medicalInformationService.addVitals(ob);

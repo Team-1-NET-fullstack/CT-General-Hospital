@@ -48,6 +48,8 @@ import { NotesComponent } from './components/inbox/notes/notes.component';
 import { SendComponent } from './components/inbox/send/send.component';
 import { SentComponent } from './components/inbox/sent/sent.component';
 import { ReceivedComponent } from './components/inbox/received/received.component';
+import { PatientVisitDetailsComponent } from './components/Patient/patient-visit-details/patient-visit-details.component';
+
 const routes: Routes = [
   //main
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
@@ -111,8 +113,12 @@ const routes: Routes = [
         path: 'dashboard',
         component: DisplayAppointmentsComponent,
       },
+      // {
+      //   path: 'patient-visit',
+      //   component: PatientVisitComponent,
+      // },
       {
-        path: 'patient-visit',
+        path: 'patient-visit/:patientId',
         component: PatientVisitComponent,
       },
       {
@@ -154,6 +160,10 @@ const routes: Routes = [
       {
         path: 'patient-demographics',
         component: PatientDemographicsComponent,
+      },
+      {
+        path: 'patient-profile',
+        component: PatientProfileComponent,
       },
     ],
   },
@@ -193,9 +203,13 @@ const routes: Routes = [
         component: TermsConditionsComponent,
       },
       {
-        path: 'patient-visit',
+        path: 'patient-visit/:patientId',
         component: PatientVisitComponent,
       },
+      // {
+      //   path: 'patient-visit',
+      //   component: PatientVisitComponent,
+      // },
       {
         path: 'vital-signs',
         component: VitalSignsComponent,
@@ -232,6 +246,14 @@ const routes: Routes = [
         path: 'master',
         component: MasterComponent,
       },
+      {
+        path: 'patient-profile',
+        component: PatientProfileComponent,
+      },
+      {
+        path: 'patient-visit-detials',
+        component: PatientVisitDetailsComponent,
+      },
     ],
   },
 
@@ -250,7 +272,7 @@ const routes: Routes = [
         component: DisplayAppointmentsComponent,
       },
       {
-        path: 'patient-visit',
+        path: 'patient-visit/:patientId',
         component: PatientVisitComponent,
       },
       {
@@ -333,4 +355,5 @@ export const routingComponents = [
   SendComponent,
   SentComponent,
   ReceivedComponent,
+  PatientVisitDetailsComponent,
 ];

@@ -11,39 +11,38 @@ import { ProcedureDetails } from 'src/app/shared/models/procedure-details.model'
   styleUrls: ['./procedure-details.component.css'],
 })
 export class ProcedureDetailsComponent implements OnInit {
-  procedureCode = new FormControl();
-  procedureCodeList: string[] = ['P00','P002','P003','P003','p004'];
+  // procedureCode = new FormControl();
+  // procedureCodeList: string[] = ['P00','P002','P003','P003','p004'];
   procedureDescription = new FormControl();
-  procedureDescriptionList: string[] = ['Bypass Cerebral Ventricle to Subgaleal Space with Autologous Tissue Substitute', 'Open Approach'];
- 
+  procedureDescriptionList: string[] = [
+    'Bypass Cerebral Ventricle to Subgaleal Space with Autologous Tissue Substitute',
+    'Open Approach',
+  ];
+
   form: FormGroup = new FormGroup({});
 
   constructor(private medicalInformationService: MedicalInformationService) {}
 
   ngOnInit(): void {
-    let procedureId= null;
-    let procedureDescription= null;
-    let isDepricated= false;
-    
+    let procedureId = null;
+    let procedureDescription = null;
+    let isDepricated = false;
 
     this.form = new FormGroup({
-      procedureId: new FormControl(procedureId
-      ),
-      procedureDescription: new FormControl(procedureDescription
-      ),
+      procedureId: new FormControl(procedureId),
+      procedureDescription: new FormControl(procedureDescription),
       isDepricated: new FormControl(isDepricated),
-     
     });
   }
-  
+
   saveProcedureDetails() {
     // Gathering data
     const patientVisitId = 1234;
     const procedureId = this.form.value.procedureId;
     const procedureDescription = this.form.value.procedureDescription;
     const isDepricated = this.form.value.isDepricated;
-    const updatedBy='robert@ctgeneral.com';
-    const insertedDate=new Date();
+    const updatedBy = 'robert@ctgeneral.com';
+    const insertedDate = new Date();
     const id = this.form.value.id;
 
     // Create Ob
@@ -54,11 +53,11 @@ export class ProcedureDetailsComponent implements OnInit {
       isDepricated,
       insertedDate,
       updatedBy,
-       id,
+      id
     );
 
     // Send to service
-   this.medicalInformationService.addProcedureDetails(ob);
-   alert("Record Added");
+    this.medicalInformationService.addProcedureDetails(ob);
+    alert('Record Added');
   }
 }

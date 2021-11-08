@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MedicalInformationService } from 'src/app/core/services/medical-information.service';
+import { PatientDemographicsService } from 'src/app/core/services/patient-demographics.service';
+import { DemographicsDetails } from 'src/app/shared/models/patient-demographics.model';
 import { PatientDetails } from 'src/app/shared/models/patient-details.model';
 
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
-  styleUrls: ['./patient-details.component.css']
+  styleUrls: ['./patient-details.component.css'],
 })
 export class PatientDetailsComponent implements OnInit {
   emailFormControl = new FormControl('', [
@@ -14,77 +17,70 @@ export class PatientDetailsComponent implements OnInit {
     Validators.email,
   ]);
   form: FormGroup = new FormGroup({});
-
-  constructor(private medicalInformationService: MedicalInformationService) {}
+  patientId: number = 0;
+  demographicsDetails: DemographicsDetails = new DemographicsDetails();
+  constructor(
+    private medicalInformationService: MedicalInformationService,
+    private patientDemographicsService: PatientDemographicsService,
+    private router: ActivatedRoute
+  ) {
+    this.patientId = Number(this.router.snapshot.paramMap.get('patientId'));
+  }
 
   ngOnInit(): void {
-    let title= null;
-    let firstName = null;
-    let lastName= null;
-    let dateOfBirth=null;
-    let gender=null;
-    let race=null;
-    let ethinicity=null;
-    let languagesKnown=null;
-    let emailId=null;
-    let telePhoneNo=null;
-    let address=null;
-    let allergies=null;
+    this.router.params.subscribe((params: Params) => {
+      //  debugger;
+      console.log('this is id from patient details:-  ' + params['patientId']);
+    });
+
+    this.getPatientDetails();
+    let title = null;
+    console.log(this.demographicsDetails);
+    //let firstName = null;
+
+    let firstName = this.demographicsDetails.firstName;
+    let lastName = null;
+    let dateOfBirth = null;
+    let gender = null;
+    let race = null;
+    let ethinicity = null;
+    let languagesKnown = null;
+    let emailId = null;
+    let telePhoneNo = null;
+    let address = null;
+    let allergies = null;
 
     this.form = new FormGroup({
-      title: new FormControl(title, [
-        Validators.required,
-      ]),
+      title: new FormControl(title, [Validators.required]),
+
       firstName: new FormControl(firstName, [
         Validators.required,
         Validators.maxLength(60),
       ]),
-      lastName: new FormControl(lastName, [
-        Validators.required,
-        
-      ]),
-      dateOfBirth: new FormControl(dateOfBirth, [
-        Validators.required,
-        
-      ]),
-      gender: new FormControl(gender, [
-        Validators.required,
-        
-      ]),
-      race: new FormControl(race, [
-        Validators.required,
-        
-      ]),
-      ethinicity: new FormControl(ethinicity, [
-        Validators.required,
-        
-      ]),
-      languagesKnown: new FormControl(languagesKnown, [
-        Validators.required,
-        
-      ]),
-      emailId: new FormControl(emailId, [
-        Validators.required,
-        
-      ]),
-      telePhoneNo: new FormControl(telePhoneNo, [
-        Validators.required,
-        
-      ]),
-      address: new FormControl(address, [
-        Validators.required,
-        
-      ]),
-      allergies: new FormControl(allergies, [
-        Validators.required,
-        
-      ]),
-     
+      lastName: new FormControl(lastName, [Validators.required]),
+      dateOfBirth: new FormControl(dateOfBirth, [Validators.required]),
+      gender: new FormControl(gender, [Validators.required]),
+      race: new FormControl(race, [Validators.required]),
+      ethinicity: new FormControl(ethinicity, [Validators.required]),
+      languagesKnown: new FormControl(languagesKnown, [Validators.required]),
+      emailId: new FormControl(emailId, [Validators.required]),
+      telePhoneNo: new FormControl(telePhoneNo, [Validators.required]),
+      address: new FormControl(address, [Validators.required]),
+      allergies: new FormControl(allergies, [Validators.required]),
     });
   }
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
+  };
+  getPatientDetails() {
+    this.patientDemographicsService
+      .GetDemographics(this.patientId)
+      .subscribe((data: any) => {
+        this.demographicsDetails = data[0];
+        console.log(data);
+      });
   }
+
   savePatientDetails() {
     // Gathering data
     const patientVisitId = 1234;
@@ -100,8 +96,8 @@ export class PatientDetailsComponent implements OnInit {
     const telePhoneNo = this.form.value.telePhoneNo;
     const address = this.form.value.address;
     const allergies = this.form.value.allergies;
-    const updatedBy='robert@ctgeneral.com';
-    const insertedDate=new Date();
+    const updatedBy = 'robert@ctgeneral.com';
+    const insertedDate = new Date();
     const id = this.form.value.id;
 
     // Create Ob
@@ -121,11 +117,11 @@ export class PatientDetailsComponent implements OnInit {
       allergies,
       insertedDate,
       updatedBy,
-       id,
+      id
     );
 
     // Send to service
-   this.medicalInformationService.addPatientDetails(ob);
-   alert("Record Added");
+    this.medicalInformationService.addPatientDetails(ob);
+    alert('Record Added');
   }
 }

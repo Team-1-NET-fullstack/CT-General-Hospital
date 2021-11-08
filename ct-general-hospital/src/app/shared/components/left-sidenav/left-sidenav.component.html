@@ -72,13 +72,23 @@
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
-    <span>Profile</span>
+    <span>Patients Profile</span>
   </button>
   <button
     mat-button
-    *ngIf="user?.roleId == 3 || user?.roleId == 2"
+    *ngIf="user?.roleId == 2"
     class="menu-button"
-    routerLink="/patient/patient-details"
+    routerLink="/doctor/patient-profile"
+    routerLinkActive="active-link"
+  >
+    <mat-icon>personal_injury</mat-icon>
+    <span>Patients Details</span>
+  </button>
+  <button
+    mat-button
+    *ngIf="user?.roleId == 3"
+    class="menu-button"
+    routerLink="/nurse/patient-profile"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
@@ -151,6 +161,29 @@
     routerLinkActive="active-link"
     (click)="openDialog()"
   >
+    <!-- //All patient-visit-details -->
+    <button
+      *ngIf="user?.roleId == 3"
+      mat-button
+      class="menu-button"
+      routerLink="/nurse/patient-visit-details"
+      routerLinkActive="active-link"
+    >
+      <mat-icon>All Visits</mat-icon>
+      <span>Visit Details</span>
+    </button>
+    <button
+      *ngIf="user?.roleId == 3"
+      mat-button
+      class="menu-button"
+      routerLink="/nurse/patient-visit-details"
+      routerLinkActive="active-link"
+    >
+      <mat-icon>Visit Details</mat-icon>
+      <span>All Visit Details </span>
+    </button>
+    <!-- // All Patient patient-visit-details -->
+
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
   </button>

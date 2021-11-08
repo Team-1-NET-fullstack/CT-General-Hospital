@@ -27,7 +27,7 @@ export class MedicalInformationService {
   }
   loadVitalSigns() {
     this.http
-      .get<VitalSigns[]>('http://localhost:3000/VitalSigns')
+      .get<VitalSigns[]>('http://localhost:59523/api/PatientVitals')
       .subscribe((vitalSigns) => {
         this.vitalSigns.splice(0, this.vitalSigns.length); // Clear array
         this.vitalSigns.push(...vitalSigns); // add new element
@@ -72,18 +72,18 @@ export class MedicalInformationService {
   }
   addVitals(vitalSigns: VitalSigns) {
     this.http
-      .post('http://localhost:3000/VitalSigns', vitalSigns)
+      .post('http://localhost:59523/api/PatientVitals', vitalSigns)
       .subscribe((res) => {
         // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
+        console.log('data inserted success fully');
       });
   }
   addDiagnosisDetails(listOfObjects: Object) {
     this.http
       .post('http://localhost:3000/DiagnosisDetails', listOfObjects)
       .subscribe((res) => {
-        // console.log(res);
+        console.log(res);
         this.loadData();
         // console.log("data inserted success fully");
       });

@@ -47,7 +47,7 @@ export class PatientDemographicsComponent implements OnInit {
         Validators.minLength(2),
         Validators.pattern('[A-Za-z]+'),
       ]),
-      language: new FormControl('', [
+      languages: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
         Validators.pattern('[A-Za-z]+'),
@@ -87,36 +87,45 @@ export class PatientDemographicsComponent implements OnInit {
       ]),
 
       nomineefirstname: new FormControl('', [
-        Validators.required,
+        //  Validators.required,
         Validators.maxLength(15),
         Validators.minLength(2),
         Validators.pattern('[A-Za-z]+'),
       ]),
       nomineelastname: new FormControl('', [
-        Validators.required,
+        //Validators.required,
         Validators.maxLength(25),
         Validators.minLength(2),
         Validators.pattern('[A-Za-z]+'),
       ]),
       namineeemail: new FormControl('', [
-        Validators.required,
+        //Validators.required,
         Validators.email,
       ]),
       contact2: new FormControl('', [
-        Validators.required,
+        //  Validators.required,
         Validators.minLength(10),
         Validators.pattern('[0-9]+'),
       ]),
-      relationship: new FormControl('', [Validators.required]),
-      nomineeaddress: new FormControl('', [Validators.required]),
-      access: new FormControl('', [Validators.required]),
+      relationship: new FormControl(
+        ''
+        // [Validators.required]
+      ),
+      nomineeaddress: new FormControl(
+        ''
+        // [Validators.required]
+      ),
+      access: new FormControl(
+        ''
+        //[Validators.required]
+      ),
     });
   }
 
   ngOnInit(): void {}
 
   saveDemographicsDetails() {
-    // console.log(this.form);
+    console.log(this.form);
 
     if (this.form.valid) {
       //console.log('form valid');
@@ -126,7 +135,7 @@ export class PatientDemographicsComponent implements OnInit {
       this.demogrp.DOB = this.form.value.dob;
       this.demogrp.gender = this.form.value.gender;
       this.demogrp.race = this.form.value.race;
-      this.demogrp.language = this.form.value.language;
+      this.demogrp.languages = this.form.value.languages;
       this.demogrp.email = this.form.value.email;
       this.demogrp.address = this.form.value.address;
       this.demogrp.pincode = this.form.value.pincode;
@@ -134,12 +143,17 @@ export class PatientDemographicsComponent implements OnInit {
       this.demogrp.state = this.form.value.state;
       this.demogrp.contactNumber = this.form.value.contact1;
       this.demogrp.emergencyContact = this.form.value.emergencycontact;
-      this.demogrp.nomineeFirstName = this.form.value.nomineefirstname;
-      this.demogrp.nomineeLastName = this.form.value.nomineelastname;
-      this.demogrp.nomineeEmail = this.form.value.namineeemail;
-      this.demogrp.relationship = this.form.value.relationship;
-      this.demogrp.nomineeAddress = this.form.value.nomineeaddress;
-      this.demogrp.access = this.form.value.access;
+
+      // this.demogrp.nomineeFirstName = this.form.value.nomineefirstname;
+      // this.demogrp.nomineeLastName = this.form.value.nomineelastname;
+      // this.demogrp.nomineeEmail = this.form.value.namineeemail;
+      // this.demogrp.relationship = this.form.value.relationship;
+      // this.demogrp.nomineeAddress = this.form.value.nomineeaddress;
+      // this.demogrp.access = this.form.value.access;
+      this.demogrp.CreatedBy = 1;
+      this.demogrp.CreatedDate;
+      this.demogrp.UpdatedBy = 1;
+      this.demogrp.UpdatedDate;
       this.patientdemographicsservice.addDemographics(this.demogrp);
     }
     console.log(JSON.stringify(this.demogrp));

@@ -1,9 +1,39 @@
-.patient-form {
+.mat-form-field {
+  margin-left: 16px;
+  margin-top: 16px;
+}
+mat-radio-button {
+  margin: 0.5px;
+  margin-left: 8px;
+}
+mat-label {
+  margin-left: 20px;
+  margin-right: 16px;
+}
+
+div {
+  float: right;
+}
+
+.button-submit {
+  background-color: #6944f6;
+  margin: 0 8px 0;
+}
+
+.button-reset {
+  background-color: #ffad1f;
+  margin-right: 0 8px 0;
+}
+
+/* /* .patient-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-  }
-  
+  } */
+/* .mat-form-field {
+    margin-left: 16px;
+    margin-top: 16px;
+  }  
   .patient-full-width {
     width: 100%;
   }
@@ -18,6 +48,7 @@
     margin: 8px;
     color: #ffffff;
     background-color: #007bff;
+    
   }
   
   .mat-button.mat-button-disabled.mat-button-disabled {
@@ -30,3 +61,14 @@
   .move-down-24px{
     margin-top: 24px;
   }
+
+  .button-submit {
+    background-color: #6944f6;
+    margin: 0 8px 0;
+  }
+  
+  .button-reset {
+    background-color: #ffad1f;
+    margin-right: 0 8px 0;
+  }
+   */

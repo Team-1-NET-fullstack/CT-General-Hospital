@@ -7,7 +7,7 @@ export class DemographicsDetails {
   public DOB!: Date;
   public gender!: string;
   public race!: string;
-  public language!: Date;
+  public languages!: string;
   public email!: string;
   public address!: string;
   public pincode!: string;
@@ -15,12 +15,16 @@ export class DemographicsDetails {
   public state!: string;
   public contactNumber!: number;
   public emergencyContact!: number;
-  public nomineeFirstName!: string;
-  public nomineeLastName!: string;
-  public nomineeEmail!: string;
-  public relationship!: string;
-  public contactnumber2!: number;
-  public nomineeAddress!: string;
-  public access!: boolean;
-  public id!: number;
+  public CreatedBy!: number;
+  public CreatedDate!: Date;
+  public UpdatedBy!: number;
+  public UpdatedDate!: Date;
 }
+
+// public nomineeFirstName!: string;
+// public nomineeLastName!: string;
+// public nomineeEmail!: string;
+// public relationship!: string;
+// public contactnumber2!: number;
+// public nomineeAddress!: string;
+// public access!: boolean;

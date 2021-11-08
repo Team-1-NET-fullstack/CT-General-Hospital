@@ -1,6 +1,6 @@
 <form class="procedure-form" [formGroup]="form">
-  <mat-form-field class="procedure-full-width">
-    <mat-label>Procedure Code </mat-label>
+  <!-- <mat-form-field class="procedure-full-width"> -->
+  <!-- <mat-label>Procedure Code </mat-label>
     <mat-select [formControl]="procedureCode" multiple  formControlName="procedureCode"
     id="procedureCode">
       <mat-select-trigger>
@@ -11,31 +11,41 @@
       </mat-select-trigger>
       <mat-option *ngFor="let procedureCode of procedureCodeList" [value]="procedureCode">{{procedureCode}}</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
   <mat-form-field class="procedure-full-width">
     <mat-label>Procedure Description</mat-label>
-    <mat-select [formControl]="procedureDescription" multiple  formControlName="procedureDescription"
-    id="procedureDescription">
+    <mat-select
+      [formControl]="procedureDescription"
+      multiple
+      formControlName="procedureDescription"
+      id="procedureDescription"
+    >
       <mat-select-trigger>
-        {{procedureDescription.value ? procedureDescription.value[0] : ''}}
-        <span *ngIf="procedureDescription.value?.length > 1" class="procedure-additional-selection">
-          (+{{procedureDescription.value.length - 1}} {{procedureDescription.value?.length === 2 ? 'other' : 'others'}})
+        {{ procedureDescription.value ? procedureDescription.value[0] : "" }}
+        <span
+          *ngIf="procedureDescription.value?.length > 1"
+          class="procedure-additional-selection"
+        >
+          (+{{ procedureDescription.value.length - 1 }}
+          {{ procedureDescription.value?.length === 2 ? "other" : "others" }})
         </span>
       </mat-select-trigger>
-      <mat-option *ngFor="let procedureDescription of procedureDescriptionList" [value]="procedureDescription">{{procedureDescription}}</mat-option>
+      <mat-option
+        *ngFor="let procedureDescription of procedureDescriptionList"
+        [value]="procedureDescription"
+        >{{ procedureDescription }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
-  <mat-form-field class="procedure-full-width" >
+  <mat-form-field class="procedure-full-width">
     <mat-label>Procedure Note</mat-label>
     <textarea
       matInput
       placeholder="Enter note for procedure(if any)"
       aria-label="procedureDescription"
       matInput
-       formControlName="procedureDescription"
-       id="procedureDescription"
+      formControlName="procedureDescription"
+      id="procedureDescription"
     ></textarea>
   </mat-form-field>
-  
 </form>
-  

@@ -15,10 +15,16 @@
       <td>
         <mat-form-field class="patient-full-width">
           <mat-label>First name</mat-label>
-          <input matInput formControlName="firstName" id="firstName" />
+          <input
+            matInput
+            formControlName="firstName"
+            id="firstName"
+            value="demographicsDetails.firstName"
+          />
 
-          <mat-error *ngIf="hasError('firstName', 'required')">FirstName is required</mat-error>
-    
+          <mat-error *ngIf="hasError('firstName', 'required')"
+            >FirstName is required</mat-error
+          >
         </mat-form-field>
       </td>
       <td>
@@ -26,8 +32,9 @@
           <mat-label>Last Name </mat-label>
           <input matInput formControlName="lastName" id="lastName" />
 
-          <mat-error *ngIf="hasError('lastName', 'required')">LastName is required</mat-error>
-
+          <mat-error *ngIf="hasError('lastName', 'required')"
+            >LastName is required</mat-error
+          >
         </mat-form-field>
       </td>
       <td>
@@ -74,19 +81,30 @@
         <mat-form-field class="patient-full-width">
           <mat-label>Ethinicity</mat-label>
 
-          <input matInput placeholder="" formControlName="ethinicity" id="ethinicity"/>
-          <mat-error *ngIf="hasError('ethinicity', 'required')">Ethinicity is required</mat-error>
-    
+          <input
+            matInput
+            placeholder=""
+            formControlName="ethinicity"
+            id="ethinicity"
+          />
+          <mat-error *ngIf="hasError('ethinicity', 'required')"
+            >Ethinicity is required</mat-error
+          >
         </mat-form-field>
       </td>
       <td>
         <mat-form-field class="patient-full-width">
           <mat-label>Languages Known</mat-label>
 
-          <input matInput formControlName="languagesKnown" id="languagesKnown" >
-            
-          <mat-error *ngIf="hasError('languagesKnown', 'required')">LanguagesKnown is required</mat-error>
-    
+          <input
+            matInput
+            formControlName="languagesKnown"
+            id="languagesKnown"
+          />
+
+          <mat-error *ngIf="hasError('languagesKnown', 'required')"
+            >LanguagesKnown is required</mat-error
+          >
         </mat-form-field>
       </td>
     </tr>
@@ -95,25 +113,44 @@
     <tr>
       <td>
         <mat-form-field class="patient-full-width move-down">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" formControlName="emailId" id="emailId" placeholder="Ex. pat@example.com">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            [formControl]="emailFormControl"
+            formControlName="emailId"
+            id="emailId"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
       </td>
       <td>
         <mat-form-field class="patient-full-width move-down">
-            <mat-label>Telephone</mat-label>
-            <span matPrefix>+91 &nbsp;</span>
-            <input type="tel" matInput placeholder="555-555-1234" formControlName="telePhoneNo" id="telePhoneNo" />
-            <mat-icon matSuffix>mode_edit</mat-icon>
-            <mat-error *ngIf="hasError('telePhoneNo', 'required')">TelePhoneNo is required</mat-error>
-    
-          </mat-form-field>
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+91 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="555-555-1234"
+            formControlName="telePhoneNo"
+            id="telePhoneNo"
+          />
+          <mat-icon matSuffix>mode_edit</mat-icon>
+          <mat-error *ngIf="hasError('telePhoneNo', 'required')"
+            >TelePhoneNo is required</mat-error
+          >
+        </mat-form-field>
       </td>
 
       <td>
@@ -126,8 +163,9 @@
             id="address"
           >
           </textarea>
-          <mat-error *ngIf="hasError('address', 'required')">Address is required</mat-error>
-    
+          <mat-error *ngIf="hasError('address', 'required')"
+            >Address is required</mat-error
+          >
         </mat-form-field>
       </td>
       <!-- <td>
@@ -142,5 +180,9 @@
     </tr>
   </table>
   <br />
-  <button mat-button>Save</button>
+  <!-- <button mat-button>Save</button> -->
+  <div>
+    <button mat-flat-button type="submit" class="button-submit">Submit</button>
+    <button mat-flat-button type="reset" class="button-reset">Cancel</button>
+  </div>
 </form>
