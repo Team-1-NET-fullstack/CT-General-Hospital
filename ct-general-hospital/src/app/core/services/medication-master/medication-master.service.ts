@@ -4,6 +4,7 @@ import {
   MedicationMaster,
   MedicationMasterIncomingDTO,
 } from 'src/app/shared/models/medicationmaster.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class MedicationMasterService {
   constructor(private masterClient: HttpClient) {}
   getAllMedicationbyDesc(desc: string) {
     return this.masterClient.get<MedicationMasterIncomingDTO>(
-      'http://localhost:9001/api/MedicationMasters/GetMedicationByDescription?desc=' +
+      `${environment.medicationApiBaseUrl}GetMedicationByDescription?desc=` +
         desc
     );
   }
@@ -20,7 +21,7 @@ export class MedicationMasterService {
   createMedication(medication: MedicationMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/MedicationMasters/CreateNewMedication',
+        `${environment.medicationApiBaseUrl}CreateNewMedication`,
         medication
       )
       .subscribe((res) => {
@@ -30,7 +31,7 @@ export class MedicationMasterService {
   updateMedication(medication: MedicationMaster) {
     console.log(medication);
     this.masterClient
-      .put('http://localhost:9001/api/MedicationMasters/UpdateMedication',medication)
+      .put(`${environment.medicationApiBaseUrl}UpdateMedication`,medication)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');

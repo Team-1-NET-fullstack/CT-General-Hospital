@@ -4,6 +4,7 @@ import {
   AllergyMaster,
   AllergyMasterIncomingDTO,
 } from 'src/app/shared/models/allergymaster.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +13,16 @@ export class AllergyMasterService {
   constructor(private masterClient: HttpClient) {}
   getAllAllergybyDesc(desc: string) {
     return this.masterClient.get<AllergyMasterIncomingDTO>(
-      'http://localhost:9001/api/AllergyMasters/GetAllergyByDescription?desc=' +
+      `${environment.allergyApiBaseUrl}GetAllergyByDescription?desc=` +
         desc
+        
     );
   }
 
   createAllergy(allergy: AllergyMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/AllergyMasters/CreateNewAllergy',
+        `${environment.allergyApiBaseUrl}CreateNewAllergy`,
         allergy
       )
       .subscribe((res) => {
@@ -29,7 +31,7 @@ export class AllergyMasterService {
   }
   updateAllergy(allergy: AllergyMaster) {
     this.masterClient
-      .put('http://localhost:9001/api/AllergyMasters/UpdateAllergy',allergy)
+      .put(`${environment.allergyApiBaseUrl}UpdateAllergy`,allergy)
       .subscribe((res) => {
         console.log(res);
         console.log('data updated successfully');
