@@ -6,6 +6,8 @@
           aria-label="Select an option"
           formControlName="title"
           id="title"
+          id="firstName"
+          value={{xTitle}}
         >
           <td><mat-radio-button value="Mr">Mr</mat-radio-button></td>
           <td><mat-radio-button value="Mrs">Mrs</mat-radio-button></td>
@@ -19,7 +21,7 @@
             matInput
             formControlName="firstName"
             id="firstName"
-            value="demographicsDetails.firstName"
+            value={{xFirstName}}
           />
 
           <mat-error *ngIf="hasError('firstName', 'required')"
@@ -30,7 +32,7 @@
       <td>
         <mat-form-field class="patient-full-width">
           <mat-label>Last Name </mat-label>
-          <input matInput formControlName="lastName" id="lastName" />
+          <input matInput formControlName="lastName" id="lastName"  value={{xLastName}} />
 
           <mat-error *ngIf="hasError('lastName', 'required')"
             >LastName is required</mat-error
@@ -45,6 +47,7 @@
             [matDatepicker]="picker"
             formControlName="dateOfBirth"
             id="dateOfBirth"
+            value={{xDob}}
           />
           <mat-datepicker-toggle matSuffix [for]="picker">
             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
@@ -62,6 +65,7 @@
           aria-label="Select an option"
           formControlName="gender"
           id="gender"
+          value={{xGender}}
         >
           <td><mat-radio-button value="M">Male</mat-radio-button></td>
           <td><mat-radio-button value="F">Female</mat-radio-button></td>
@@ -71,28 +75,30 @@
       <td>
         <mat-form-field class="patient-full-width">
           <mat-label>Race</mat-label>
-          <input matInput placeholder="" formControlName="race" id="race" />
+          <input matInput placeholder="" formControlName="race" id="race"
+          value={{xRace}} />
           <mat-error *ngIf="hasError('race', 'required')"
             >Race is required</mat-error
           >
         </mat-form-field>
       </td>
-      <td>
+      <!-- <td>
         <mat-form-field class="patient-full-width">
           <mat-label>Ethinicity</mat-label>
 
           <input
             matInput
-            placeholder=""
+            placeholder="Ethinicity"
             formControlName="ethinicity"
             id="ethinicity"
+            value={{xEthinicity}}
           />
           <mat-error *ngIf="hasError('ethinicity', 'required')"
             >Ethinicity is required</mat-error
           >
         </mat-form-field>
-      </td>
-      <td>
+      </td>-->
+      <td> 
         <mat-form-field class="patient-full-width">
           <mat-label>Languages Known</mat-label>
 
@@ -100,6 +106,7 @@
             matInput
             formControlName="languagesKnown"
             id="languagesKnown"
+            value={{xLanguagesKnown}}
           />
 
           <mat-error *ngIf="hasError('languagesKnown', 'required')"
@@ -121,6 +128,7 @@
             formControlName="emailId"
             id="emailId"
             placeholder="Ex. pat@example.com"
+            value={{xEmailId}}
           />
           <mat-error
             *ngIf="
@@ -145,6 +153,8 @@
             placeholder="555-555-1234"
             formControlName="telePhoneNo"
             id="telePhoneNo"
+            value={{xTelePhoneNo}}
+
           />
           <mat-icon matSuffix>mode_edit</mat-icon>
           <mat-error *ngIf="hasError('telePhoneNo', 'required')"
@@ -161,6 +171,7 @@
             placeholder="Ex. 100 Main St"
             formControlName="address"
             id="address"
+            value={{xAddress}}
           >
           </textarea>
           <mat-error *ngIf="hasError('address', 'required')"
@@ -182,7 +193,7 @@
   <br />
   <!-- <button mat-button>Save</button> -->
   <div>
-    <button mat-flat-button type="submit" class="button-submit">Submit</button>
+    <button mat-flat-button type="submit" class="button-submit" (Click)=savePatientDetails() >Submit</button>
     <button mat-flat-button type="reset" class="button-reset">Cancel</button>
   </div>
 </form>

@@ -9,6 +9,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-appointments',
@@ -37,7 +38,7 @@ export class DisplayAppointmentsComponent implements OnInit {
 
   constructor(
     private appointmentService: AppointmentSchedulerService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService, private route: Router
   ) {
     this.getAllAppointments();
   }
@@ -48,5 +49,10 @@ export class DisplayAppointmentsComponent implements OnInit {
     this.spinner.show();
     this.appointments = this.appointmentService.getAllAppointments();
     this.spinner.hide();
+  }
+  VisitDetails()
+  {
+    this.route.navigate(['/nurse/patient-visit/medical-information/']);
+
   }
 }

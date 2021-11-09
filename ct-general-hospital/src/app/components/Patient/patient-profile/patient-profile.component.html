@@ -12,10 +12,11 @@
     <th>CountryCode</th>
     <th>State</th>
     <th>Contact Number</th>
+    <th>Patient Details</th>
   </tr>
 
   <tr *ngFor="let item of demographics">
-    <td>{{ item.PatientId }}</td>
+    <!-- <td>{{ item.PatientId }}</td> -->
     <td>{{ item.Title }}</td>
     <td>{{ item.FirstName + " " + item.LastName }}</td>
     <td>{{ item.Dob | date: "shortDate" }}</td>
@@ -30,7 +31,7 @@
     <td>{{ item.ContactNumber }}</td>
     <td>
       <button value="showDetails" (click)="PatientDetails(item.PatientId)">
-        Show Details
+        Show
       </button>
     </td>
   </tr>

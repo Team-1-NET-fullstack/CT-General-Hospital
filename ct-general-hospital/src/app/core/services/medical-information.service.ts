@@ -108,11 +108,12 @@ export class MedicalInformationService {
   }
   addPatientDetails(patientDetails: PatientDetails) {
     this.http
-      .post('http://localhost:3000/PatientDetails', patientDetails)
+      .post('http://localhost:59523/api/Patients/AddPatient', patientDetails)
       .subscribe((res) => {
         // console.log(res);
         this.loadData();
         // console.log("data inserted success fully");
       });
+      
   }
 }

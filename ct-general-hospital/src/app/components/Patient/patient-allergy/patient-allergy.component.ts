@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AllergyMasterService } from 'src/app/core/services/allergy-master/allergy-master.service';
+import { getMatScrollStrategyAlreadyAttachedError } from '@angular/cdk/overlay/scroll/scroll-strategy';
+import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-patient-allergy',
   templateUrl: './patient-allergy.component.html',
@@ -9,6 +12,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PatientAllergyComponent implements OnInit {
   form: FormGroup = new FormGroup({});
+  patientId: number = 0;
+
+
+
   clinicalinfo = new FormControl('', [Validators.required]);
   allergydescription = new FormControl('', [Validators.required]);
 
@@ -35,9 +42,14 @@ export class PatientAllergyComponent implements OnInit {
   ];
   filteredOptions: Observable<string[]> | undefined;
 
-  constructor() {}
+  constructor(private allergyMasterService:AllergyMasterService,private router: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.router.params.subscribe((params: Params) => {
+      this.getAllergyDetails();
+      //  debugger;
+    });
+
     this.filteredOptions = this.allergyId.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
@@ -49,5 +61,16 @@ export class PatientAllergyComponent implements OnInit {
     return this.allergyIdList.filter((allergyIdList) =>
       allergyIdList.toLowerCase().includes(filterValue)
     );
+
+    
+
   }
+  getAllergyDetails()
+    {
+    this.allergyMasterService.getAllergyById(this.patientId)
+      .subscribe((data) => {
+        // debugger
+        console.log(data);
+      });
+    }
 }

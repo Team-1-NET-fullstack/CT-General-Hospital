@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
   AllergyMaster,
   AllergyMasterIncomingDTO,
@@ -17,12 +18,15 @@ export class AllergyMasterService {
     );
   }
 
+   getAllergyById (patientId:number):Observable<any>
+  {
+   return this.masterClient.get('http://localhost:59523/api/Allergies/'+patientId);
+   
+  }
   createAllergy(allergy: AllergyMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/AllergyMasters/CreateNewAllergy',
-        allergy
-      )
+        'http://localhost:59523/api/Allergies', allergy)
       .subscribe((res) => {
         console.log('data inserted successfully');
       });

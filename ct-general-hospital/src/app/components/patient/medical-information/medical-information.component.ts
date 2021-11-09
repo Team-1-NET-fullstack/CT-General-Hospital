@@ -32,4 +32,23 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  SaveVitalDetails()
+  {
+
+  }
+  SaveDiagnosisDetails()
+  {
+
+  }
+  SaveProcedureDetails()
+  {
+    
+  }
+  SaveMedicationDetails()
+  {
+
+  }
+
+
 }

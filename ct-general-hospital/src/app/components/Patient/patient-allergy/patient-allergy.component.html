@@ -1,12 +1,28 @@
+
 <form class="demographics-form" [formGroup]="form">
-  <!-- <mat-form-field>
-     <mat-label>Allergy Id</mat-label>
+<!-- <table>Patient Known Allergy
+<tr>
+  <th>Allergy Type</th>
+<th>Allergy Description</th>
+</tr>
+<tr>
+  <td>
+    dust
+  </td>
+  <td>
+    abscd
+  </td>
+</tr>
+</table> -->
+  <mat-form-field>
+     <mat-label>Allergy Description</mat-label>
     <select matNativeControl>
+      
       <option value="one">1</option>
       <option value="two">2</option>
       <option value="three">3</option>
     </select> 
-  </mat-form-field> -->
+  </mat-form-field>  
   <!-- <mat-form-field>
     <mat-label>Allergy Type</mat-label>
     <select matNativeControl>
@@ -32,6 +48,7 @@
       placeholder="xyz.. "
       [formControl]="allergydescription"
       required
+      
     ></textarea>
   </mat-form-field>
   <!-- <mat-form-field>
@@ -44,14 +61,14 @@
       required
     ></textarea>
   </mat-form-field> -->
-  <mat-radio-group>
+  <!-- <mat-radio-group>
     <mat-label>Is Allergy Fatal?</mat-label>
     <mat-radio-button value="Yes">Yes</mat-radio-button>
     <mat-radio-button value="No">No</mat-radio-button>
-  </mat-radio-group>
+  </mat-radio-group> -->
   <br />
   <div>
-    <button mat-flat-button type="submit" class="button-submit">Submit</button>
+    <button mat-flat-button type="submit" class="button-submit"  >Submit</button>
     <button mat-flat-button type="reset" class="button-reset">Cancel</button>
   </div>
 </form>

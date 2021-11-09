@@ -1,22 +1,38 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Title</th>
       <th>Patient Name</th>
       <th>Physicain Name</th>
       <th>Date</th>
       <th>Time</th>
       <th>Status</th>
+      <th>VisitDetails</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let appointment of appointments">
+    <!-- <tr *ngFor="let appointment of appointments">
       <td>{{ appointment.Reason }}</td>
       <td>{{ appointment.PatientName }}</td>
       <td>{{ appointment.PhysicianName }}</td>
       <td>{{ appointment.SlotDate | date: "shortDate" }}</td>
       <td>{{ appointment.TimeSlot }}</td>
       <td>{{ appointment.Status }}</td>
+    </tr> -->
+
+        <tr >
+      <td>1</td>
+      <td>feaver</td>
+      <td>PatientName</td>
+      <td>PhysicianName</td>
+      <td>SlotDate </td>
+      <td>TimeSlot</td>
+      <td>Status </td>
+      <td> <button (click)="VisitDetails()">Fill</button> </td>
+
     </tr>
+
+
   </tbody>
 </table>
