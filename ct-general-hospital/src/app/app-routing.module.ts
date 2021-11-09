@@ -49,6 +49,7 @@ import { SendComponent } from './components/inbox/send/send.component';
 import { SentComponent } from './components/inbox/sent/sent.component';
 import { ReceivedComponent } from './components/inbox/received/received.component';
 import { PatientVisitDetailsComponent } from './components/Patient/patient-visit-details/patient-visit-details.component';
+import { DoctorDashboardComponent } from './components/Patient/doctor-dashboard/doctor-dashboard.component';
 
 const routes: Routes = [
   //main
@@ -107,11 +108,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DisplayAppointmentsComponent,
+        component: DoctorDashboardComponent,
       },
       {
         path: 'dashboard',
-        component: DisplayAppointmentsComponent,
+        component: DoctorDashboardComponent,
       },
       // {
       //   path: 'patient-visit',
@@ -176,11 +177,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DisplayAppointmentsComponent,
+        component: DoctorDashboardComponent,
       },
       {
         path: 'dashboard',
-        component: DisplayAppointmentsComponent,
+        component: DoctorDashboardComponent,
       },
       {
         path: 'patient-visit',
@@ -253,6 +254,10 @@ const routes: Routes = [
       {
         path: 'patient-visit-detials',
         component: PatientVisitDetailsComponent,
+      },
+      {
+        path: 'nurse-dashboard',
+        component: DoctorDashboardComponent,
       },
     ],
   },
@@ -356,4 +361,5 @@ export const routingComponents = [
   SentComponent,
   ReceivedComponent,
   PatientVisitDetailsComponent,
+  DoctorDashboardComponent,
 ];

@@ -6,16 +6,23 @@
     <form [formGroup]="firstFormGroup">
       <app-vital-signs></app-vital-signs>
       <div>
-        <button mat-button matStepperNext class="next-button" (Click)=SaveVitalDetails()>Next</button>
+        <button mat-button matStepperNext class="next-button">
+
+        <!-- </button> (Click)=SaveVitalDetails() -->
+        >Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="Diagnosis Details">
     <form [formGroup]="secondFormGroup">
-      <app-diagnosis-details></app-diagnosis-details>
+      <!-- <app-diagnosis-details></app-diagnosis-details> -->
+
       <div>
         <button mat-button matStepperPrevious class="back-button">Back</button>
-        <button mat-button matStepperNext class="next-button" (Click)=SaveDiagnosisDetails()>Next</button>
+        <button mat-button matStepperNext class="next-button" >
+
+          <!-- (Click)=SaveDiagnosisDetails()> -->
+        Next</button>
       </div>
     </form>
   </mat-step>
@@ -24,7 +31,10 @@
       <app-procedure-details></app-procedure-details>
       <div>
         <button mat-button matStepperPrevious class="back-button">Back</button>
-        <button mat-button matStepperNext class="next-button" (click)=SaveProcedureDetails()>Next</button>
+        <button mat-button matStepperNext class="next-button" >
+        
+        <!-- (click)=SaveProcedureDetails()> -->
+        Next</button>
       </div>
     </form>
   </mat-step>
@@ -33,7 +43,9 @@
     <app-medication-details></app-medication-details>
     <div>
       <button mat-button matStepperPrevious class="back-button">Back</button>
-      <button mat-button class="next-button" (click)=SaveMedicationDetails()>Save</button>
+      <button mat-button class="next-button">
+       <!-- (click)=SaveMedicationDetails() -->
+       Save</button>
     </div>
   </mat-step>
 </mat-stepper>

@@ -1,0 +1,62 @@
+<table mat-table [dataSource]="dataSource" class="table table-striped">
+    <ng-container matColumnDef="appoinmentId">
+      <th mat-header-cell *matHeaderCellDef>Appoinment Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.appoinmentId }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="patientName">
+      <th mat-header-cell *matHeaderCellDef>Patient Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.patientName }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="physicianName">
+      <th mat-header-cell *matHeaderCellDef>Physician Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.physicianName }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.endTime | date: "mediumDate" }}
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef>Time</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.startTime | date: "shortTime" }}
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Fill Visit Details</th>
+      <td mat-cell *matCellDef="let element">Yes
+          <button (click)="VisitDetails(2)"></button>
+        <!-- <span
+          *ngIf="element.status && element.status == 'Declined'"
+          style="color: #ff0000"
+          >{{ element.status }}</span`
+        >
+        <span
+          *ngIf="element.status && element.status == 'Pending'"
+          style="color: #333333"
+          >{{ element.status }}</span
+        >
+        <span *ngIf="!element.status" style="color: black">{{
+          element.status
+        }}</span> -->
+       </td> 
+
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+  

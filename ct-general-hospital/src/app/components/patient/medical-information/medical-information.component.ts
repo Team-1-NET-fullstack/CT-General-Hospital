@@ -4,6 +4,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DiagnosisMasterService } from 'src/app/core/services/diagnosis-master/diagnosis-master.service';
+import { DiagnosisDetails } from 'src/app/shared/models/diagnosis-details.model';
 
 @Component({
   selector: 'app-medical-information',
@@ -22,7 +24,7 @@ export class MedicalInformationComponent implements OnInit {
   });
   stepperOrientation: Observable<StepperOrientation>;
 
-  constructor(
+  constructor(diagnosisMasterService:DiagnosisMasterService,
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver
   ) {
@@ -32,23 +34,37 @@ export class MedicalInformationComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  // const ob = new DiagnosisDetails(
+  //  public  patientVisitId: number,
+  //  public  diagnosisCode: string,
+  //  public diagnosisDescription: string;
+  //  public  isDepricated: boolean;
+  //  public insertedDate: Date;
+  //  public updatedBy: string
+  // );
+  // SaveVitalDetails()
+  // {
+  //   this.diagnosisMasterService.createDiagnosis(this.patientVisitId)
+  //       .subscribe((data: any) => {
+  //       this.dummyObj = data[0];
 
-  SaveVitalDetails()
-  {
-
-  }
-  SaveDiagnosisDetails()
-  {
-
-  }
-  SaveProcedureDetails()
-  {
+  //       this.xTitle = this.dummyObj.title;
+  //  // diagnosisMasterService.
     
-  }
-  SaveMedicationDetails()
-  {
+  // }
+//   SaveDiagnosisDetails()
+//   {
 
-  }
+//   }
+//   SaveProcedureDetails()
+//   {
+    
+//   }
+//   SaveMedicationDetails()
+//   {
+
+//   }
 
 
+// }
 }

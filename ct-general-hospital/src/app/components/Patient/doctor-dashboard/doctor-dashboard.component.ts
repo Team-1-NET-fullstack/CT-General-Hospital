@@ -12,11 +12,10 @@ import {
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
 @Component({
-  selector: 'app-display-appointments',
-  templateUrl: './display-appointments.component.html',
-  styleUrls: ['./display-appointments.component.css'],
+  selector: 'app-doctor-dashboard',
+  templateUrl: './doctor-dashboard.component.html',
+  styleUrls: ['./doctor-dashboard.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -28,16 +27,12 @@ import { MatTableDataSource } from '@angular/material/table';
     ]),
   ],
 })
-export class DisplayAppointmentsComponent implements OnInit {
-  employees = [
-    { id: 1, name: 'Aditya' },
-    { id: 2, name: 'Aparna' },
-    { id: 3, name: 'Bhavya' },
-    { id: 4, name: 'Praveen' },
-  ];
 
-  // appointments: Appointment[] = [];
 
+
+export class DoctorDashboardComponent implements OnInit {
+
+  
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -78,6 +73,7 @@ export class DisplayAppointmentsComponent implements OnInit {
   }
   VisitDetails(AppointmentId: number) {
     console.log(this.dataSource.data);
-    this.route.navigate(['/nurse/patient-visit/']);
+    this.route.navigate(['/nurse/patient-visit/'+2]);
   }
+
 }

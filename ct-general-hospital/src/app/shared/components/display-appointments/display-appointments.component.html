@@ -1,47 +1,64 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Patient Name</th>
-      <th>Physicain Name</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Status</th>
-      <th>Visit Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let appointment of appointments">
-      <td>{{ appointment.title }}</td>
-      <td>{{ appointment.patientName }}</td>
-      <td>{{ appointment.physicianName }}</td>
-      <td>{{ appointment.startTime | date: "mediumDate" }}</td>
-      <td>{{ appointment.startTime | date: "shortTime" }}</td>
-      <td>
-        <span
-          *ngIf="appointment.status && appointment.status == 'Active'"
-          style="color: green"
-          >Approved</span
-        >
-        <span
-          *ngIf="appointment.status && appointment.status == 'Declined'"
-          style="color: red"
-          >Declined</span
-        >
-        <span
-          *ngIf="appointment.status && appointment.status == 'Pending'"
-          style="color: #333333"
-          >Pending</span
-        >
-        <span *ngIf="!appointment.status" style="color: black">Declined</span>
-      </td>
-      <td>
-        <button value="showVisitDetails">
-          <!-- (click)="VisitDetails(appointment.AppointmentId)" -->
+<table mat-table [dataSource]="dataSource" class="table table-striped">
+  <ng-container matColumnDef="appoinmentId">
+    <th mat-header-cell *matHeaderCellDef>Appoinment Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.appoinmentId }}</td>
+  </ng-container>
 
-          Go
-        </button>
-      </td>
-    </tr>
-  </tbody>
+  <ng-container matColumnDef="patientName">
+    <th mat-header-cell *matHeaderCellDef>Patient Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.patientName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="physicianName">
+    <th mat-header-cell *matHeaderCellDef>Physician Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.physicianName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="endTime">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.endTime | date: "mediumDate" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="startTime">
+    <th mat-header-cell *matHeaderCellDef>Time</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.startTime | date: "shortTime" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">
+      <span
+        *ngIf="element.status && element.status == 'Active'"
+        style="color: #00ff00"
+        >{{ element.status }}</span
+      >
+      <span
+        *ngIf="element.status && element.status == 'Declined'"
+        style="color: #ff0000"
+        >{{ element.status }}</span
+      >
+      <span
+        *ngIf="element.status && element.status == 'Pending'"
+        style="color: #333333"
+        >{{ element.status }}</span
+      >
+      <span *ngIf="!element.status" style="color: black">{{
+        element.status
+      }}</span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
