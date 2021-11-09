@@ -1,38 +1,47 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Id</th>
       <th>Title</th>
       <th>Patient Name</th>
       <th>Physicain Name</th>
       <th>Date</th>
       <th>Time</th>
       <th>Status</th>
-      <th>VisitDetails</th>
+      <th>Visit Details</th>
     </tr>
   </thead>
   <tbody>
-    <!-- <tr *ngFor="let appointment of appointments">
-      <td>{{ appointment.Reason }}</td>
-      <td>{{ appointment.PatientName }}</td>
-      <td>{{ appointment.PhysicianName }}</td>
-      <td>{{ appointment.SlotDate | date: "shortDate" }}</td>
-      <td>{{ appointment.TimeSlot }}</td>
-      <td>{{ appointment.Status }}</td>
-    </tr> -->
+    <tr *ngFor="let appointment of appointments">
+      <td>{{ appointment.title }}</td>
+      <td>{{ appointment.patientName }}</td>
+      <td>{{ appointment.physicianName }}</td>
+      <td>{{ appointment.startTime | date: "mediumDate" }}</td>
+      <td>{{ appointment.startTime | date: "shortTime" }}</td>
+      <td>
+        <span
+          *ngIf="appointment.status && appointment.status == 'Active'"
+          style="color: green"
+          >Approved</span
+        >
+        <span
+          *ngIf="appointment.status && appointment.status == 'Declined'"
+          style="color: red"
+          >Declined</span
+        >
+        <span
+          *ngIf="appointment.status && appointment.status == 'Pending'"
+          style="color: #333333"
+          >Pending</span
+        >
+        <span *ngIf="!appointment.status" style="color: black">Declined</span>
+      </td>
+      <td>
+        <button value="showVisitDetails">
+          <!-- (click)="VisitDetails(appointment.AppointmentId)" -->
 
-        <tr >
-      <td>1</td>
-      <td>feaver</td>
-      <td>PatientName</td>
-      <td>PhysicianName</td>
-      <td>SlotDate </td>
-      <td>TimeSlot</td>
-      <td>Status </td>
-      <td> <button (click)="VisitDetails()">Fill</button> </td>
-
+          Go
+        </button>
+      </td>
     </tr>
-
-
   </tbody>
 </table>

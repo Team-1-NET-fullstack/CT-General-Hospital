@@ -12,9 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PatientAllergyComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  patientId: number = 0;
-
-
+  patientId!: number;
 
   clinicalinfo = new FormControl('', [Validators.required]);
   allergydescription = new FormControl('', [Validators.required]);
@@ -42,11 +40,16 @@ export class PatientAllergyComponent implements OnInit {
   ];
   filteredOptions: Observable<string[]> | undefined;
 
-  constructor(private allergyMasterService:AllergyMasterService,private router: ActivatedRoute) {}
+  constructor(
+    private allergyMasterService: AllergyMasterService,
+    private router: ActivatedRoute
+  ) {
+    // this.getAllergyDetails(this.patientId);
+  }
 
   ngOnInit(): void {
     this.router.params.subscribe((params: Params) => {
-      this.getAllergyDetails();
+      this.getAllergyDetails(this.patientId);
       //  debugger;
     });
 
@@ -61,16 +64,12 @@ export class PatientAllergyComponent implements OnInit {
     return this.allergyIdList.filter((allergyIdList) =>
       allergyIdList.toLowerCase().includes(filterValue)
     );
-
-    
-
   }
-  getAllergyDetails()
-    {
-    this.allergyMasterService.getAllergyById(this.patientId)
-      .subscribe((data) => {
-        // debugger
-        console.log(data);
-      });
-    }
+  getAllergyDetails(patientId: number) {
+    console.log('Calling abcd');
+    this.allergyMasterService.getAllergyById(patientId).subscribe((data) => {
+      // debugger
+      console.log(data);
+    });
+  }
 }

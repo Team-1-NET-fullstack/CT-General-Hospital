@@ -1,37 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProcedureMaster, ProcedureMasterIncomingDTO } from 'src/app/shared/models/proceduremaster.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProcedureMasterService {
 
-  constructor(private masterClient: HttpClient) {}
+  constructor(private masterClient: HttpClient,private _snackBar:MatSnackBar) {}
   getAllProcedurebyDesc(desc: string) {
     return this.masterClient.get<ProcedureMasterIncomingDTO>(
-      'http://localhost:9001/api/ProcedureMasters/GetProcedureByDescription?desc=' +
+      `${environment.procedureApiBaseUrl}GetProcedureByDescription?desc=` +
         desc
     );
   }
-
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
+  }
   createProcedure(procedure: ProcedureMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/ProcedureMasters/CreateNewProcedure',
+        `${environment.procedureApiBaseUrl}CreateNewProcedure`,
         procedure
       )
       .subscribe((res) => {
-        console.log('data inserted successfully');
+        this.openSnackBar('Procedure added!');
       });
   }
   
   updateProcedure(procedure: ProcedureMaster) {
     this.masterClient
-      .put('http://localhost:9001/api/ProcedureMasters/UpdateProcedure',procedure)
+      .put(`${environment.procedureApiBaseUrl}UpdateProcedure`,procedure)
       .subscribe((res) => {
         console.log(res);
-        console.log('data updated successfully');
+        this.openSnackBar('Procedure updated!');
       });
   }
 }

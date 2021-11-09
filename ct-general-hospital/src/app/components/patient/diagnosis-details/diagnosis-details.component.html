@@ -1,31 +1,44 @@
-<form class="diagnosis-form" [formGroup]="form">
+<form class="diagnosis-form" [formGroup]="form" (ngSubmit)="saveDiagnosis()">
   <mat-form-field class="diagnosis-full-width">
     <mat-label>Diagnosis Code - Description</mat-label>
-    <mat-select [formControl]="diagnosisCode" multiple  formControlName="diagnosisCode"
-    id="diagnosisCode">
+    <mat-select
+      [formControl]="diagnosisCode"
+      multiple
+      formControlName="diagnosisCode"
+      id="diagnosisCode"
+    >
       <mat-select-trigger>
-        {{diagnosisCode.value ? diagnosisCode.value[0] : ''}}
-        <span *ngIf="diagnosisCode.value?.length > 1" class="diagnosis-additional-selection">
-          (+{{diagnosisCode.value.length - 1}} {{diagnosisCode.value?.length === 2 ? 'other' : 'others'}})
+        {{ diagnosisCode.value ? diagnosisCode.value[0] : "" }}
+        <span
+          *ngIf="diagnosisCode.value?.length > 1"
+          class="diagnosis-additional-selection"
+        >
+          (+{{ diagnosisCode.value.length - 1 }}
+          {{ diagnosisCode.value?.length === 2 ? "other" : "others" }})
         </span>
       </mat-select-trigger>
-      <mat-option *ngFor="let diagnosisCode of diagnosisCodeList" [value]="diagnosisCode">{{diagnosisCode}}</mat-option>
+      <mat-option
+        *ngFor="let diagnosisCode of diagnosisCodeList"
+        [value]="diagnosisCode"
+        >{{ diagnosisCode }}</mat-option
+      >
     </mat-select>
   </mat-form-field>
-  <mat-form-field class="diagnosis-full-width" >
+  <mat-form-field class="diagnosis-full-width">
     <mat-label>Diagnosis Note</mat-label>
     <textarea
       matInput
       placeholder="Enter note for diagnosis(if any)"
       aria-label="DiagnosisDescription"
       matInput
-       formControlName="diagnosisDescription"
-       id="diagnosisDescription"
+      formControlName="diagnosisDescription"
+      id="diagnosisDescription"
     ></textarea>
-    <mat-error *ngIf="hasError('diagnosisDescription', 'required')">DiagnosisDescription is required</mat-error>
-    <mat-error *ngIf="hasError('diagnosisDescription', 'maxlength')">You have more than 60 characters</mat-error>
-  
+    <mat-error *ngIf="hasError('diagnosisDescription', 'required')"
+      >DiagnosisDescription is required</mat-error
+    >
+    <mat-error *ngIf="hasError('diagnosisDescription', 'maxlength')"
+      >You have more than 60 characters</mat-error
+    >
   </mat-form-field>
-  
 </form>
-  

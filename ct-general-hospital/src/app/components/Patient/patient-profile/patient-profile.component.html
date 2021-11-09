@@ -1,38 +1,41 @@
 <table class="table table-striped">
-  <tr>
-    <th>Title</th>
-    <th>Name</th>
-    <th>DOB</th>
-    <th>Gender</th>
-    <th>Race</th>
-    <th>Language</th>
-    <th>EmailId</th>
-    <th>Address</th>
-    <th>Pincode</th>
-    <th>CountryCode</th>
-    <th>State</th>
-    <th>Contact Number</th>
-    <th>Patient Details</th>
-  </tr>
-
-  <tr *ngFor="let item of demographics">
-    <!-- <td>{{ item.PatientId }}</td> -->
-    <td>{{ item.Title }}</td>
-    <td>{{ item.FirstName + " " + item.LastName }}</td>
-    <td>{{ item.Dob | date: "shortDate" }}</td>
-    <td>{{ item.Gender }}</td>
-    <td>{{ item.Race }}</td>
-    <td>{{ item.Languages }}</td>
-    <td>{{ item.Email }}</td>
-    <td>{{ item.Address }}</td>
-    <td>{{ item.PinCode }}</td>
-    <td>{{ item.CountryCode }}</td>
-    <td>{{ item.State }}</td>
-    <td>{{ item.ContactNumber }}</td>
-    <td>
-      <button value="showDetails" (click)="PatientDetails(item.PatientId)">
-        Show
-      </button>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>DOB</th>
+      <th>Gender</th>
+      <th>Race</th>
+      <th>Language</th>
+      <th>EmailId</th>
+      <th>Address</th>
+      <!-- <th>Pincode</th>
+    <th>CountryCode</th> -->
+      <th>State</th>
+      <th>Contact Number</th>
+      <th>Patient Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of demographics">
+      <!-- <td>{{ item.PatientId }}</td> -->
+      <td>{{ item.Title }}</td>
+      <td>{{ item.FirstName + " " + item.LastName }}</td>
+      <td>{{ item.Dob | date: "shortDate" }}</td>
+      <td>{{ item.Gender }}</td>
+      <td>{{ item.Race }}</td>
+      <td>{{ item.Languages }}</td>
+      <td>{{ item.Email }}</td>
+      <td>{{ item.Address }}</td>
+      <!-- <td>{{ item.PinCode }}</td>
+    <td>{{ item.CountryCode }}</td> -->
+      <td>{{ item.State }}</td>
+      <td>{{ item.ContactNumber }}</td>
+      <td>
+        <button value="showDetails" (click)="PatientDetails(item.PatientId)">
+          Show
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

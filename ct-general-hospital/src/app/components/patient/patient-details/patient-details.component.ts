@@ -12,20 +12,20 @@ import { PatientDetails } from 'src/app/shared/models/patient-details.model';
   styleUrls: ['./patient-details.component.css'],
 })
 export class PatientDetailsComponent implements OnInit {
-  xTitle:string='';
-  xFirstName:string='';
-  xLastName:string='';
-  xDob=Date;
-  xGender:string='';
-  xRace:string='';
-   xEthinicity:string = '';
-     xLanguagesKnown:string ='';
-     xEmailId:string = '';
-     xTelePhoneNo :number= 129;
-     xAddress :string= '';
-     xAllergies :string='';
+  xTitle: string = '';
+  xFirstName: string = '';
+  xLastName: string = '';
+  xDob = Date;
+  xGender: string = '';
+  xRace: string = '';
+  xEthinicity: string = '';
+  xLanguagesKnown: string = '';
+  xEmailId: string = '';
+  xTelePhoneNo: number = 129;
+  xAddress: string = '';
+  xAllergies: string = '';
 
-  dummyObj:any;
+  dummyObj: any;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -77,7 +77,7 @@ export class PatientDetailsComponent implements OnInit {
       race: new FormControl(race, [Validators.required]),
       ethinicity: new FormControl(ethinicity, [Validators.required]),
       languagesKnown: new FormControl(languagesKnown, [Validators.required]),
-    //  emailId: new FormControl(emailId, [Validators.required]),
+      //  emailId: new FormControl(emailId, [Validators.required]),
       telePhoneNo: new FormControl(telePhoneNo, [Validators.required]),
       address: new FormControl(address, [Validators.required]),
       allergies: new FormControl(allergies, [Validators.required]),
@@ -92,19 +92,19 @@ export class PatientDetailsComponent implements OnInit {
       .subscribe((data: any) => {
         this.dummyObj = data[0];
 
-        this.xTitle=this.dummyObj.title;
-        this.xFirstName=this.dummyObj.FirstName;
-        this.xLastName=this.dummyObj.LastName;
-        this.xDob=this.dummyObj.Dob;
-        this.xGender=this.dummyObj.Gender;
-        this.xRace=this.dummyObj.Race;
-        this.xEthinicity=this.dummyObj.Ethinicity;
-        this.xLanguagesKnown=this.dummyObj.Languages; 
-        this.xEmailId=this.dummyObj.Email;
-        this.xTelePhoneNo=this.dummyObj.ContactNumber;       
-         this.xAddress=this.dummyObj.Address;
+        this.xTitle = this.dummyObj.title;
+        this.xFirstName = this.dummyObj.FirstName;
+        this.xLastName = this.dummyObj.LastName;
+        this.xDob = this.dummyObj.Dob;
+        this.xGender = this.dummyObj.Gender;
+        this.xRace = this.dummyObj.Race;
+        this.xEthinicity = this.dummyObj.Ethinicity;
+        this.xLanguagesKnown = this.dummyObj.Languages;
+        this.xEmailId = this.dummyObj.Email;
+        this.xTelePhoneNo = this.dummyObj.ContactNumber;
+        this.xAddress = this.dummyObj.Address;
 
-        console.log("hello",this.dummyObj.FirstName);
+        console.log('hello', this.dummyObj.FirstName);
       });
   }
 

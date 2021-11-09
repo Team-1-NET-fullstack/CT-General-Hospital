@@ -1,38 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   DiagnosisMaster,
   DiagnosisMasterIncomingDTO,
 } from 'src/app/shared/models/diagnosismaster.model';
+import { environment } from 'src/environments/environment'; 
 
 @Injectable({
   providedIn: 'root',
 })
 export class DiagnosisMasterService {
-  constructor(private masterClient: HttpClient) {}
+  constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
   getAllDiagnosisbyDesc(desc: string) {
     return this.masterClient.get<DiagnosisMasterIncomingDTO>(
-      'http://localhost:9001/api/DiagnosisMasters/GetDiagnosisByDescription?desc=' +
+      `${environment.diagnosisApiBaseUrl}GetDiagnosisByDescription?desc=` +
         desc
     );
   }
-
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      duration: 2000,
+    });
+  }
   createDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
       .post(
-        'http://localhost:9001/api/DiagnosisMasters/CreateNewDiagnosis',
+        `${environment.diagnosisApiBaseUrl}CreateNewDiagnosis`,
         diagnosis
       )
       .subscribe((res) => {
-        console.log('data inserted successfully');
+        this.openSnackBar('Diagnosis added!');
       });
   }
   updateDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
-      .put('http://localhost:9001/api/DiagnosisMasters/UpdateDiagnosis',diagnosis)
+      .put(`${environment.diagnosisApiBaseUrl}UpdateDiagnosis`,diagnosis)
       .subscribe((res) => {
         console.log(res);
-        console.log('data updated successfully');
+        this.openSnackBar('Diagnosis updated!');
       });
   }
 }

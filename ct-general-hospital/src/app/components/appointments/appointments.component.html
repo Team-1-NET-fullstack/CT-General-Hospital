@@ -1,8 +1,19 @@
-
 <div class="control-section">
+  <!-- <div style="margin-left: 79.5%">
+    <span class="label success" style="margin-right: 1%">Accepted</span>
+    <span class="label info" style="margin-right: 1%">Pending</span>
+    <span class="label warning" style="margin-right: 1%">Rejected</span>
+  </div> -->
   <ejs-schedule
+    #scheduleObj
     width="100%"
     height="550px"
+    (cellDoubleClick)="onCellDoubleClick($event)"
+    [selectedDate]="selectedDate"
+    (eventRendered)="onEventRendered($event)"
+    [eventSettings]="eventSettings"
+    (actionBegin)="onActionBegin($event)"
+    [showQuickInfo]="showQuickInfo"
   >
     <e-views>
       <e-view option="Day"></e-view>
@@ -31,17 +42,37 @@
               />
             </td>
           </tr>
-          <tr>
+          <tr *ngIf="data?.Physician == null">
             <td class="e-textlabel">Physician</td>
             <td colspan="4">
               <ejs-dropdownlist
-                id="EventType"
+                id="Physician"
                 class="e-field"
-                data-name="EventType"
-                placeholder="Choose Status"
-                value="{{ data.EventType }}"
+                data-name="Physician"
+                placeholder="Select Physician"
+                [dataSource]="physicianList"
+                [fields]="physicianFields"
+                value="{{ data.Physician }}"
               >
               </ejs-dropdownlist>
+              <!-- <mat-hint
+                >Available Physicians according to the current time
+                slot</mat-hint
+              > -->
+            </td>
+          </tr>
+          <tr *ngIf="data?.Physician != undefined">
+            <td class="e-textlabel">Physician</td>
+            <td colspan="4">
+              <input
+                id="selectedPhysician"
+                class="e-field e-input"
+                type="text"
+                value="{{ data.PhysicianName }}"
+                name="Physician"
+                style="width: 100%"
+                readonly
+              />
             </td>
           </tr>
           <tr>
@@ -52,6 +83,7 @@
                 class="e-field"
                 data-name="StartTime"
                 format="M/dd/yy h:mm a"
+                [value]="dateParser(data.startTime || data.StartTime)"
               >
               </ejs-datetimepicker>
             </td>
@@ -64,8 +96,8 @@
                 class="e-field"
                 data-name="EndTime"
                 format="M/dd/yy h:mm a"
-              >
-              </ejs-datetimepicker>
+                [value]="dateParser(data.endTime || data.EndTime)"
+              ></ejs-datetimepicker>
             </td>
           </tr>
           <tr>

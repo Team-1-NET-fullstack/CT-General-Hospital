@@ -4,9 +4,13 @@
 
 export const environment = {
   production: false,
-  appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/',
-  appointmentSchedulerDebugApiBaseUrl:
-    'https://localhost:44306/api/Appointments/',
+  // appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/', // Aditya Local Prod
+  appointmentSchedulerApiBaseUrl: 'https://localhost:44306/api/Appointments/', // Aditya Local Debug
+  // allergyApiBaseUrl: 'http://localhost:9001/api/AllergyMasters/', // Bhavya Mongo Master Table
+  allergyApiBaseUrl: 'http://localhost:59523/api/Allergies/', // Aparna SQL Allergy table
+  medicationApiBaseUrl: 'http://localhost:9001/api/MedicationMasters/', // Bhavya Mongo Master Table
+  diagnosisApiBaseUrl: 'http://localhost:9001/api/DiagnosisMasters/', // Bhavya Mongo Master Table
+  procedureApiBaseUrl: 'http://localhost:9001/api/ProcedureMasters/', // Bhavya Mongo Master Table
 };
 
 /*

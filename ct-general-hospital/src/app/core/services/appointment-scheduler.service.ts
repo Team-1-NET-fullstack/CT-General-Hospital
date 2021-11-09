@@ -1,32 +1,61 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Response } from 'src/app/shared/models/response.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import {
+  Appointment,
+  AppointmentCount,
+  AppointmentInfo,
+} from 'src/app/shared/models/appointment.model';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { Appointments } from 'src/app/shared/models/appointments.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppointmentSchedulerService {
-  appointments: Appointments[] = [];
-
-  constructor(private http: HttpClient) {}
+  currentUser!: number;
+  userId: number;
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.userId = 4; // this.auth.currentUser.userId;
+  }
 
   getAllAppointments() {
+    return this.http.get<Appointment[]>(
+      `${environment.appointmentSchedulerApiBaseUrl}GetAllAppointments`
+    );
+  }
+
+  GetAllAvailablePhysicians(startDate: Date) {
+    throw new Error('Method not implemented.');
+  }
+
+  createAppointment(newAppointment: any) {
     this.http
-      .get<Appointments[]>(
-        environment.appointmentSchedulerDebugApiBaseUrl + 'GetAllAppointments'
+      .post(
+        `${environment.appointmentSchedulerApiBaseUrl}CreateAppointment`,
+        newAppointment
       )
-      .subscribe((appointments) => {
-        // console.log(appointments);
-        this.appointments.splice(0, this.appointments.length); // Clear array
-        this.appointments.push(...appointments); // add new element
-        // console.log(this.appointments);
+      .subscribe((res) => {
+        console.log(res);
+        console.log('data inserted successfully');
       });
+  }
 
-    return this.appointments;
+  updateAppointment(newAppointment: any) {
+    this.http
+      .put(
+        `${environment.appointmentSchedulerApiBaseUrl}AcceptAppointment`,
+        newAppointment
+      )
+      .subscribe((res) => {
+        console.log(res);
+        console.log('data updated successfully');
+      });
+  }
 
-    // return this.http.get(
-    //   environment.appointmentSchedulerApiBaseUrl + 'GetAllAppointments'
-    // );
+  deleteAppointment(Id: any) {
+    throw new Error('Method not implemented.');
   }
 }

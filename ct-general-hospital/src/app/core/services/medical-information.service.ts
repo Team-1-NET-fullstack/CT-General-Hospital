@@ -81,7 +81,7 @@ export class MedicalInformationService {
   }
   addDiagnosisDetails(listOfObjects: Object) {
     this.http
-      .post('http://localhost:3000/DiagnosisDetails', listOfObjects)
+      .post('http://localhost:59523/api/PatientVisits', listOfObjects)
       .subscribe((res) => {
         console.log(res);
         this.loadData();
@@ -90,7 +90,7 @@ export class MedicalInformationService {
   }
   addProcedureDetails(procedureDetails: ProcedureDetails) {
     this.http
-      .post('http://localhost:3000/ProcedureDetails', procedureDetails)
+      .post('http://localhost:59523/api/PatientVisits', procedureDetails)
       .subscribe((res) => {
         // console.log(res);
         this.loadData();
@@ -99,7 +99,7 @@ export class MedicalInformationService {
   }
   addMedicationDetails(medicationDetails: MedicationDetails) {
     this.http
-      .post('http://localhost:3000/MedicationDetails', medicationDetails)
+      .post('http://localhost:59523/api/PatientVisits', medicationDetails)
       .subscribe((res) => {
         // console.log(res);
         this.loadData();
@@ -114,6 +114,5 @@ export class MedicalInformationService {
         this.loadData();
         // console.log("data inserted success fully");
       });
-      
   }
 }

@@ -12,10 +12,15 @@ import { DiagnosisDetails } from 'src/app/shared/models/diagnosis-details.model'
 })
 export class DiagnosisDetailsComponent implements OnInit {
   diagnosisCode = new FormControl();
-  diagnosisCodeList: string[] = ['A00 - Cholera', 'A00.1 - Cholera due to Vibrio cholerae 01', 'B00 - biovar cholerae', 'T00 - Typhoid'];
+  diagnosisCodeList: string[] = [
+    'A00 - Cholera',
+    'A00.1 - Cholera due to Vibrio cholerae 01',
+    'B00 - biovar cholerae',
+    'T00 - Typhoid',
+  ];
   form: FormGroup = new FormGroup({});
   listOfObjects: Object[] = [];
-  
+
   constructor(private medicalInformationService: MedicalInformationService) {}
 
   ngOnInit(): void {
@@ -34,7 +39,13 @@ export class DiagnosisDetailsComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   };
-
+  saveDiagnosis() {
+    const diagnosisCode = this.form.value.diagnosisCode;
+    const diagnosisDescription = this.form.value.diagnosisDescription;
+    const isDepricated = this.form.value.isDepricated;
+    const updatedBy = 'robert@ctgeneral.com';
+    const insertedDate = new Date();
+  }
   add() {
     // Gathering data
     const patientVisitId = 1234;
