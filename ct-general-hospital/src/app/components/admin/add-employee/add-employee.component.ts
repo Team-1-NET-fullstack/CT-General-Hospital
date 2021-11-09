@@ -5,8 +5,15 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AlertService } from 'src/app/core/services/alert.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { EditEmployeeService } from 'src/app/core/services/edit-employee/edit-employee.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 import { EditEmployee } from 'src/app/shared/models/edit-employee.model';
+import { UserModel } from 'src/app/shared/models/UserModel.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -14,68 +21,107 @@ import { EditEmployee } from 'src/app/shared/models/edit-employee.model';
   styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit {
-  employee!:EditEmployee;
-    ;
-  form: FormGroup = new FormGroup({});
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      title: new FormControl('Mr', [Validators.required]),
-      firstname: new FormControl(null, [
-        Validators.required,
-        Validators.maxLength(15),
-        Validators.minLength(2),
-        Validators.pattern('[A-Za-z]+'),
-      ]),
-      lastname: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(25),
-        Validators.minLength(2),
-        Validators.pattern('[A-Za-z]+'),
-      ]),
-      dob: new FormControl('', [Validators.required]),
-      gender: new FormControl('', [Validators.required]),
+  registrationForm: FormGroup = new FormGroup({});
+  dataModel: UserModel | null = null;
+  loading = false;
+  submitted = false;
+  roles: any = [];
+  tomorrow = new Date();
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private alertService: AlertService, 
+    private authenticationService: AuthService,
+    private SpinnerService: NgxSpinnerService,
+    private _snackBar: MatSnackBar
+  ) {
 
-      email: new FormControl('', [Validators.required, Validators.email]),
-      address: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(50),
-        Validators.minLength(4),
-      ]),
-
-      pincode: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern('[0-9]+'),
-      ]),
-      countrycode: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.pattern('[0-9]+'),
-      ]),
-      contact1: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.pattern('[0-9]+'),
-      ]),
-    });
+    // redirect to home if already logged in
+    // if (this.authenticationService.currentUserValue) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.registrationForm = this.formBuilder.group({
+      title: new FormControl("Mr.", [Validators.required]),
+      firstName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      lastName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: ['Password@123', [Validators.required, Validators.minLength(8), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")]],
+      phone: new FormControl(null),
+      dob: new FormControl(null, [Validators.required]),
+      roleId: new FormControl(null, [Validators.required]),
+      employeeId: new FormControl(null),
+    });
+
+    this.getAllRoles();
+  }
+
+  get f() {
+    return this.registrationForm.controls;
+  }
+  getAllRoles() {
+    this.authenticationService.getAllRoles().subscribe((roles: any) => {
+      this.roles =roles.filter(function(role:any)
+      {
+       return role.id!=4 //remove patient
+      });  
+     
+    });
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'X', {
+      // horizontalPosition: 'right',
+      // verticalPosition: 'top',
+      duration: 2000,
+    });
+  }
   onSubmit() {
-    console.log(this.form);
-    if (this.form.valid) {      
-      this.employee.title = this.form.value.title;
-      this.employee.firstName = this.form.value.firstname;
-      this.employee.lastName = this.form.value.lastname;
-      this.employee.dob = this.form.value.dob;
-      this.employee.gender = this.form.value.gender;
-      this.employee.emailId = this.form.value.email;
-      this.employee.address = this.form.value.address;
-      this.employee.pincode = this.form.value.pincode;
-      this.employee.role = this.form.value.role;
-      this.employee.state = this.form.value.state;
-      this.employee.contactNumber = this.form.value.contact1;
+   // console.log(this.registrationForm.controls);
+   //this.SpinnerService.show();
+    this.submitted = true;
+    this.alertService.clear();
+    if (this.registrationForm.invalid) {
+        this.alertService.success("The form contains one or more missing values!", true);
+        this.SpinnerService.hide();
+      return;
     }
-    console.log(JSON.stringify(this.employee));
+    this.loading = true;
+    //this.registrationForm.value.dob = this.datePipe.transform(this.registrationForm.value.dob, "dd-MM-yyyy");
+
+    this.dataModel = new UserModel(
+      this.registrationForm.value.title,
+      this.registrationForm.value.firstName,
+      this.registrationForm.value.lastName,
+      this.registrationForm.value.email,
+      this.registrationForm.value.password,
+      this.registrationForm.value.phone,
+      this.registrationForm.value.dob,
+      this.registrationForm.value.roleId,
+      this.registrationForm.value.employeeId,
+      
+    );
+    console.log(this.dataModel);
+    this.userService.registerUser(this.dataModel).subscribe(
+      (data: any) => {
+        if (data.isSuccess === true) {
+          this.SpinnerService.hide();
+          this.alertService.success(data.message, true);
+          this.router.navigate(['/admin/dashboard']);
+          this.openSnackBar('Employee Added Successfully');
+        }
+        else {
+          this.SpinnerService.hide();
+          this.alertService.success(data.message, true);
+          this.openSnackBar('Emplyoyee Registration is Failed');
+        }
+        // this.alertService.success('Registration successful', true);
+        // this.router.navigate(['/admin/dashboard']);
+      },
+     
+    );
+  
   }
   }

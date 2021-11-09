@@ -1,97 +1,147 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  
-  
->
-<mat-radio-group formControlName="title" required>
-  <mat-radio-button value="Mr">Mr</mat-radio-button>
-  <mat-radio-button value="Mrs">Mrs</mat-radio-button>
-  <mat-radio-button value="Ms">Ms</mat-radio-button>
-</mat-radio-group>
+<form class="my-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <mat-radio-group formControlName="title" required
+    >&nbsp;&nbsp;&nbsp;
+    <mat-radio-button [checked]="true" class="example-margin" value="Mr."
+      >Mr.</mat-radio-button
+    >&nbsp;
+    <mat-radio-button class="example-margin" value="Ms.">Ms.</mat-radio-button
+    >&nbsp;
+    <mat-radio-button class="example-margin" value="Mrs.">Mrs.</mat-radio-button
+    >&nbsp;
+  </mat-radio-group>
+  <mat-error *ngIf="f.title.errors?.required">
+    Kindly select the title.
+  </mat-error>
 
-<mat-form-field appearance="legacy">
-  <mat-label>First Name</mat-label>
-  <mat-error>Enter valid name must be alphabet only</mat-error>
-  <input
-    matInput
-    placeholder="First Name"
-    formControlName="firstname"
-    required
-  />
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Last Name</mat-label>
-  <mat-error>Enter valid name must be alphabet only </mat-error>
-  <input matInput placeholder="Last Name" formControlName="lastname" required />
-</mat-form-field>
-<mat-radio-group formControlName="gender" required>
-  <mat-radio-button value="D"> Doctor</mat-radio-button>
-  <mat-radio-button value="N"> Nurse </mat-radio-button>
-</mat-radio-group>
-<mat-form-field appearance="legacy">
-  <mat-error>Enter valid date</mat-error>
-  <input
-    matInput
-    [matDatepicker]="picker"
-    placeholder="MM/DD/YYYY"
-    formControlName="dob"
-    required
-  />
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker> </mat-datepicker>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Email</mat-label>
-  <mat-error>Enter valid Email Id </mat-error>
-  <input matInput placeholder="Email" formControlName="email" required />
-</mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>First Name</mat-label>
+    <input
+      matInput
+      placeholder="First name"
+      formControlName="firstName"
+      required
+    />
+    <mat-error *ngIf="f.firstName.errors?.minlength">
+      Please don’t use abbreviations.
+    </mat-error>
+    <mat-error *ngIf="f.firstName.errors?.required">
+      First name cannot be empty.
+    </mat-error>
+  </mat-form-field>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Address</mat-label>
-  <mat-error>Enter valid address </mat-error>
-  <textarea
-    matInput
-    placeholder="Ex.909 Swapnlok"
-    formControlName="address"
-    required
-  ></textarea>
-</mat-form-field>
-<mat-form-field appearance="legacy">
-  <mat-label>Pincode</mat-label>
-  <mat-error> Enter valid pincode must be 6 digits </mat-error>
-  <input matInput placeholder="Pincode" formControlName="pincode" required />
-</mat-form-field>
-<br />
-<mat-radio-group formControlName="gender" required>
-  <mat-radio-button value="M"> Male</mat-radio-button>
-  <mat-radio-button value="F"> Female </mat-radio-button>
-  <mat-radio-button value="O"> Other</mat-radio-button>
-</mat-radio-group>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Last Name</mat-label>
+    <input
+      matInput
+      placeholder="Last Name"
+      formControlName="lastName"
+      required
+    />
+    <mat-error *ngIf="f.lastName.errors?.minlength">
+      Please don’t use abbreviations.
+    </mat-error>
+    <mat-error *ngIf="f.lastName.errors?.required">
+      Last name cannot be empty.
+    </mat-error>
+  </mat-form-field>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Country Code</mat-label>
-  <mat-error> Enter valid country code must be 2 digits </mat-error>
-  <input
-    matInput
-    placeholder="Country Code"
-    formControlName="countrycode"
-    required
-  />
-</mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" formControlName="email" required />
+    <mat-error *ngIf="f.email.errors?.required"
+      >Please enter your email address <br />
+      ( e.g.
+      <a style="color: grey">exampleusername@xyzdomain.com</a>)</mat-error
+    >
+    <mat-error *ngIf="f.email.errors?.email">Invalid Email</mat-error>
+  </mat-form-field>
 
-<mat-form-field appearance="legacy">
-  <mat-label>Contact Number</mat-label>
-  <mat-error>Enter valid contact must be 10 digits </mat-error>
-  <input
-    matInput
-    placeholder="Contact Number"
-    formControlName="contact1"
-    required
-  />
-</mat-form-field>
-<div>
-  <button mat-flat-button type="submit" class="button-submit" on>Save</button>
-  <button mat-flat-button class="button-reset">Cancel</button>
-</div>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Password"
+      formControlName="password"
+      required
+    />
+    <mat-error *ngIf="f.password.errors?.required">
+      Password cannot be empty.
+    </mat-error>
+    <mat-error *ngIf="f.password.errors?.minlength">
+      Password must be atleast of 8 characters
+    </mat-error>
+    <mat-error *ngIf="f.password.errors?.pattern">
+      Password must have atleast one uppercase char and one special character
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Phone number</mat-label>
+    <input
+      matInput
+      placeholder="Phone number"
+      formControlName="phone"
+      required
+    />
+    <mat-error *ngIf="f.phone.errors?.required">
+      Phone no. cannot be empty.
+    </mat-error>
+    <mat-error *ngIf="f.phone.errors?.pattern">
+      Invalid phone number
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Employee Id</mat-label>
+    <input
+      matInput
+      placeholder="Employee Id"
+      formControlName="employeeId"
+      required
+    />
+    <mat-error *ngIf="f.employeeId.errors?.required">
+      EmployeeId cannot be empty.
+    </mat-error>
+    <mat-error *ngIf="f.employeeId.errors?.pattern">
+      Invalid EmployeeId (Ex: CT12345)
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy">
+    <mat-label>Date of Birth</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [max]="tomorrow"
+      placeholder="Choose a date"
+      formControlName="dob"
+      required
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="f.dob.errors?.required"> DOB cannot be empty. </mat-error>
+    <mat-error *ngIf="f.dob.errors?.required">
+      Please enter a valid date.
+    </mat-error>
+  </mat-form-field>
+
+  <section class="example-section">
+    <mat-form-field appearance="legacy">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="roleId" required>
+        <mat-option *ngFor="let role of roles; let i = index" [value]="role.id">
+          {{ role.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.roleId.errors?.required">
+        Please select a valid role.
+      </mat-error>
+    </mat-form-field>
+  </section>
+
+  <div>
+    <button mat-flat-button type="submit" class="button-submit" on>Save</button>
+    <button mat-flat-button class="button-reset">Cancel</button>
+  </div>
 </form>
+

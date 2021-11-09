@@ -2,59 +2,63 @@
 
 <mat-tab-group>
   <mat-tab label="Edit Account Details">
-      <mat-radio-group>
-        <mat-radio-button value="Mr">Mr</mat-radio-button>
-        <mat-radio-button value="Mrs">Mrs</mat-radio-button>
-        <mat-radio-button value="Ms">Ms</mat-radio-button>
-      </mat-radio-group>
+    <br />
+    <form class="my-form" [formGroup]="editForm">
       &nbsp; &nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="First Name" />
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstName"
+          value="{{ xFirstName }}"
+        />
       </mat-form-field>
       &nbsp; &nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" />
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastName"
+          value="{{ xLastName }}"
+        />
       </mat-form-field>
       &nbsp; &nbsp;
-      <mat-form-field>
-        <mat-label>Date Of Birth</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker> </mat-datepicker>
-      </mat-form-field>
-      <br />
-     
-      <mat-form-field  appearance="legacy">
-        <mat-label>Address Line 1</mat-label>
-        <input matInput placeholder="Address Line 1" />
-      </mat-form-field>
-      &nbsp; &nbsp;
+
       <mat-form-field appearance="legacy">
-        <mat-label>Address Line 2(optional)</mat-label>
-        <input matInput placeholder="Address Line 2(Optional)" />
-      </mat-form-field>
-      &nbsp; &nbsp;
+        <mat-label>Email Id</mat-label>
+        <input
+          matInput
+          placeholder="Email Id"
+          formControlName="email"
+          value="{{ xEmail }}"
+        /> </mat-form-field
+      >&nbsp; &nbsp;
+
       <mat-form-field appearance="legacy">
         <mat-label>Phone Number</mat-label>
-        <input matInput placeholder="Phone Number" />
-      </mat-form-field>&nbsp; &nbsp;
-      <mat-form-field appearance="legacy">
-        <mat-label>Email ID</mat-label>
-        <input matInput placeholder="Email ID" />
+        <input
+          matInput
+          placeholder="Phone Number"
+          formControlName="phone"
+          value="{{ xphone }}"
+        />
       </mat-form-field>
+      <br />
       <mat-dialog-actions align="end">
-        <button mat-flat-button type="submit" class="button-submit">
+        <button mat-flat-button type="submit" class="button-submit" (click)="onSave()">
           Submit
         </button>
-        <button mat-flat-button mat-dialog-close class="button-reset">Cancel</button>
+        <button mat-flat-button mat-dialog-close class="button-reset">
+          Cancel
+        </button>
       </mat-dialog-actions>
-    
+      <br />
+    </form>
   </mat-tab>
 
-
-  <mat-tab label="Change Password " >
+  <mat-tab label="Change Password ">
     <app-change-password></app-change-password>
   </mat-tab>
 </mat-tab-group>

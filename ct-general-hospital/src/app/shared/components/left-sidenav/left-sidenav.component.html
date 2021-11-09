@@ -3,7 +3,7 @@
 
   <!-- Dashboard Button Starts -->
   <button
-    *ngIf="user?.roleId == 1"
+    *ngIf="roleId == 1"
     mat-button
     class="menu-button"
     routerLink="/admin/dashboard"
@@ -13,7 +13,7 @@
     <span>Dashboard</span>
   </button>
   <button
-    *ngIf="user?.roleId == 2"
+    *ngIf="roleId == 2"
     mat-button
     class="menu-button"
     routerLink="/doctor/dashboard"
@@ -23,7 +23,7 @@
     <span>Dashboard</span>
   </button>
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="roleId == 3"
     mat-button
     class="menu-button"
     routerLink="/nurse/dashboard"
@@ -33,7 +33,7 @@
     <span>Dashboard</span>
   </button>
   <button
-    *ngIf="user?.roleId == 4"
+    *ngIf="roleId == 4"
     mat-button
     class="menu-button"
     routerLink="/patient/dashboard"
@@ -45,7 +45,7 @@
   <!-- Dashboard Button Ends -->
 
   <button
-    *ngIf="user?.roleId == 1"
+    *ngIf="roleId == 1"
     mat-button
     class="menu-button"
     routerLink="/admin/employee-card"
@@ -55,7 +55,7 @@
     <span>Employee Detail</span>
   </button>
   <button
-    *ngIf="user?.roleId == 1"
+    *ngIf="roleId == 1"
     mat-button
     class="menu-button"
     routerLink="/admin/patient-card"
@@ -65,27 +65,26 @@
     <span>Edit Patients</span>
   </button>
   <button
-    *ngIf="user?.roleId == 4"
+    *ngIf="roleId == 4"
     mat-button
     class="menu-button"
     routerLink="/patient/patient-demographics"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
-    <span>Profile</span>
+    <span>Patients Profile</span>
   </button>
-  <button
+  <!-- <button
     mat-button
-    *ngIf="user?.roleId == 3 || user?.roleId == 2"
     class="menu-button"
     routerLink="/patient/patient-details"
     routerLinkActive="active-link"
   >
     <mat-icon>personal_injury</mat-icon>
     <span>Patients Details</span>
-  </button>
+  </button> -->
   <button
-    *ngIf="user?.roleId == 2"
+    *ngIf="roleId == 2"
     mat-button
     class="menu-button"
     routerLink="/doctor/patient-visit"
@@ -95,7 +94,7 @@
     <span>Patient Visit</span>
   </button>
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="roleId == 3"
     mat-button
     class="menu-button"
     routerLink="/nurse/patient-visit"
@@ -105,7 +104,7 @@
     <span>Patient Visit</span>
   </button>
   <button
-    *ngIf="user?.roleId == 2"
+    *ngIf="roleId == 2"
     mat-button
     class="menu-button"
     routerLink="/doctor/appointment"
@@ -115,7 +114,7 @@
     <span>Appointments</span>
   </button>
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="roleId == 3"
     mat-button
     class="menu-button"
     routerLink="/nurse/appointment"
@@ -125,7 +124,7 @@
     <span>Appointments</span>
   </button>
   <button
-    *ngIf="user?.roleId == 4"
+    *ngIf="roleId == 4"
     mat-button
     class="menu-button"
     routerLink="/patient/appointment"
@@ -135,7 +134,7 @@
     <span>Appointments</span>
   </button>
   <button
-    *ngIf="user?.roleId == 1"
+    *ngIf="roleId == 1"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
@@ -145,7 +144,7 @@
     <span>Master Data</span>
   </button>
   <button
-    *ngIf="user?.roleId == 1"
+    *ngIf="roleId == 1"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
@@ -155,7 +154,7 @@
     <span>Settings</span>
   </button>
   <button
-    *ngIf="user?.roleId == 2"
+    *ngIf="roleId == 2"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
@@ -165,7 +164,7 @@
     <span>Settings</span>
   </button>
   <button
-    *ngIf="user?.roleId == 3"
+    *ngIf="roleId == 3"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
@@ -175,7 +174,7 @@
     <span>Settings</span>
   </button>
   <button
-    *ngIf="user?.roleId == 4"
+    *ngIf="roleId == 4"
     mat-button
     class="menu-button"
     routerLinkActive="active-link"
