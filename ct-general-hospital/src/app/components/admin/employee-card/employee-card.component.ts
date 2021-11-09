@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditEmployeeService } from 'src/app/core/services/edit-employee/edit-employee.service';
 import { EditEmployee } from 'src/app/shared/models/edit-employee.model';
+
 import { MatDialog } from '@angular/material/dialog';
 import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { UserService } from 'src/app/core/services/user/user.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { UserModel } from 'src/app/shared/models/UserModel.model';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-employee-card',
@@ -11,28 +18,46 @@ import { EditEmployeeComponent } from '../edit-employee/edit-employee.component'
 })
 export class EmployeeCardComponent implements OnInit {
 
+  @ViewChild('TablePaginator', { static: true })
+  tablePaginator!: MatPaginator;
+  @ViewChild('TableSort', { static: true }) tableSort!: MatSort;
+  dataSource: MatTableDataSource<UserModel>;
+  roleId: any | null = null;
+
+  newHospitalUsers:any;
   
-  employee: EditEmployee[] = [];
-  openDialog() {
-    const dialogRef = this.dialog.open(EditEmployeeComponent);
+  displayColumns: string[] = [
+    'employeeId',
+    'firstName',
+    'lastName',
+    'email',
+    'role',
+    'status'
+  ];
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-    });
-  }
-  constructor(private editEmployeeservice: EditEmployeeService, public dialog:MatDialog) {
+  
 
-    this.editEmployeeservice.getAllEmployees().subscribe(
-      (employees) => {
-        // this.employee = employees;
-        this.employee.splice(0,this.employee.length); //clear array
-        this.employee.push(...employees); //add new element
-      }
-    );
-  }
-  OnSearch(){
+
+  constructor(private userService: UserService,
+    private SpinnerService: NgxSpinnerService) {
+    this.dataSource = new MatTableDataSource();
+    this.roleId = localStorage.getItem('ROLEID');
     
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllUsers();
+    this.SpinnerService.hide();
+  }
+  
+  getAllUsers() {
+    this.SpinnerService.show();
+    this.userService.getAllHospitalUsers().subscribe((model: any) => {
+      this.SpinnerService.hide();
+      this.dataSource.data = model;
+      this.dataSource.sort = this.tableSort;
+      this.dataSource.paginator = this.tablePaginator;
+      });
+   
+  }
 }

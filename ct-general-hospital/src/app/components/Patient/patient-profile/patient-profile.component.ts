@@ -12,7 +12,7 @@ export class PatientProfileComponent implements OnInit {
    demographics:DemographicsDetails[]=[];
     constructor(private demographicsDetails:PatientDemographicsService) {
    this.demographics = this.demographicsDetails.demographics;
-   // console.log("DemographicsDetails:", this.demographics); 
+   console.log("DemographicsDetails:", this.demographics); 
   }
   ngOnInit(): void {}
 

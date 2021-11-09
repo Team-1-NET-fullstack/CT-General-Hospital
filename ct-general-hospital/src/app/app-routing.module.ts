@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -48,6 +45,7 @@ import { NotesComponent } from './components/inbox/notes/notes.component';
 import { SendComponent } from './components/inbox/send/send.component';
 import { SentComponent } from './components/inbox/sent/sent.component';
 import { ReceivedComponent } from './components/inbox/received/received.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 const routes: Routes = [
   //main
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
@@ -55,12 +53,13 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'registration', component: SignupComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
+  { path: 'ForgotPassword', component: ForgotPasswordComponent },
 
   //admin
   {
     path: 'admin',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -101,7 +100,7 @@ const routes: Routes = [
   {
     path: 'doctor',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -162,7 +161,7 @@ const routes: Routes = [
   {
     path: 'nurse',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -239,7 +238,7 @@ const routes: Routes = [
   {
     path: 'patient',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -284,7 +283,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, BrowserModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

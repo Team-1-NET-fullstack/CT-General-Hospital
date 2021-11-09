@@ -1,0 +1,125 @@
+
+<mat-card style="margin-left:10%;margin-right:10%;margin-top:2%;">
+    <button matTooltip="Close" style="float: right;" mat-button class="close-icon" color="warn" [mat-dialog-close]="true">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h2 style="margin-left: 0px">Edit User</h2>
+</mat-card>
+
+<mat-card style="margin-left:10%;margin-right:10%;margin-top:2%;">
+
+    <div class="row" style="padding:0px;margin:0px;background-color:none">
+        <form class="my-form" [formGroup]="editForm">
+
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px;">
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First name" [(ngModel)]="data.firstName" formControlName="firstName"
+                        required />
+                    <mat-error *ngIf="f.firstName.errors?.minlength">
+                        Please don’t use abbreviations.
+                    </mat-error>
+                    <mat-error *ngIf="f.firstName.errors?.required">
+                        First name cannot be empty.
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px;">
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name" [(ngModel)]="data.lastName" formControlName="lastName"
+                        required />
+                    <mat-error *ngIf="f.lastName.errors?.minlength">
+                        Please don’t use abbreviations.
+                    </mat-error>
+                    <mat-error *ngIf="f.lastName.errors?.required">
+                        Last name cannot be empty.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Employee Id</mat-label>
+                    <input matInput placeholder="Employee Id" [(ngModel)]="data.employeeId" formControlName="employeeId"
+                        required />
+                    <mat-error *ngIf="f.employeeId.errors?.pattern">
+                        Invalid EmployeeId (Ex: CT12345)
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px">
+                <section class="example-section">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Role</mat-label>
+                        <mat-select formControlName="roleId" [(ngModel)]="data.roleId" required>
+                            <mat-option *ngFor="let role of roles; let i = index" [value]="role.id">
+                                {{role.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f.roleId.errors?.required">
+                            Please select a valid role.
+                        </mat-error>
+                    </mat-form-field>
+                </section>
+            </div>
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Phone number</mat-label>
+                    <input matInput placeholder="Phone number" [(ngModel)]="data.phone" formControlName="phone"
+                        required />
+                    <mat-error *ngIf="f.phone.errors?.pattern">
+                        Invalid phone number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px;">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" [(ngModel)]="data.email" formControlName="email" required />
+                    <mat-error *ngIf="f.email.errors?.required">Please enter your email address <br /> ( e.g. <a
+                            style="color: grey;">exampleusername@xyzdomain.com</a>)</mat-error>
+                    <mat-error *ngIf="f.email.errors?.email">Invalid
+                        Email</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-6" style="background-color:none;padding:0px;margin:0px">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [(ngModel)]="data.dob" [matDatepicker]="picker" [max]="tomorrow"
+                        placeholder="Choose a date" formControlName="dob" required />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="f.dob.errors?.required">
+                        Please enter a valid date.
+                    </mat-error>
+                </mat-form-field>
+                <div class="col-md-6" style="background-color:none;padding:0px;margin:10px;inline-size: fit-content;">
+                    <mat-card-actions>
+                        <button class="
+                               mat-focus-indicator
+                               mat-raised-button
+                               mat-button-base
+                               mat-primary
+                             " mat-raised-button color="primary" (click)="onSave()">
+                            Save
+                        </button>
+                        <button calss="mat-focus-indicator
+                           mat-raised-button
+                           mat-button-base
+                           mat-warn
+                         " mat-raised-button color="warn" (click)="onCancel()">
+                            Cancel
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</mat-card>

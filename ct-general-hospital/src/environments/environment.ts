@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  jwtApiBaseUrl: 'http://localhost:2664',
+  userManagementApiBaseUrl: 'http://localhost:63212',
   // appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/', // Local Prod
   appointmentSchedulerApiBaseUrl:
     'https://localhost:44306/api/Appointments/', // Local Debug

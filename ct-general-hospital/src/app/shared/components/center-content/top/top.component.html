@@ -1,7 +1,7 @@
 <div class="top-menu-cards">
   <div class="card-align">
     <mat-card style="align-content: center">
-      <table *ngIf="user?.roleId == 1">
+      <table *ngIf="roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -19,7 +19,7 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="user?.roleId == 2 || user?.roleId == 3">
+      <table *ngIf="roleId == 2 || roleId == 3">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -29,7 +29,7 @@
           <th rowspan="2"></th>
           <th rowspan="2"></th>
           <th rowspan="2"></th>
-          <td>&nbsp;&nbsp;&nbsp; {{ appointmentsCount }}</td>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
         </tr>
         <tr>
           <td>
@@ -37,7 +37,7 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="user?.roleId == 4">
+      <table *ngIf="roleId == 4">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -47,7 +47,7 @@
           <th rowspan="2"></th>
           <th rowspan="2"></th>
           <th rowspan="2"></th>
-          <td>&nbsp;&nbsp;&nbsp; {{ appointmentsCount }}</td>
+          <td>&nbsp;&nbsp;&nbsp;5</td>
         </tr>
         <tr>
           <td>
@@ -59,7 +59,7 @@
   </div>
   <div class="card-align">
     <mat-card>
-      <table *ngIf="user?.roleId == 1">
+      <table *ngIf="roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -77,7 +77,7 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="user?.roleId == 2 || user?.roleId == 3">
+      <table *ngIf="roleId == 2 || roleId == 3">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -95,7 +95,7 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="user?.roleId == 4">
+      <table *ngIf="roleId == 4">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -117,7 +117,7 @@
   </div>
   <div class="card-align">
     <mat-card>
-      <table *ngIf="user?.roleId == 1">
+      <table *ngIf="roleId == 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white">
@@ -135,7 +135,7 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="user?.roleId != 1">
+      <table *ngIf="roleId != 1">
         <tr>
           <th rowspan="2">
             <button mat-icon-button color="white" routerLink="/notes">

@@ -20,7 +20,7 @@ export class PatientDemographicsService {
       .subscribe((demographicsDetails) => {
         this.demographics.splice(0, this.demographics.length); // Clear array
         this.demographics.push(...demographicsDetails); // add new element
-        // console.log(demographicsDetails);
+        console.log(demographicsDetails);
       });
   }
 
@@ -28,9 +28,9 @@ export class PatientDemographicsService {
     this.http
       .post('http://localhost:3000/DemographicsDetails', demographics1)
       .subscribe((res) => {
-        // console.log(res);
+        console.log(res);
         this.loadData();
-        // console.log('data inserted success fully');
+        console.log('data inserted success fully');
       });
   }
 

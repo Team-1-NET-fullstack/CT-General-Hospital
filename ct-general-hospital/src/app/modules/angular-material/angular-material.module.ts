@@ -77,7 +77,7 @@ const materialModules = [
 ];
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, ...materialModules],
+  imports: [CommonModule, ...materialModules],
   exports: [...materialModules],
 })
 export class AngularMaterialModule {}

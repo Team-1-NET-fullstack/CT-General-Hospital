@@ -83,7 +83,7 @@ export class MedicalInformationService {
     this.http
       .post('http://localhost:3000/DiagnosisDetails', listOfObjects)
       .subscribe((res) => {
-        // console.log(res);
+        console.log(res);
         this.loadData();
         // console.log("data inserted success fully");
       });

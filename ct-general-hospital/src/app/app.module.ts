@@ -19,18 +19,18 @@ import {
   AgendaService,
   MonthAgendaService,
 } from '@syncfusion/ej2-angular-schedule';
-import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
-import { AppointmentsComponent } from './components/appointments/appointments.component';
-
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserService } from './core/services/user/user.service';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayAppointmentsComponent,
-    AppointmentsComponent,
     routingComponents,
     AuthDirective,
     CapitalizePipe,
+    EditUserComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
     SyncfusionModule,
     HttpClientModule,
     CommonModule,
-    ScheduleModule,
+    ScheduleModule
   ],
   providers: [
     DayService,
@@ -51,6 +51,7 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
     MonthService,
     AgendaService,
     MonthAgendaService,
+    UserService
   ],
   bootstrap: [AppComponent],
 })

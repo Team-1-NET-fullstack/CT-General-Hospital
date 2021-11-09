@@ -1,16 +1,13 @@
 .button-submit {
-  background-color: #6944f6;
-  margin: 0 8px 0;
-}
-
-mat-checkbox {
-  margin: 0 1px 0;
-}
-
-.button-reset {
-  background-color: #ffad1f;
-  margin: 0 1px 0;
-}
-.mat-tab-label .mat-tab-label-content{
-  font-size: 100px;
-}
+    background-color: #6944f6;
+    margin: 0 8px 0;
+  }
+  
+  mat-checkbox {
+    margin: 0 1px 0;
+  }
+  
+  .button-reset {
+    background-color: #ffad1f;
+    margin: 0 1px 0;
+  }

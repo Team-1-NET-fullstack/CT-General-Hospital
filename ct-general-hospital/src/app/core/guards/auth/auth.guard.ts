@@ -11,7 +11,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/shared/models/User.model';
+import { UserModel } from 'src/app/shared/models/UserModel.model';
 import { AuthService } from '../../services/auth.service';
 
 @Injectable({
@@ -20,10 +20,10 @@ import { AuthService } from '../../services/auth.service';
 export class AuthGuard
   implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad
 {
-  public user: User | null = null;
+  public user: UserModel | null = null;
 
   constructor(private authService: AuthService) {
-    authService.currentUser.subscribe((user) => {
+    authService.userInfo.subscribe((user) => {
       this.user = user;
     });
   }
