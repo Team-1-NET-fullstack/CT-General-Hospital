@@ -11,3 +11,6 @@
     background-color: #ffad1f;
     margin: 0 1px 0;
   }
+  mat-tab{
+    font-size: 5px;
+  }

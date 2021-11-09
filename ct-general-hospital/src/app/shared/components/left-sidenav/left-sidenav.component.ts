@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from '../../models/User.model';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MyAccountComponent } from '../my-account/my-account.component';
 import { MasterComponent } from 'src/app/components/admin/master/master.component';
 
@@ -27,10 +27,18 @@ export class LeftSidenavComponent implements OnInit {
       // console.log(`Dialog result: ${result}`);
     });
   }
-  openMasterDialog() {
-    const dialogRef = this.dialog.open(MasterComponent);
+  openMasterDialog(){
+    const dialogConfig = new MatDialogConfig();
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogConfig.disableClose = true;
+
+    dialogConfig.autoFocus = true;
+    
+    dialogConfig.height = '70%';
+    dialogConfig.width = '60%';
+    const dialogRef = this.dialog.open(MasterComponent,dialogConfig);
+   
+    dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
     });
   }

@@ -10,6 +10,12 @@ import { AppointmentSchedulerService } from 'src/app/core/services/appointment-s
 })
 export class TopComponent implements OnInit {
   user: User | null = null;
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
   appointmentsCount!: number;
   constructor(
     private authService: AuthService,

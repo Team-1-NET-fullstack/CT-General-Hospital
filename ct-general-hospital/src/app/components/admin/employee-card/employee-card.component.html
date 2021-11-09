@@ -1,9 +1,18 @@
-<h3 style="text-align: left;padding-left: 16px;">Employee Details</h3>
+<h3 style="text-align: left; padding-left: 16px">Employee Details</h3>
 <mat-tab-group style="text-align: left">
   <mat-tab label="Add Employee">
     <app-add-employee></app-add-employee>
   </mat-tab>
   <mat-tab label="Edit Employee">
+    <mat-form-field style="margin-left: 2vw">
+      <mat-label>Search</mat-label>
+      <input type="tel" matInput placeholder="Search" name="search" />
+      <button matSuffix mat-button (click)="OnSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <br />
+    <br />
     <mat-card-content style="align-content: center; margin-left: 2vw">
       <table
         class="table table-striped"
@@ -18,7 +27,8 @@
           <tr>
             <th>Employee ID</th>
             <th>Title</th>
-            <th>Employee Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Date Of Birth</th>
             <th>Email ID</th>
             <th>Role</th>
@@ -30,7 +40,7 @@
           <tr *ngFor="let item of employee">
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
-            <td>{{ item.name }}</td>
+            <td>{{ item.firstName }}</td>
             <td>{{ item.dob | date: "shortDate" }}</td>
             <td>{{ item.emailId }}</td>
             <td>{{ item.role }}</td>

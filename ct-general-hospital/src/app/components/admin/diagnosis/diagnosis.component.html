@@ -1,33 +1,81 @@
-<mat-tab-group style="text-align: left">
+<div style="width: 90%; margin: auto">
+  <mat-tab-group style="text-align: left">
     <mat-tab label="Add Diagnosis">
-      <mat-form-field appearance="legacy">
-        <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" />
-      </mat-form-field>
-      &nbsp;&nbsp;&nbsp;
-      <mat-checkbox class="mat-checkbox">Is Fatal</mat-checkbox>
-      <br />
-      <mat-dialog-actions align="end">
-        <button mat-flat-button type="submit" class="button-submit">
-          Submit
-        </button>
-        <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-      </mat-dialog-actions>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="legacy">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Name"
+            formControlName="Name"
+          />
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="legacy">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="Description"
+          />
+        </mat-form-field>
+        
+        <br />
+        <mat-dialog-actions align="end">
+          <button mat-flat-button type="submit" class="button-submit">
+            Submit
+          </button>
+          <button mat-flat-button mat-dialog-close class="button-reset">
+            Cancel
+          </button>
+        </mat-dialog-actions>
+      </form>
     </mat-tab>
+
     <mat-tab label="Edit Diagnosis">
-      <mat-form-field appearance="legacy">
-        <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" />
-      </mat-form-field>
-      &nbsp;&nbsp;&nbsp;
-      <mat-checkbox class="mat-checkbox">Is Fatal</mat-checkbox>
-      <br />
-      <mat-dialog-actions align="end">
-        <button mat-flat-button type="submit" class="button-submit">
-          Submit
-        </button>
-        <button mat-flat-button type="reset" class="button-reset">Cancel</button>
-      </mat-dialog-actions>
+      <div style="height: 100%">
+        <form [formGroup]="form1" >
+          <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input
+              type="search"
+              matInput
+              placeholder="Search"
+              formControlName="searchterm"
+            />
+            <button matSuffix mat-button (click)="onSearch()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="legacy">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Name"
+              formControlName="Name1"
+            />
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;
+          <mat-form-field appearance="legacy">
+            <mat-label>Description</mat-label>
+            <input
+              matInput
+              placeholder="Description"
+              formControlName="Description1"
+            />
+          </mat-form-field>
+          <br />
+          <mat-dialog-actions align="end">
+            <button mat-flat-button type="submit" class="button-submit" (click)="onEdit()">
+              Submit
+            </button>
+            <button mat-flat-button mat-dialog-close class="button-reset">
+              Cancel
+            </button>
+          </mat-dialog-actions>
+        </form>
+      </div>
     </mat-tab>
   </mat-tab-group>
-  
+</div>
