@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from 'src/app/shared/models/User.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +12,7 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class SignInComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    userName: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
   });
 
@@ -28,21 +28,21 @@ export class SignInComponent implements OnInit {
     // console.log(this.form);
 
     // gather data from form
-    const userName: string = this.form.value.userName;
+    const email: string = this.form.value.email;
     const password: string = this.form.value.password;
-    if (userName.includes('admin')) {
+    if (email.includes('admin')) {
     }
-    const roleId: number = userName.includes('admin')
+    const roleId: number = email.includes('admin')
       ? 1
-      : userName.includes('doctor')
+      : email.includes('doctor')
       ? 2
-      : userName.includes('nurse')
+      : email.includes('nurse')
       ? 3
       : 4;
 
     // Creating object
     const ob: User = {
-      userName: userName,
+      email: email,
       password: password,
       roleId: roleId,
     };

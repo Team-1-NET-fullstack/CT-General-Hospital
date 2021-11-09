@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointments } from '../../models/appointments.model';
+import { Appointment } from '../../models/appointment.model';
 import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {
@@ -33,7 +33,7 @@ export class DisplayAppointmentsComponent implements OnInit {
     { id: 4, name: 'Praveen' },
   ];
 
-  appointments: Appointments[] = [];
+  appointments: Appointment[] = [];
 
   constructor(
     private appointmentService: AppointmentSchedulerService,
@@ -46,7 +46,10 @@ export class DisplayAppointmentsComponent implements OnInit {
 
   getAllAppointments() {
     this.spinner.show();
-    this.appointments = this.appointmentService.getAllAppointments();
+    this.appointmentService.getAllAppointments().subscribe((res) => {
+      this.appointments.splice(0, this.appointments.length); //clear array
+      this.appointments.push(...res); //add new element
+    });
     this.spinner.hide();
   }
 }

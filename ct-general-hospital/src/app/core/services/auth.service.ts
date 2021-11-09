@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from 'src/app/shared/models/User.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public userInfo = new BehaviorSubject<User | null>(null);
+  public currentUser = new BehaviorSubject<User | null>(null);
 
   constructor() {
-    this.userInfo.subscribe((user) => {
+    this.currentUser.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
       }
@@ -18,29 +18,29 @@ export class AuthService {
 
       const user: User = JSON.parse(str === null ? '{}' : str);
 
-      this.userInfo.next(user);
+      this.currentUser.next(user);
     }
   }
 
   // Array of users
   listOfUsers: User[] = [
     {
-      userName: 'admin@ct.com',
+      email: 'admin@ct.com',
       password: 'test',
       roleId: 1,
     },
     {
-      userName: 'doctor@ct.com',
+      email: 'doctor@ct.com',
       password: 'test',
       roleId: 2,
     },
     {
-      userName: 'nurse@ct.com',
+      email: 'nurse@ct.com',
       password: 'test',
       roleId: 3,
     },
     {
-      userName: 'patient@ct.com',
+      email: 'patient@ct.com',
       password: 'test',
       roleId: 4,
     },
@@ -49,16 +49,16 @@ export class AuthService {
   // login
   login(user: User): boolean {
     // API call here
-    
+
     const foundUser: User | undefined = this.listOfUsers.find(
       (ob) =>
-        ob.userName === user.userName &&
+        ob.email === user.email &&
         ob.password === user.password &&
         ob.roleId === user.roleId
     );
 
     if (foundUser) {
-      this.userInfo.next(user); // Send alert
+      this.currentUser.next(user); // Send alert
       return true;
     } else {
       return false;
@@ -68,20 +68,20 @@ export class AuthService {
   // signup
   signup(user: User) {
     const foundUser: User | undefined = this.listOfUsers.find(
-      (ob) => ob.userName === user.userName
+      (ob) => ob.email === user.email
     );
 
     if (foundUser) {
       return false;
     } else {
       this.listOfUsers.push(user);
-      this.userInfo.next(user); // Send alert
+      this.currentUser.next(user); // Send alert
       return true;
     }
   }
 
   logout() {
-    this.userInfo.next(null); // Send alert
+    this.currentUser.next(null); // Send alert
     localStorage.removeItem('user');
   }
 }
