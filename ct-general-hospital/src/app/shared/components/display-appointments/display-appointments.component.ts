@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Appointment } from '../../models/appointment.model';
 import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -9,6 +9,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-display-appointments',
@@ -33,23 +35,43 @@ export class DisplayAppointmentsComponent implements OnInit {
     { id: 4, name: 'Praveen' },
   ];
 
-  appointments: Appointment[] = [];
+  // appointments: Appointment[] = [];
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  dataSource: MatTableDataSource<Appointment>;
+
+  displayedColumns: string[] = [
+    'title',
+    'patientName',
+    'physicianName',
+    'endTime',
+    'startTime',
+    'status',
+  ];
 
   constructor(
     private appointmentService: AppointmentSchedulerService,
     private spinner: NgxSpinnerService
   ) {
+    this.dataSource = new MatTableDataSource();
     this.getAllAppointments();
   }
 
   ngOnInit(): void {}
 
   getAllAppointments() {
-    this.spinner.show();
+    // this.spinner.show();
+
     this.appointmentService.getAllAppointments().subscribe((res) => {
-      this.appointments.splice(0, this.appointments.length); //clear array
-      this.appointments.push(...res); //add new element
+      this.dataSource.data = res;
+      this.dataSource.paginator = this.paginator;
+
+      // this.appointments.splice(0, this.appointments.length); //clear array
+      // this.appointments.push(...res); //add new element
     });
-    this.spinner.hide();
+
+    // this.spinner.hide();
   }
 }
