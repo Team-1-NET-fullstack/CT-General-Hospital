@@ -1,16 +1,28 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Response } from 'src/app/shared/models/response.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import {
+  Appointment,
+  AppointmentCount,
+  AppointmentInfo,
+} from 'src/app/shared/models/appointment.model';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
-import { Appointments } from 'src/app/shared/models/appointments.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppointmentSchedulerService {
-  constructor(private http: HttpClient) {}
+  currentUser!: number;
+  userId: number;
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.userId = 4; // this.auth.currentUser.userId;
+  }
 
   getAllAppointments() {
-    return this.http.get<Appointments[]>(
+    return this.http.get<Appointment[]>(
       `${environment.appointmentSchedulerApiBaseUrl}GetAllAppointments`
     );
   }

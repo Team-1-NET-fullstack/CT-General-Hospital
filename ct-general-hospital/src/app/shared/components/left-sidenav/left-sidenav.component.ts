@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { User } from '../../models/user.model';
+import { User } from '../../models/User.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MyAccountComponent } from '../my-account/my-account.component';
 import { MasterComponent } from 'src/app/components/admin/master/master.component';
-import { UserLogin } from '../../models/UserLogin.model';
 
 @Component({
   selector: 'app-left-sidenav',
@@ -13,22 +12,25 @@ import { UserLogin } from '../../models/UserLogin.model';
   styleUrls: ['./left-sidenav.component.css'],
 })
 export class LeftSidenavComponent implements OnInit {
-  user: UserLogin | null = null;
+  user: User | null = null;
 
-
-  constructor(private authService: AuthService, private router: Router,public dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(MyAccountComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       // console.log(`Dialog result: ${result}`);
     });
   }
-  openMasterDialog(){
+  openMasterDialog() {
     const dialogRef = this.dialog.open(MasterComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       // console.log(`Dialog result: ${result}`);
     });
   }
@@ -37,8 +39,8 @@ export class LeftSidenavComponent implements OnInit {
     this.authService.currentUser.subscribe((user) => {
       this.user = user;
     });
-}
-onLogout() {
+  }
+  onLogout() {
     this.authService.logout();
     this.router.navigate(['/signin']);
   }

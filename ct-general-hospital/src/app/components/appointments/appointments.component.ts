@@ -15,18 +15,20 @@ import {
   MonthAgendaService,
   TimelineViewsService,
 } from '@syncfusion/ej2-angular-schedule';
-import { Appointments } from 'src/app/shared/models/appointments.model';
-import { AppointmentInfo } from 'src/app/shared/models/appointment-info.model';
-import { PhysicianDetailList } from 'src/app/shared/models/physician-detail-list.model';
-import { User } from 'src/app/shared/models/user.model';
+import {
+  Appointment,
+  AppointmentInfo,
+  PhysicianDetailList,
+} from 'src/app/shared/models/appointment.model';
+import { User } from 'src/app/shared/models/User.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Status } from 'src/app/shared/enums/status.enum';
 import { L10n, extend, isNullOrUndefined } from '@syncfusion/ej2-base';
 // import { CommonService } from 'src/app/services/common.service';
 import { ChangeEventArgs } from '@syncfusion/ej2-calendars';
+import { Status } from 'src/app/shared/enums/Status.enum';
 
 L10n.load({
   'en-US': {
@@ -147,17 +149,17 @@ export class AppointmentsComponent {
     this.zone.run(() => {
       this.appointmentService
         .getAllAppointments()
-        .subscribe((res: Appointments[]) => {
+        .subscribe((res: Appointment[]) => {
           const list: any[] = [];
-          res.forEach((element: Appointments) => {
+          res.forEach((element: Appointment) => {
             var appointment = {
-              Id: element.AppointmentId,
-              Subject: element.Reason,
-              Description: element.Reason,
-              Physician: element.PhysicianId,
-              StartTime: element.StartTime,
-              EndTime: element.EndTime,
-              Status: element.Status,
+              Id: element.appointmentId,
+              Subject: element.reason,
+              Description: element.reason,
+              Physician: element.physicianId,
+              StartTime: element.startTime,
+              EndTime: element.endTime,
+              Status: element.status,
               // PhysicianName: this.searchPhysician(element.PhysicianId),
             };
             this.appointmentList.push(appointment);
@@ -230,10 +232,10 @@ export class AppointmentsComponent {
           endTime: data.EndTime,
           status: Status[Status.Pending],
           reason: data.Description,
-          patientName: null,
+          // patientName: null,
           id: 0,
-          date: null,
-          time: null,
+          // date: null,
+          // time: null,
           physicianName: data.Physician,
         };
         console.log(appointmentInfo);
@@ -287,10 +289,10 @@ export class AppointmentsComponent {
           endTime: updateData.EndTime,
           status: Status[Status.Pending],
           reason: updateData.Description,
-          patientName: null,
+          // patientName: null,
           id: 0,
-          date: null,
-          time: null,
+          // date: null,
+          // time: null,
           physicianName: updateData.Physician,
         };
         this.appointmentService.updateAppointment(appointmentInformation);
