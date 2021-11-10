@@ -23,7 +23,7 @@ export class AppointmentSchedulerService {
 
   getAllAppointments() {
     return this.http.get<Appointment[]>(
-      `${environment.appointmentSchedulerApiBaseUrl}GetAllAppointments`
+      `${environment.masterApiBaseUrl}GetAllTheAppointments`
     );
   }
 
@@ -32,7 +32,7 @@ export class AppointmentSchedulerService {
   ): Observable<AppointmentInfo[]> {
     return this.http
       .get<AppointmentInfo[]>(
-        `${environment.appointmentSchedulerApiBaseUrl}getAllAvailablePhysician?startDate=${startDate}`
+        `${environment.masterApiBaseUrl}getAllTheAvailablePhysician?startDate=${startDate}`
       )
       .pipe(
         map((result) => {
@@ -43,7 +43,7 @@ export class AppointmentSchedulerService {
 
   createAppointment(newAppointment: any) {
     return this.http.post(
-      `${environment.appointmentSchedulerApiBaseUrl}CreateAppointment`,
+      `${environment.masterApiBaseUrl}CreateNewAppointments`,
       newAppointment
     );
   }
@@ -51,7 +51,7 @@ export class AppointmentSchedulerService {
   public updateAppointment(appointmentDetails: any) {
     return this.http
       .put(
-        `${environment.appointmentSchedulerApiBaseUrl}UpdateAppointment`,
+        `${environment.masterApiBaseUrl}UpdateExistingAppointment`,
         appointmentDetails
       )
       .pipe(
@@ -64,7 +64,7 @@ export class AppointmentSchedulerService {
   public UpdateAppointmentStatus(appointmentDetails: any) {
     return this.http
       .put(
-        `${environment.appointmentSchedulerApiBaseUrl}UpdateAppointmentStatus`,
+        `${environment.masterApiBaseUrl}UpdateTheAppointmentStatus`,
         appointmentDetails
       )
       .pipe(
@@ -77,7 +77,7 @@ export class AppointmentSchedulerService {
   public deleteAppointment(appointmentId: any) {
     return this.http
       .delete(
-        `${environment.appointmentSchedulerApiBaseUrl}DeleteApointment/${appointmentId}`
+        `${environment.masterApiBaseUrl}DeleteAllApointment/${appointmentId}`
       )
       .pipe(
         map((result) => {

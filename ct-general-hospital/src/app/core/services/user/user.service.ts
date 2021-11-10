@@ -13,7 +13,7 @@ export class UserService {
 
   public getAllUsers(userType: string): Observable<User[]> {
     return this.http.get<User[]>(
-      `${environment.appointmentSchedulerApiBaseUrl}getAllUsers?userType=${userType}`
+      `${environment.masterApiBaseUrl}GetAllOfTheUsers?userType=${userType}`
     );
   }
 }
