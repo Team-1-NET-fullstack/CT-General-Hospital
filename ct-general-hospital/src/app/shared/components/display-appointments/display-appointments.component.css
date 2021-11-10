@@ -31,9 +31,11 @@ div {
 .button-accept {
   background-color: #6944f6;
   margin: 0 8px 0;
+  color: #ffffff;
 }
 
 .button-reject {
   background-color: #ffad1f;
   margin: 0 8px 0;
+  color: #ffffff;
 }
