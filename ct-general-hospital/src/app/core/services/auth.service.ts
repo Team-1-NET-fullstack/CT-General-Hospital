@@ -108,7 +108,7 @@ export class AuthService {
 
   public getAllUsersForLogin(): Observable<User[]> {
     return this.http.get<User[]>(
-      `${environment.appointmentSchedulerApiBaseUrl}GetAllUsersForLogin`
+      `${environment.masterApiBaseUrl}GetAllTheUsersForLogin`
     );
   }
 }

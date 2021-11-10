@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // appointmentSchedulerApiBaseUrl: 'http://localhost:9032/api/Appointments/', // Local Prod
-  appointmentSchedulerApiBaseUrl: 'https://localhost:44306/api/Appointments/', // Local Debug
+  // appointmentSchedulerApiBaseUrl: 'https://localhost:44306/api/Appointments/', // Local Debug
   masterApiBaseUrl: 'http://localhost:9003/',
   // allergyApiBaseUrl: 'http://localhost:9001/api/AllergyMasters/',
   // medicationApiBaseUrl: 'http://localhost:9001/api/MedicationMasters/',
