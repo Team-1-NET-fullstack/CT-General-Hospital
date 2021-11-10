@@ -6,14 +6,12 @@
   width: 50vw;
   margin-left: 1vw;
 }
-mat-form-field{
-  height:0.5vh;
-  margin-bottom: 1vw;
+mat-form-field {
 }
 h3 {
   font-weight: 900;
   text-align: left;
-  font-size: 1rem;
+  font-size: 14px;
 }
 table {
   border-spacing: 1vw;
@@ -23,9 +21,7 @@ table {
 }
 mat-paginator {
   max-width: 50vw;
-  max-height: 5vh;
   margin-left: 9vw;
-  margin-bottom: -1vw;
 }
 mat-card-title {
   font-size: medium;
@@ -33,7 +29,6 @@ mat-card-title {
 
 mat-form-field {
   max-width: 10vw;
-  max-height: 1vh;
 }
 mat-option,
 mat-label {

@@ -11,6 +11,8 @@ export const environment = {
     medicationApiBaseUrl: 'http://localhost:9001/api/MedicationMasters/',
     diagnosisApiBaseUrl: 'http://localhost:9001/api/DiagnosisMasters/',
     procedureApiBaseUrl: 'http://localhost:9001/api/ProcedureMasters/',
+    jwtApiBaseUrl: 'http://localhost:2664',
+  userManagementApiBaseUrl: 'http://localhost:63212',
 };
 
 /*

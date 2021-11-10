@@ -3,16 +3,16 @@
   src="../../../assets/images/admin_image.jpg"
 />
 <h4 class="name">
-  <span *ngIf="user?.roleId == 1">Bhavya Gupta</span>
-  <span *ngIf="user?.roleId == 2">Dr. Robert Mallison</span>
-  <span *ngIf="user?.roleId == 3">Shravani</span>
-  <span *ngIf="user?.roleId == 4">Guest</span>
+  <span *ngIf="roleId == 1">{{ email }}</span>
+  <span *ngIf="roleId == 2">{{ email }}</span>
+  <span *ngIf="roleId == 3">{{ email }}</span>
+  <span *ngIf="roleId == 4">{{ email }}</span>
 </h4>
 <p class="designation">
-  <span *ngIf="user?.roleId == 1">Admin</span>
-  <span *ngIf="user?.roleId == 2">Doctor</span>
-  <span *ngIf="user?.roleId == 3">Nurse</span>
-  <span *ngIf="user?.roleId == 4">Patient</span>
+  <span *ngIf="roleId == 1">Admin</span>
+  <span *ngIf="roleId == 2">Doctor</span>
+  <span *ngIf="roleId == 3">Nurse</span>
+  <span *ngIf="roleId == 4">Patient</span>
   , CT General Hospital
 </p>
 <mat-divider></mat-divider>
@@ -22,6 +22,6 @@
 bottom:   0;
 margin-inline-start: 20px;
     margin-bottom: 20px;">
-<button mat-button (click)="TnCClick()">TnC</button>
-<button mat-button (click)="FAQClick()">FAQ</button>
+<button mat-button (click)="TnCClick()">TnCs</button>
+<button mat-button (click)="FAQClick()">FAQs</button>
 </div>

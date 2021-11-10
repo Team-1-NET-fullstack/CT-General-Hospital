@@ -48,6 +48,7 @@ import { NotesComponent } from './components/inbox/notes/notes.component';
 import { SendComponent } from './components/inbox/send/send.component';
 import { SentComponent } from './components/inbox/sent/sent.component';
 import { ReceivedComponent } from './components/inbox/received/received.component';
+import { ForgotPasswordComponent } from './components/forgotpassword/forgot-password/forgot-password.component';
 const routes: Routes = [
   //main
   { path: '', pathMatch: 'full', redirectTo: 'signin' },
@@ -55,12 +56,13 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'registration', component: SignupComponent },
   { path: 'changePassword', component: ChangePasswordComponent },
+  { path: 'ForgotPassword', component: ForgotPasswordComponent },
 
   //admin
   {
     path: 'admin',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -101,7 +103,7 @@ const routes: Routes = [
   {
     path: 'doctor',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -162,7 +164,7 @@ const routes: Routes = [
   {
     path: 'nurse',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -239,7 +241,7 @@ const routes: Routes = [
   {
     path: 'patient',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',

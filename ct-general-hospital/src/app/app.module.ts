@@ -21,6 +21,7 @@ import {
 } from '@syncfusion/ej2-angular-schedule';
 import { DisplayAppointmentsComponent } from './shared/components/display-appointments/display-appointments.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { ForgotPasswordComponent } from './components/forgotpassword/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
     routingComponents,
     AuthDirective,
     CapitalizePipe,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

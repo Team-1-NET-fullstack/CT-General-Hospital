@@ -1,13 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/shared/models/User.model';
+import { ChangePassword } from 'src/app/shared/models/changepassword.model';
+import { Login } from 'src/app/shared/models/Login.model';
+import { UserModel } from 'src/app/shared/models/UserModel.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public currentUser = new BehaviorSubject<User | null>(null);
-
-  constructor() {
-    this.currentUser.subscribe((user) => {
+  userUpdated = new BehaviorSubject<string | null>(null);
+  roleUpdated = new BehaviorSubject<string | null>(null);
+  userIdUpdated = new BehaviorSubject<string | null>(null);
+  employeeIdUpdated = new BehaviorSubject<string | null>(null);
+  firstNameUpdated = new BehaviorSubject<string | null>(null);
+  id: number = 0;
+  public userInfo = new BehaviorSubject<UserModel | null>(null);
+  constructor(private router: Router, private http: HttpClient) {
+    this.userUpdated.next(localStorage.getItem('EMAILID'));
+     this.roleUpdated.next(localStorage.getItem('ROLEID'));
+      this.firstNameUpdated.next(localStorage.getItem('FIRSTNAME'));
+    console.log(this.roleUpdated);
+    this.userIdUpdated.next(localStorage.getItem('USERID'));
+    this.employeeIdUpdated.next(localStorage.getItem('EMPLOYEEID'));
+    this.userInfo.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
       }
@@ -16,72 +32,81 @@ export class AuthService {
     if (localStorage.getItem('user')) {
       const str: string | null = localStorage.getItem('user');
 
-      const user: User = JSON.parse(str === null ? '{}' : str);
+      const user: UserModel = JSON.parse(str === null ? '{}' : str);
 
-      this.currentUser.next(user);
+      this.userInfo.next(user);
     }
   }
+  //login
+  login(login: Login) {
+    console.log(environment.jwtApiBaseUrl);
+    console.log(login.email);
+    console.log(login.password);
 
-  // Array of users
-  listOfUsers: User[] = [
-    {
-      email: 'admin@ct.com',
-      password: 'test',
-      roleId: 1,
-    },
-    {
-      email: 'doctor@ct.com',
-      password: 'test',
-      roleId: 2,
-    },
-    {
-      email: 'nurse@ct.com',
-      password: 'test',
-      roleId: 3,
-    },
-    {
-      email: 'patient@ct.com',
-      password: 'test',
-      roleId: 4,
-    },
-  ];
+  //  var abc= this.http.post(environment.jwtApiBaseUrl + '/api/Authenticate/Login', {emailId:login.email,password:login.password});
+  //    console.log("Response from API:"+abc);
+     //return abc;
+    return this.http.post(environment.jwtApiBaseUrl + '/api/Authenticate/Login', {emailId:login.email,password:login.password});
+  }
 
-  // login
-  login(user: User): boolean {
-    // API call here
-
-    const foundUser: User | undefined = this.listOfUsers.find(
-      (ob) =>
-        ob.email === user.email &&
-        ob.password === user.password &&
-        ob.roleId === user.roleId
+  forgotPassword(email: string) {
+    console.log(email);
+    let obj = { email: email };
+    return this.http.post(
+      environment.userManagementApiBaseUrl + '/api/User/ForgotPassword',
+      obj
     );
-
-    if (foundUser) {
-      this.currentUser.next(user); // Send alert
-      return true;
-    } else {
-      return false;
-    }
   }
-
-  // signup
-  signup(user: User) {
-    const foundUser: User | undefined = this.listOfUsers.find(
-      (ob) => ob.email === user.email
+  //change password
+  changepassword(changepassword: ChangePassword) {
+    console.log(environment.userManagementApiBaseUrl);
+    console.log(changepassword.email);
+    console.log(changepassword.password);
+    console.log(changepassword.oldpassword);
+    return this.http.post(
+      
+      environment.userManagementApiBaseUrl + '/api/User/ChangePassword',
+      changepassword
     );
-
-    if (foundUser) {
-      return false;
-    } else {
-      this.listOfUsers.push(user);
-      this.currentUser.next(user); // Send alert
-      return true;
-    }
   }
-
+  // //signup
+  // signup(email: string, password: string) {
+  //   const success = true;
+  //   if (success) {
+  //     //localStorage.setItem("JWT", "KJSKDHASDA");
+  //     localStorage.setItem('EMAIL', email);
+  //     alert('Signup successfull');
+  //   } else {
+  //     alert('Signup failed');
+  //     localStorage.clear();
+  //   }
+  // }
+  //signout
   logout() {
-    this.currentUser.next(null); // Send alert
-    localStorage.removeItem('user');
+    localStorage.clear();
+    this.userUpdated.next(null);
+     this.roleUpdated.next(null);
+    this.router.navigate(['signin']);
+    localStorage.removeItem('userUpdated');
+    
+    
+  }
+  //Get all roles
+  getAllRoles() {
+    //const success=true;
+    return this.http.get(environment.userManagementApiBaseUrl + '/api/User/GetAllRoles');
+  }
+  getRolesById(user: UserModel) {
+    //const success=true;
+    return this.http.get(environment.userManagementApiBaseUrl + '/api/User/GetRolesById');
+  }
+  getRolesByEmail() {
+    let email;
+    this.userUpdated.subscribe((user: any) => {
+      email = user;
+    });
+    return this.http.get(
+      environment.userManagementApiBaseUrl + `/api/User/GetRolesByEmail/${email}`
+    );
   }
 }
