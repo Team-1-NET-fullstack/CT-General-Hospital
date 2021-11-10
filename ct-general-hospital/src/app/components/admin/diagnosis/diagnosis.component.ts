@@ -46,7 +46,7 @@ export class DiagnosisComponent implements OnInit {
       this.objId = response.Id;
       this.form1.controls.Name1.setValue(response.Name);
       this.form1.controls.Description1.setValue(response.Description);
-      console.log(response);
+      
     });
   }
   onEdit() {

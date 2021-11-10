@@ -28,7 +28,7 @@
 
     <mat-tab label="Edit Allergy">
       <div style="height: 100%">
-        <form [formGroup]="form1" >
+        <form [formGroup]="form1">
           <mat-form-field>
             <mat-label>Search</mat-label>
             <input
@@ -42,8 +42,6 @@
             </button>
           </mat-form-field>
           <br />
-
-          
 
           &nbsp;&nbsp;&nbsp;
           <mat-form-field appearance="legacy">
@@ -60,7 +58,12 @@
           >
           <br />
           <mat-dialog-actions align="end">
-            <button mat-flat-button type="submit" class="button-submit" (click)="onEdit()">
+            <button
+              mat-flat-button
+              type="submit"
+              class="button-submit"
+              (click)="onEdit()"
+            >
               Submit
             </button>
             <button mat-flat-button mat-dialog-close class="button-reset">

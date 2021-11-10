@@ -12,7 +12,7 @@ export class ProcedureMasterService {
   constructor(private masterClient: HttpClient,private _snackBar:MatSnackBar) {}
   getAllProcedurebyDesc(desc: string) {
     return this.masterClient.get<ProcedureMasterIncomingDTO>(
-      `${environment.procedureApiBaseUrl}GetProcedureByDescription?desc=` +
+      `${environment.masterApiBaseUrl}GetProcedureMastersByDescription?desc=` +
         desc
     );
   }
@@ -24,7 +24,7 @@ export class ProcedureMasterService {
   createProcedure(procedure: ProcedureMaster) {
     this.masterClient
       .post(
-        `${environment.procedureApiBaseUrl}CreateNewProcedure`,
+        `${environment.masterApiBaseUrl}CreateNewProcedureMastersData`,
         procedure
       )
       .subscribe((res) => {
@@ -34,7 +34,7 @@ export class ProcedureMasterService {
   
   updateProcedure(procedure: ProcedureMaster) {
     this.masterClient
-      .put(`${environment.procedureApiBaseUrl}UpdateProcedure`,procedure)
+      .put(`${environment.masterApiBaseUrl}UpdateProcedureMastersData`,procedure)
       .subscribe((res) => {
         console.log(res);
         this.openSnackBar('Procedure updated!');
