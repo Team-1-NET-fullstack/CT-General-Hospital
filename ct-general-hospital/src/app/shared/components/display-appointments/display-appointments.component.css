@@ -1,3 +1,39 @@
 table {
   width: 100%;
 }
+
+.material-icons {
+  color: rgb(56, 174, 56);
+}
+
+.col:hover {
+  border-bottom: 2px solid #12ff34;
+}
+
+.danger {
+  color: #ffffaf;
+}
+
+table {
+  width: 100%;
+}
+
+button {
+  margin: 0 10px 0;
+}
+
+div {
+  display: inline-flex;
+  align-self: center;
+  align-items: center;
+}
+
+.button-accept {
+  background-color: #6944f6;
+  margin: 0 8px 0;
+}
+
+.button-reject {
+  background-color: #ffad1f;
+  margin: 0 8px 0;
+}

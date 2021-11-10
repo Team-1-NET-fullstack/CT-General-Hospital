@@ -9,8 +9,6 @@ import { zip } from 'rxjs';
 import { PatientDemographicsService } from 'src/app/core/services/patient-demographics.service';
 import { DemographicsDetails } from 'src/app/shared/models/patient-demographics.model';
 
-//import {PatienrDemographicsService} from 'src/app/core/services/PatienrDemographicsService.service';
-
 @Component({
   selector: 'app-patient-demographics',
   templateUrl: './patient-demographics.component.html',
@@ -19,7 +17,6 @@ import { DemographicsDetails } from 'src/app/shared/models/patient-demographics.
 export class PatientDemographicsComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   demogrp: DemographicsDetails = new DemographicsDetails();
-  //  constructor(private medicalInformationService: MedicalInformationService) {}
 
   constructor(
     private patientdemographicsservice: PatientDemographicsService,
@@ -116,10 +113,7 @@ export class PatientDemographicsComponent implements OnInit {
   ngOnInit(): void {}
 
   saveDemographicsDetails() {
-    // console.log(this.form);
-
     if (this.form.valid) {
-      //console.log('form valid');
       this.demogrp.title = this.form.value.title;
       this.demogrp.firstName = this.form.value.firstname;
       this.demogrp.lastName = this.form.value.lastname;
@@ -142,6 +136,6 @@ export class PatientDemographicsComponent implements OnInit {
       this.demogrp.access = this.form.value.access;
       this.patientdemographicsservice.addDemographics(this.demogrp);
     }
-    console.log(JSON.stringify(this.demogrp));
+    // console.log(JSON.stringify(this.demogrp));
   }
 }

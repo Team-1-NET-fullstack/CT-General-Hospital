@@ -49,7 +49,6 @@ export class VitalSignsComponent implements OnInit {
   };
 
   saveVitals() {
-    // Gathering data
     const patientVisitId = 1234;
     const height = this.form.value.height;
     const weight = this.form.value.weight;
@@ -60,7 +59,6 @@ export class VitalSignsComponent implements OnInit {
     const insertedDate = new Date();
     const id = this.form.value.id;
 
-    // Create Ob
     const ob = new VitalSigns(
       patientVisitId,
       height,
@@ -73,7 +71,6 @@ export class VitalSignsComponent implements OnInit {
       id
     );
 
-    // Send to service
     this.medicalInformationService.addVitals(ob);
     alert('Record Added');
   }

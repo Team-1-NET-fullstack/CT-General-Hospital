@@ -11,12 +11,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class AllergyMasterService {
-  constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
+  constructor(
+    private masterClient: HttpClient,
+    private _snackBar: MatSnackBar
+  ) {}
   getAllAllergybyDesc(desc: string) {
     return this.masterClient.get<AllergyMasterIncomingDTO>(
-      `${environment.allergyApiBaseUrl}GetAllergyByDescription?desc=` +
+      `${environment.allergyApiBaseUrl}GetAllergyMastersByDescription?desc=` +
         desc
-        
     );
   }
   openSnackBar(message: string) {
@@ -27,7 +29,7 @@ export class AllergyMasterService {
   createAllergy(allergy: AllergyMaster) {
     this.masterClient
       .post(
-        `${environment.allergyApiBaseUrl}CreateNewAllergy`,
+        `${environment.allergyApiBaseUrl}CreateNewAllergyMasterData`,
         allergy
       )
       .subscribe((res) => {
@@ -36,7 +38,7 @@ export class AllergyMasterService {
   }
   updateAllergy(allergy: AllergyMaster) {
     this.masterClient
-      .put(`${environment.allergyApiBaseUrl}UpdateAllergy`,allergy)
+      .put(`${environment.allergyApiBaseUrl}UpdateAllergyMasterData`, allergy)
       .subscribe((res) => {
         console.log(res);
         this.openSnackBar('Allergy updated!');

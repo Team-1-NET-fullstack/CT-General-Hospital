@@ -12,15 +12,15 @@ import { MedicationDetails } from 'src/app/shared/models/medication-details.mode
 })
 export class MedicationDetailsComponent implements OnInit {
   drugId = new FormControl();
-  drugIdList: string[] = ['D001','D002','D003','D004'];
+  drugIdList: string[] = ['D001', 'D002', 'D003', 'D004'];
   drugGenericName = new FormControl();
-  drugGenericNameList: string[] = ['Diazepam',' Valium','Vazepam'];
- 
+  drugGenericNameList: string[] = ['Diazepam', ' Valium', 'Vazepam'];
+
   drugName = new FormControl();
-  drugNameList: string[] = ['Ansaid','Pantop','Paracetomol','Azythromicin'];
+  drugNameList: string[] = ['Ansaid', 'Pantop', 'Paracetomol', 'Azythromicin'];
   drugBrandName = new FormControl();
-  drugBrandNameList: string[] = ['Cipla','Ansaid','Hetero'];
- 
+  drugBrandNameList: string[] = ['Cipla', 'Ansaid', 'Hetero'];
+
   form: FormGroup = new FormGroup({});
 
   constructor(private medicalInformationService: MedicalInformationService) {}
@@ -45,7 +45,6 @@ export class MedicationDetailsComponent implements OnInit {
   };
 
   saveMedicationDetails() {
-    // Gathering data
     const patientVisitId = 1234;
     const drugId = this.form.value.drugId;
     const drugName = this.form.value.drugName;
@@ -56,7 +55,6 @@ export class MedicationDetailsComponent implements OnInit {
     const insertedDate = new Date();
     const id = this.form.value.id;
 
-    // Create Ob
     const ob = new MedicationDetails(
       patientVisitId,
       drugId,
@@ -69,7 +67,6 @@ export class MedicationDetailsComponent implements OnInit {
       id
     );
 
-    // Send to service
     this.medicalInformationService.addMedicationDetails(ob);
     alert('Record Added');
   }

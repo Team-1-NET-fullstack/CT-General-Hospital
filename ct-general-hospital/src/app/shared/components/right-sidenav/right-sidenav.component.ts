@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { User } from '../../models/User.model';
+import { User } from '../../models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { FAQsComponent } from '../faqs/faqs.component';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
@@ -18,20 +18,16 @@ export class RightSidenavComponent implements OnInit {
   TnCClick() {
     const dialogRef = this.dialog.open(TermsConditionsComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
   FAQClick() {
     const dialogRef = this.dialog.open(FAQsComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   ngOnInit(): void {
-    this.authService.currentUser.subscribe((user) => {
+    this.authService.user.subscribe((user) => {
       this.user = user;
     });
   }

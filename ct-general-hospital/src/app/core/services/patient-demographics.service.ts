@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class PatientDemographicsService {
   demographics: DemographicsDetails[] = [];
 
-  // list of posts objects
   constructor(private http: HttpClient) {
     this.loadData();
   }
@@ -18,9 +17,8 @@ export class PatientDemographicsService {
     this.http
       .get<DemographicsDetails[]>('http://localhost:3000/DemographicsDetails')
       .subscribe((demographicsDetails) => {
-        this.demographics.splice(0, this.demographics.length); // Clear array
-        this.demographics.push(...demographicsDetails); // add new element
-        // console.log(demographicsDetails);
+        this.demographics.splice(0, this.demographics.length);
+        this.demographics.push(...demographicsDetails);
       });
   }
 
@@ -28,12 +26,7 @@ export class PatientDemographicsService {
     this.http
       .post('http://localhost:3000/DemographicsDetails', demographics1)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log('data inserted success fully');
       });
   }
-
-
-  
 }

@@ -6,7 +6,7 @@
   <span *ngIf="user?.roleId == 1">Bhavya Gupta</span>
   <span *ngIf="user?.roleId == 2">Dr. Robert Mallison</span>
   <span *ngIf="user?.roleId == 3">Shravani</span>
-  <span *ngIf="user?.roleId == 4">Guest</span>
+  <span *ngIf="user?.roleId == 4">Aparna</span>
 </h4>
 <p class="designation">
   <span *ngIf="user?.roleId == 1">Admin</span>
@@ -17,11 +17,14 @@
 </p>
 <mat-divider></mat-divider>
 
-
-<div style="position:fixed;
-bottom:   0;
-margin-inline-start: 20px;
-    margin-bottom: 20px;">
-<button mat-button (click)="TnCClick()">TnC</button>
-<button mat-button (click)="FAQClick()">FAQ</button>
+<div
+  style="
+    position: fixed;
+    bottom: 0;
+    margin-inline-start: 20px;
+    margin-bottom: 20px;
+  "
+>
+  <button mat-button (click)="TnCClick()">TnC</button>
+  <button mat-button (click)="FAQClick()">FAQ</button>
 </div>

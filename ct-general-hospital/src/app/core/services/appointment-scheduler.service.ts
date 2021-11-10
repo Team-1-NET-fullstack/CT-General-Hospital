@@ -15,10 +15,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AppointmentSchedulerService {
-  currentUser!: number;
-  userId: number;
+  user!: number;
+  userId!: number;
   constructor(private http: HttpClient, private auth: AuthService) {
-    this.userId = 4; // this.auth.currentUser.userId;
+    this.userId != this.auth.user.value?.userId;
   }
 
   getAllAppointments() {
@@ -27,35 +27,62 @@ export class AppointmentSchedulerService {
     );
   }
 
-  GetAllAvailablePhysicians(startDate: Date) {
-    throw new Error('Method not implemented.');
+  public GetAllAvailablePhysicians(
+    startDate: Date
+  ): Observable<AppointmentInfo[]> {
+    return this.http
+      .get<AppointmentInfo[]>(
+        `${environment.appointmentSchedulerApiBaseUrl}getAllAvailablePhysician?startDate=${startDate}`
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
   }
 
   createAppointment(newAppointment: any) {
-    this.http
-      .post(
-        `${environment.appointmentSchedulerApiBaseUrl}CreateAppointment`,
-        newAppointment
-      )
-      .subscribe((res) => {
-        console.log(res);
-        console.log('data inserted successfully');
-      });
+    return this.http.post(
+      `${environment.appointmentSchedulerApiBaseUrl}CreateAppointment`,
+      newAppointment
+    );
   }
 
-  updateAppointment(newAppointment: any) {
-    this.http
+  public updateAppointment(appointmentDetails: any) {
+    return this.http
       .put(
-        `${environment.appointmentSchedulerApiBaseUrl}AcceptAppointment`,
-        newAppointment
+        `${environment.appointmentSchedulerApiBaseUrl}UpdateAppointment`,
+        appointmentDetails
       )
-      .subscribe((res) => {
-        console.log(res);
-        console.log('data updated successfully');
-      });
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
   }
 
-  deleteAppointment(Id: any) {
-    throw new Error('Method not implemented.');
+  public UpdateAppointmentStatus(appointmentDetails: any) {
+    return this.http
+      .put(
+        `${environment.appointmentSchedulerApiBaseUrl}UpdateAppointmentStatus`,
+        appointmentDetails
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
+  }
+
+  public deleteAppointment(appointmentId: any) {
+    return this.http
+      .delete(
+        `${environment.appointmentSchedulerApiBaseUrl}DeleteApointment/${appointmentId}`
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
   }
 }

@@ -9,6 +9,8 @@ export class EditPatientService {
   constructor(private patientClient: HttpClient) {}
 
   getAllPatient() {
-    return this.patientClient.get<EditPatient[]>('http://localhost:3000/Patient');
+    return this.patientClient.get<EditPatient[]>(
+      'http://localhost:3000/Patient'
+    );
   }
 }

@@ -19,3 +19,7 @@ body {
   font-family: Roboto, "Roboto Regular";
   font-size: 13px;
 }
+
+* {
+  font-size: 13px;
+}

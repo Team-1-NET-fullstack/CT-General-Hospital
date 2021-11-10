@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/models/User.model';
+import { User } from 'src/app/shared/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 
@@ -26,7 +26,7 @@ export class TopComponent implements OnInit {
     this.appointmentSchedulerService.getAllAppointments().subscribe((res) => {
       this.appointmentsCount = res.length;
     });
-    this.authService.currentUser.subscribe((user) => {
+    this.authService.user.subscribe((user) => {
       this.user = user;
     });
   }

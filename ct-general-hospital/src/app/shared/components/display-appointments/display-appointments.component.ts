@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Appointment } from '../../models/appointment.model';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Appointment, AppointmentInfo } from '../../models/appointment.model';
 import { AppointmentSchedulerService } from 'src/app/core/services/appointment-scheduler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {
@@ -11,6 +11,9 @@ import {
 } from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Status } from '../../enums/status.enum';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-display-appointments',
@@ -35,8 +38,6 @@ export class DisplayAppointmentsComponent implements OnInit {
     { id: 4, name: 'Praveen' },
   ];
 
-  // appointments: Appointment[] = [];
-
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -53,7 +54,10 @@ export class DisplayAppointmentsComponent implements OnInit {
 
   constructor(
     private appointmentService: AppointmentSchedulerService,
-    private spinner: NgxSpinnerService
+    private auth: AuthService,
+    private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService,
+    private zone: NgZone
   ) {
     this.dataSource = new MatTableDataSource();
     this.getAllAppointments();
@@ -62,16 +66,48 @@ export class DisplayAppointmentsComponent implements OnInit {
   ngOnInit(): void {}
 
   getAllAppointments() {
-    // this.spinner.show();
-
     this.appointmentService.getAllAppointments().subscribe((res) => {
       this.dataSource.data = res;
       this.dataSource.paginator = this.paginator;
-
-      // this.appointments.splice(0, this.appointments.length); //clear array
-      // this.appointments.push(...res); //add new element
     });
+  }
 
-    // this.spinner.hide();
+  editStatus(element: any, details: any) {
+    console.log(details);
+    var changedStatus = element.srcElement.innerText;
+    var status = changedStatus == 'Accept' ? 'Active' : 'Declined';
+    changedStatus =
+      changedStatus == 'Accept'
+        ? Status[Status.Active]
+        : Status[Status.Declined];
+    var appointmentInformation: Appointment = {
+      appointmentId: details.appointmentId,
+      // patientId: this.auth.user.value?.userId,
+      // physicianId: 0,
+      // startTime: new Date(),
+      // endTime: new Date(),
+      status: changedStatus,
+      reason: details.reason,
+      // patientName: '',
+      // physicianName: '',
+    };
+    this.appointmentService
+      .UpdateAppointmentStatus(appointmentInformation)
+      .subscribe((response: any) => {
+        if (response) {
+          this.appointmentService.getAllAppointments();
+          this.snackBar.open(
+            'Appointment' + ' ' + status + ' ' + 'successfully',
+            'X',
+            {
+              duration: 2000,
+            }
+          );
+        } else {
+          this.snackBar.open('failed', 'X', {
+            duration: 2000,
+          });
+        }
+      });
   }
 }

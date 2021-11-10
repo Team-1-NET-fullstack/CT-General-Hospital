@@ -1,13 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/shared/models/User.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from 'src/app/shared/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public currentUser = new BehaviorSubject<User | null>(null);
+  public user = new BehaviorSubject<User | null>(null);
+  // listOfUsers: Array<User> = [];
+  // listOfUsers: User[] = [];
+  constructor(private http: HttpClient) {
+    this.getUsersForLogin();
 
-  constructor() {
-    this.currentUser.subscribe((user) => {
+    this.user.subscribe((user) => {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
       }
@@ -18,47 +23,63 @@ export class AuthService {
 
       const user: User = JSON.parse(str === null ? '{}' : str);
 
-      this.currentUser.next(user);
+      this.user.next(user);
     }
   }
 
   // Array of users
   listOfUsers: User[] = [
     {
+      userId: 1,
       email: 'admin@ct.com',
       password: 'test',
       roleId: 1,
     },
     {
+      userId: 2,
       email: 'doctor@ct.com',
       password: 'test',
       roleId: 2,
     },
     {
+      userId: 3,
       email: 'nurse@ct.com',
       password: 'test',
       roleId: 3,
     },
     {
+      userId: 4,
       email: 'patient@ct.com',
       password: 'test',
       roleId: 4,
     },
   ];
 
+  private getUsersForLogin() {
+    this.getAllUsersForLogin().subscribe((result) => {
+      console.log(result);
+      result.forEach((userObj) => {
+        this.listOfUsers.push({
+          userId: userObj.userId,
+          email: userObj.email,
+          password: userObj.password,
+          roleId: userObj.roleId,
+          UserText: userObj.firstName + ' ' + userObj.lastName,
+        });
+      });
+    });
+  }
+
   // login
   login(user: User): boolean {
     // API call here
-
+    this.getUsersForLogin();
     const foundUser: User | undefined = this.listOfUsers.find(
-      (ob) =>
-        ob.email === user.email &&
-        ob.password === user.password &&
-        ob.roleId === user.roleId
+      (ob) => ob.email === user.email && ob.password === user.password
     );
 
     if (foundUser) {
-      this.currentUser.next(user); // Send alert
+      this.user.next(user); // Send alert
       return true;
     } else {
       return false;
@@ -75,13 +96,19 @@ export class AuthService {
       return false;
     } else {
       this.listOfUsers.push(user);
-      this.currentUser.next(user); // Send alert
+      this.user.next(user); // Send alert
       return true;
     }
   }
 
   logout() {
-    this.currentUser.next(null); // Send alert
+    this.user.next(null); // Send alert
     localStorage.removeItem('user');
+  }
+
+  public getAllUsersForLogin(): Observable<User[]> {
+    return this.http.get<User[]>(
+      `${environment.appointmentSchedulerApiBaseUrl}GetAllUsersForLogin`
+    );
   }
 }

@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { User } from 'src/app/shared/models/User.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -25,14 +25,11 @@ export class SignInComponent implements OnInit {
   }
 
   onLogin() {
-    // console.log(this.form);
-
-    // gather data from form
     const email: string = this.form.value.email;
     const password: string = this.form.value.password;
     if (email.includes('admin')) {
     }
-    const roleId: number = email.includes('admin')
+    const id: number = email.includes('admin')
       ? 1
       : email.includes('doctor')
       ? 2
@@ -40,17 +37,16 @@ export class SignInComponent implements OnInit {
       ? 3
       : 4;
 
-    // Creating object
     const ob: User = {
+      userId: id,
       email: email,
       password: password,
-      roleId: roleId,
+      roleId: id,
     };
 
-    // pass to auth service for login verfication
     if (this.authService.login(ob)) {
       this.openSnackBar('Login Successful!');
-      switch (roleId) {
+      switch (ob.userId) {
         case 1:
           this.router.navigate(['/admin/dashboard']);
           break;
@@ -71,15 +67,12 @@ export class SignInComponent implements OnInit {
           break;
       }
     } else {
-      // console.log(ob);
       this.openSnackBar('Login Failed!');
     }
   }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, 'X', {
-      // horizontalPosition: 'right',
-      // verticalPosition: 'top',
       duration: 2000,
     });
   }

@@ -36,4 +36,6 @@ export class User {
   isActive?: boolean;
 
   password?: string;
+
+  UserText?: string;
 }
