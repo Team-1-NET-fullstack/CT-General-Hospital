@@ -11,7 +11,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/shared/models/User.model';
+import { User } from 'src/app/shared/models/user.model';
 import { AuthService } from '../../services/auth.service';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class AuthGuard
   public user: User | null = null;
 
   constructor(private authService: AuthService) {
-    authService.currentUser.subscribe((user) => {
+    authService.user.subscribe((user) => {
       this.user = user;
     });
   }

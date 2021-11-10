@@ -14,7 +14,6 @@ export class MedicalInformationService {
   procedureDetails: ProcedureDetails[] = [];
   medicationDetails: MedicationDetails[] = [];
   patientDetails: PatientDetails[] = [];
-  // list of posts objects
   constructor(private http: HttpClient) {
     this.loadData();
   }
@@ -29,90 +28,75 @@ export class MedicalInformationService {
     this.http
       .get<VitalSigns[]>('http://localhost:3000/VitalSigns')
       .subscribe((vitalSigns) => {
-        this.vitalSigns.splice(0, this.vitalSigns.length); // Clear array
-        this.vitalSigns.push(...vitalSigns); // add new element
-        // console.log(vitalSigns);
+        this.vitalSigns.splice(0, this.vitalSigns.length);
+        this.vitalSigns.push(...vitalSigns);
       });
   }
   loadDiagnosisDetails() {
     this.http
       .get<DiagnosisDetails[]>('http://localhost:3000/DiagnosisDetails')
       .subscribe((diagnosisDetails) => {
-        this.diagnosisDetails.splice(0, this.diagnosisDetails.length); // Clear array
-        this.diagnosisDetails.push(...diagnosisDetails); // add new element
-        // console.log(diagnosisDetails);
+        this.diagnosisDetails.splice(0, this.diagnosisDetails.length);
+        this.diagnosisDetails.push(...diagnosisDetails);
       });
   }
   loadProcedureDetails() {
     this.http
       .get<ProcedureDetails[]>('http://localhost:3000/ProcedureDetails')
       .subscribe((procedureDetails) => {
-        this.procedureDetails.splice(0, this.procedureDetails.length); // Clear array
-        this.procedureDetails.push(...procedureDetails); // add new element
-        // console.log(procedureDetails);
+        this.procedureDetails.splice(0, this.procedureDetails.length);
+        this.procedureDetails.push(...procedureDetails);
       });
   }
   loadMedicationDetails() {
     this.http
       .get<MedicationDetails[]>('http://localhost:3000/MedicationDetails')
       .subscribe((medicationDetails) => {
-        this.medicationDetails.splice(0, this.medicationDetails.length); // Clear array
-        this.medicationDetails.push(...medicationDetails); // add new element
-        // console.log(medicationDetails);
+        this.medicationDetails.splice(0, this.medicationDetails.length);
+        this.medicationDetails.push(...medicationDetails);
       });
   }
   loadPatientDetails() {
     this.http
       .get<PatientDetails[]>('http://localhost:3000/PatientDetails')
       .subscribe((patientDetails) => {
-        this.patientDetails.splice(0, this.patientDetails.length); // Clear array
-        this.patientDetails.push(...patientDetails); // add new element
-        // console.log(patientDetails);
+        this.patientDetails.splice(0, this.patientDetails.length);
+        this.patientDetails.push(...patientDetails);
       });
   }
   addVitals(vitalSigns: VitalSigns) {
     this.http
       .post('http://localhost:3000/VitalSigns', vitalSigns)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
       });
   }
   addDiagnosisDetails(listOfObjects: Object) {
     this.http
       .post('http://localhost:3000/DiagnosisDetails', listOfObjects)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
       });
   }
   addProcedureDetails(procedureDetails: ProcedureDetails) {
     this.http
       .post('http://localhost:3000/ProcedureDetails', procedureDetails)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
       });
   }
   addMedicationDetails(medicationDetails: MedicationDetails) {
     this.http
       .post('http://localhost:3000/MedicationDetails', medicationDetails)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
       });
   }
   addPatientDetails(patientDetails: PatientDetails) {
     this.http
       .post('http://localhost:3000/PatientDetails', patientDetails)
       .subscribe((res) => {
-        // console.log(res);
         this.loadData();
-        // console.log("data inserted success fully");
       });
   }
 }

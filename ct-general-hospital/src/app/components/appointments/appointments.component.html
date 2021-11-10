@@ -1,9 +1,4 @@
 <div class="control-section">
-  <!-- <div style="margin-left: 79.5%">
-    <span class="label success" style="margin-right: 1%">Accepted</span>
-    <span class="label info" style="margin-right: 1%">Pending</span>
-    <span class="label warning" style="margin-right: 1%">Rejected</span>
-  </div> -->
   <ejs-schedule
     #scheduleObj
     width="100%"
@@ -55,10 +50,6 @@
                 value="{{ data.Physician }}"
               >
               </ejs-dropdownlist>
-              <!-- <mat-hint
-                >Available Physicians according to the current time
-                slot</mat-hint
-              > -->
             </td>
           </tr>
           <tr *ngIf="data?.Physician != undefined">

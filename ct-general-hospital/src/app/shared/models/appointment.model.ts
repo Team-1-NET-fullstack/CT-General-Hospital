@@ -1,9 +1,10 @@
 export class PhysicianDetailList {
   PhysicianText?: string;
-  Id?: number;
+  PhysicianId?: number;
 }
 
 export class AppointmentInfo {
+  appointmentId?: number;
   patientId?: number;
   id?: number;
   title?: string;

@@ -1,5 +1,4 @@
 export class DemographicsDetails {
-  // constructor(
   public patientId!: number;
   public title!: string;
   public firstName!: string;

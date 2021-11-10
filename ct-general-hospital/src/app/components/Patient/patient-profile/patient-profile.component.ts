@@ -8,16 +8,9 @@ import { DemographicsDetails } from 'src/app/shared/models/patient-demographics.
   styleUrls: ['./patient-profile.component.css'],
 })
 export class PatientProfileComponent implements OnInit {
-  
-   demographics:DemographicsDetails[]=[];
-    constructor(private demographicsDetails:PatientDemographicsService) {
-   this.demographics = this.demographicsDetails.demographics;
-   // console.log("DemographicsDetails:", this.demographics); 
+  demographics: DemographicsDetails[] = [];
+  constructor(private demographicsDetails: PatientDemographicsService) {
+    this.demographics = this.demographicsDetails.demographics;
   }
   ngOnInit(): void {}
-
- }
-
-
-
-  
+}
