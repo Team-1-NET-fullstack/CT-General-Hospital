@@ -14,7 +14,7 @@ export class MedicationMasterService {
   constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
   getAllMedicationbyDesc(desc: string) {
     return this.masterClient.get<MedicationMasterIncomingDTO>(
-      `${environment.medicationApiBaseUrl}GetMedicationByDescription?desc=` +
+      `${environment.masterApiBaseUrl}GetMedicationMastersByDescription?desc=` +
         desc
     );
   }
@@ -26,7 +26,7 @@ export class MedicationMasterService {
   createMedication(medication: MedicationMaster) {
     this.masterClient
       .post(
-        `${environment.medicationApiBaseUrl}CreateNewMedication`,
+        `${environment.masterApiBaseUrl}CreateNewMedicationMastersData`,
         medication
       )
       .subscribe((res) => {
@@ -36,7 +36,7 @@ export class MedicationMasterService {
   updateMedication(medication: MedicationMaster) {
     console.log(medication);
     this.masterClient
-      .put(`${environment.medicationApiBaseUrl}UpdateMedication`,medication)
+      .put(`${environment.masterApiBaseUrl}UpdateMedicationMastersData`,medication)
       .subscribe((res) => {
         console.log(res);
         this.openSnackBar('Medication updated!');

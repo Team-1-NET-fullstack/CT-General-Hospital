@@ -44,9 +44,9 @@ export class MedicationComponent implements OnInit {
       let deprecated: boolean = this.form.value.Deprecated;
       var medication = new MedicationMaster(
         '',
-        name,
+        name,dosage,
         description,
-        dosage,
+        
         deprecated
       );
       if (this.form.valid) {
@@ -60,8 +60,8 @@ export class MedicationComponent implements OnInit {
       .subscribe((response) => {
         this.objId = response.Id;
         this.form1.controls.Name1.setValue(response.Name);
-        this.form1.controls.Description1.setValue(response.Description);
         this.form1.controls.Dosage1.setValue(response.Dosage);
+        this.form1.controls.Description1.setValue(response.Description);
         this.form1.controls.Deprecated1.setValue(response.IsDeprecated);
         console.log(response);
       });

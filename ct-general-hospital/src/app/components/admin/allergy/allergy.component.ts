@@ -21,8 +21,7 @@ export class AllergyComponent implements OnInit {
   objId: string = '';
 
   constructor(
-    private masterService: AllergyMasterService,
-    private formBuilder: FormBuilder
+    private masterService: AllergyMasterService
   ) {
     this.form = new FormGroup({
       Description: new FormControl(null),

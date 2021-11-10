@@ -5,16 +5,19 @@ import {
   DiagnosisMaster,
   DiagnosisMasterIncomingDTO,
 } from 'src/app/shared/models/diagnosismaster.model';
-import { environment } from 'src/environments/environment'; 
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DiagnosisMasterService {
-  constructor(private masterClient: HttpClient,private _snackBar: MatSnackBar) {}
+  constructor(
+    private masterClient: HttpClient,
+    private _snackBar: MatSnackBar
+  ) {}
   getAllDiagnosisbyDesc(desc: string) {
     return this.masterClient.get<DiagnosisMasterIncomingDTO>(
-      `${environment.diagnosisApiBaseUrl}GetDiagnosisByDescription?desc=` +
+      `${environment.masterApiBaseUrl}GetDiagnosisMastersByDescription?desc=` +
         desc
     );
   }
@@ -26,7 +29,7 @@ export class DiagnosisMasterService {
   createDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
       .post(
-        `${environment.diagnosisApiBaseUrl}CreateNewDiagnosis`,
+        `${environment.masterApiBaseUrl}CreateNewDiagnosisMastersData`,
         diagnosis
       )
       .subscribe((res) => {
@@ -35,9 +38,12 @@ export class DiagnosisMasterService {
   }
   updateDiagnosis(diagnosis: DiagnosisMaster) {
     this.masterClient
-      .put(`${environment.diagnosisApiBaseUrl}UpdateDiagnosis`,diagnosis)
+      .put(
+        `${environment.masterApiBaseUrl}UpdateDiagnosisMastersData`,
+        diagnosis
+      )
       .subscribe((res) => {
-        console.log(res);
+        
         this.openSnackBar('Diagnosis updated!');
       });
   }

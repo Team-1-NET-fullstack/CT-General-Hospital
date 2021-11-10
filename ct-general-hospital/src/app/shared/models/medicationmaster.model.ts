@@ -13,6 +13,5 @@ export interface MedicationMasterIncomingDTO {
   Name: string;
   Dosage: string;
   Description: string;
-  
   IsDeprecated: boolean;
 }

@@ -15,9 +15,14 @@ export class AllergyMasterService {
     private masterClient: HttpClient,
     private _snackBar: MatSnackBar
   ) {}
+  getAllAllergy(desc: string) {
+    return this.masterClient.get<AllergyMasterIncomingDTO>(
+      `${environment.masterApiBaseUrl}GetAllergyMasters` 
+    );
+  }
   getAllAllergybyDesc(desc: string) {
     return this.masterClient.get<AllergyMasterIncomingDTO>(
-      `${environment.allergyApiBaseUrl}GetAllergyMastersByDescription?desc=` +
+      `${environment.masterApiBaseUrl}GetAllergyMastersByDescription?desc=` +
         desc
     );
   }
@@ -29,7 +34,7 @@ export class AllergyMasterService {
   createAllergy(allergy: AllergyMaster) {
     this.masterClient
       .post(
-        `${environment.allergyApiBaseUrl}CreateNewAllergyMasterData`,
+        `${environment.masterApiBaseUrl}CreateNewAllergyMasterData`,
         allergy
       )
       .subscribe((res) => {
@@ -38,7 +43,7 @@ export class AllergyMasterService {
   }
   updateAllergy(allergy: AllergyMaster) {
     this.masterClient
-      .put(`${environment.allergyApiBaseUrl}UpdateAllergyMasterData`, allergy)
+      .put(`${environment.masterApiBaseUrl}UpdateAllergyMasterData`, allergy)
       .subscribe((res) => {
         console.log(res);
         this.openSnackBar('Allergy updated!');
