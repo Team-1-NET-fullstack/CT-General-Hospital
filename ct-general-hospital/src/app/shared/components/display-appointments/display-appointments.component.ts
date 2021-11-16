@@ -14,6 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Status } from '../../enums/status.enum';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from 'src/app/core/mocks/user.mock';
 
 @Component({
   selector: 'app-display-appointments',
@@ -52,6 +53,9 @@ export class DisplayAppointmentsComponent implements OnInit {
     'status',
   ];
 
+  user!: User;
+  show: any = true;
+
   constructor(
     private appointmentService: AppointmentSchedulerService,
     private auth: AuthService,
@@ -61,6 +65,15 @@ export class DisplayAppointmentsComponent implements OnInit {
   ) {
     this.dataSource = new MatTableDataSource();
     this.getAllAppointments();
+    if (this.auth.user.value?.roleId == 4) {
+      this.show = false;
+      this.displayedColumns = [
+        'title',
+        'physicianName',
+        'endTime',
+        'startTime',
+      ];
+    }
   }
 
   ngOnInit(): void {}
